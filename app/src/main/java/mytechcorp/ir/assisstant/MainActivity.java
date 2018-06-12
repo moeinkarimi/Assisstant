@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         btnFinallyCode.setVisibility(View.VISIBLE);
         btnEnd.getLayoutParams().height = 0;
         btnFinallyCode.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
-        
+
     }
 
     private void checkImageViewVisibility(){
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             imageView8.setVisibility(View.VISIBLE);
         }
         if(dbHandler.GetStateData(8).equals("1")){
-            imageView8.setVisibility(View.VISIBLE);
+            iVDoc.setVisibility(View.VISIBLE);
         }
     }
 

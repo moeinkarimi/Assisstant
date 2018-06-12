@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/ivTable"
+        android:layout_width="match_parent"
+        android:layout_height="214dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dataitems"
+        android:padding="8dp"
+        android:src="@mipmap/ic_trickypuzzle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/dataitems"
+        android:scrollbars="none"
+        android:layoutDirection="rtl">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layoutDirection="rtl"
+            android:paddingBottom="5dp"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="left"
+            tools:context=".TableActivity">
+
+
+            <Button
+                android:id="@+id/btnEnter"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btnselector2"
+                android:layoutDirection="rtl"
+                android:onClick="setBtnEnterOnClickListener"
+                android:paddingBottom="10dp"
+                android:paddingEnd="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:text="ورود به صفحه بعد"
+                android:textDirection="rtl"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayouttable"
+                app:layout_constraintVertical_bias="0.7" />
+
+            <LinearLayout
+                android:id="@+id/linearLayouttable"
+                android:layout_width="0dp"
+                android:layout_height="309dp"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <mytechcorp.ir.assisstant.TextViewPlus
+                    android:id="@+id/textViewPlus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="تعداد سوالات : n"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:customFont="@string/Font" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="شماره سوال : "
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:customFont="@string/Font" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="80dp"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/squaretheme"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:layoutDirection="rtl"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:textDirection="rtl" />
+
+                    <Button
+                        android:id="@+id/btnSelect"
+                        android:layout_width="8dp"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btnselector2"
+                        android:onClick="setBtnSelectOnClickListener"
+                        android:text="انتخاب"
+                        android:textSize="16sp" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".9" />
+
+                </LinearLayout>
+
+                <mytechcorp.ir.assisstant.TextViewPlus
+                    android:id="@+id/textViewPlus9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="{سوال}"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:customFont="@string/Font" />
+
+                <EditText
+                    android:id="@+id/txtAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/squaretheme"
+                    android:ems="10"
+                    android:hint="پاسخ"
+                    android:layoutDirection="rtl"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:textDirection="rtl" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btnselector2"
+                        android:onClick="setBtnSelectOnClickListener"
+                        android:text="ثبت"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.438"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayouttable"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <Button
+                        android:id="@+id/btnShowAnswers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btnselector2"
+                        android:onClick="setBtnShowAnswersOnClickListener"
+                        android:text="نمایش پاسخ ها"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.438"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayouttable"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

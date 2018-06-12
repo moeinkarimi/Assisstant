@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/btnShowPerson"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btnselector3"
+            android:clickable="true"
+            android:onClick="setBtnShowPersonOnClickListener"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="0.02"
+                    android:background="@drawable/circlebg"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_person" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6" />
+            </LinearLayout>
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/textViewPlus10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="مشخصات اعضای گروه"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:customFont="@string/Font" />
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/lblPersonCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{تعداد نفرات}"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:customFont="@string/Font" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btnselector3"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="0.02"
+                    android:background="@drawable/circlebg"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_starflat" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6" />
+            </LinearLayout>
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/textViewPlus13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="مجموع امتیازات"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:customFont="@string/Font" />
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/textViewPlus14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{جمع کل}"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp"
+                app:customFont="@string/Font" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btnselector3"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/circlebg"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_iconfinish" />
+
+        <mytechcorp.ir.assisstant.TextViewPlus
+            android:id="@+id/textViewPlus12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ورود به مرحله پایانی"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            app:customFont="@string/Font" />
+
+        <Space
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bgofitem"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="rtl">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="1000dp"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="10dp"
+                android:scrollbars="vertical"
+                android:verticalScrollbarPosition="left"
+                tools:context=".MainActivity">
+
+                <LinearLayout
+                    android:id="@+id/btnDoc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnGroupOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnGroup">
+
+                    <ImageView
+                        android:id="@+id/ivdocument"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_doc" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/tvDoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="مستند سازی"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/iVDoc"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnGroupOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnRecord">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_person" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="بازی گروهی"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnRecord"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnRecordOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnBuild">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_record" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="رکورد"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnBuild"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnBuildOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_build" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="ساخت"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnPuzzle"
+                    android:layout_width="0dp"
+                    android:layout_height="63dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnMystery">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_puzzle" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="پازل"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnMystery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnReading">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_magnifier" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="معما"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnReading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnReadingOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnTable">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_paper" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="مطالعه"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnTable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnTableOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_grid" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="جدول"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:visibility="invisible"
+                        android:src="@mipmap/ic_tick" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/div"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnPuzzle" />
+
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

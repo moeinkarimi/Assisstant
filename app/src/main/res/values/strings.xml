@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Assisstant</string>
+    <string name="Font">fonts/IRANSansMobile_Light.ttf</string>
+    <string name="test">
+      کسپرسکی و ادوبی در زمینه‌ی کشف و مهار حملات سایبری، همکاری‌های نزدیکی با یکدیگر داشته‌اند. در سه ماه اخیر نیز سه آسیب‌پذیری مختلف در مورد ادوبی توسط کسپرسکی کشف شده است. برای اطمینان از امنیت سیستم خود پیشنهاد می‌کنیم از طریقی لینکی که در ابتدای مقاله قرار دادیم، فلش خود را آپدیت کنید.
+    </string>
+    <string name="title_activity_table">TableActivity</string>
+</resources>

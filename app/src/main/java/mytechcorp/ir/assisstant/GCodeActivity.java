@@ -64,6 +64,7 @@ public class GCodeActivity extends Dialog {
                                     txtGCode.getText().toString()
                             )
                     );
+
                     txtGCode.setText("");
                     if(dbHandler.getCodeState()){
                         Intent intent = new Intent(c, MainActivity.class);
@@ -71,7 +72,9 @@ public class GCodeActivity extends Dialog {
                         c.finish();
                     }
                     dismiss();
-                } else if (txtGCode.getText().toString().equals("")) {
+
+                }
+                else if (txtGCode.getText().toString().equals("")) {
                     txtGCode.setError(ssbuilder);
                     if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                         txtGCode.setBackgroundDrawable(ContextCompat.getDrawable(c,R.drawable.eterror));

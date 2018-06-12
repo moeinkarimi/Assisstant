@@ -31,7 +31,8 @@
         <activity android:name=".ReadingActivity" />
         <activity android:name=".ShowPersonActivity" />
         <activity android:name=".AnswerDialogActivity" />
-        <activity android:name=".AddPersonActivity"></activity>
+        <activity android:name=".AddPersonActivity" />
+        <activity android:name=".GCodeActivity"></activity>
     </application>
 
 </manifest>

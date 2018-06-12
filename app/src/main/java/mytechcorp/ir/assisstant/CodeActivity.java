@@ -78,5 +78,11 @@ public class CodeActivity extends AppCompatActivity {
             MainActivity.fa.finish();
             this.finish();
         }
+        else if (Game.equals("8")){
+            dbHandler.UpdateState(Integer.parseInt(Game));
+            startActivity(intent);
+            MainActivity.fa.finish();
+            this.finish();
+        }
     }
 }

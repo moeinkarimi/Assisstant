@@ -1,10 +1,13 @@
 package mytechcorp.ir.assisstant;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -64,9 +67,14 @@ public class EnterActivity extends AppCompatActivity {
     }
 
     public void setBtnEnterOnClickListener(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        if(!dbHandler.getCodeState()){
+            checkGCode();
+        }
+        else {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void setBtnSaveOnClickListener(View v) {
@@ -120,15 +128,36 @@ public class EnterActivity extends AppCompatActivity {
         db = dbHandler.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         cursor.moveToFirst();
+
         if (cursor.getCount() > 0) {
             //dbHandler.UpdateStates();
-        } else {
-            for (int i=1;i<8;i++){
+            if(dbHandler.GetPersonCount()>0 && dbHandler.getCodeState()){
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+        }
+        else {
+            for (int i=1;i<9;i++){
                 dbHandler.AddState();
             }
         }
         btnEnter.setEnabled(false);
         loadData();
+    }
+
+    private void checkGCode(){
+        if(dbHandler.getCodeState()){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            GCodeActivity gCodeActivity = new GCodeActivity(this);
+            gCodeActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            gCodeActivity.show();
+        }
     }
 
     private void loadData(){

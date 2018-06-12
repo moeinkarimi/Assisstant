@@ -149,6 +149,7 @@
         android:baselineAligned="false"
         android:clickable="true"
         android:layoutDirection="rtl"
+        android:onClick="setBtnEndOnClickListener"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -164,6 +165,48 @@
 
         <mytechcorp.ir.assisstant.TextViewPlus
             android:id="@+id/textViewPlus12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ورود به مرحله پایانی"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            app:customFont="@string/Font" />
+
+        <Space
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnFinallyCode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/btnselector3"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/circlebg"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_iconfinish" />
+
+        <mytechcorp.ir.assisstant.TextViewPlus
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
@@ -216,6 +259,7 @@
                     android:layout_weight=".5"
                     android:background="@drawable/btnselector2"
                     android:clickable="true"
+                    android:onClick="setBtnDocOnClickListener"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

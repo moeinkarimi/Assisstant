@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.GCode;
 import Models.Person;
 
 
@@ -22,11 +23,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final String TABLE_States = "States";
     private static final String TABLE_Person = "Person";
+    private static final String TABLE_Score = "Score";
+    private static final String TABLE_GCode = "GCode";
 
     private static final String ID = "ID";
     private static final String Name = "Name";
     private static final String Family = "Family";
     private static final String State = "State";
+    private static final String GameID = "GameID";
+    private static final String Code = "Code";
+    private static final String Score = "Score";
 
 
     public DBHandler(Context context) {
@@ -35,6 +41,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        String dbexec0 = "CREATE TABLE IF NOT EXISTS "+ TABLE_GCode +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + Code + " Text);"; //1
+        db.execSQL(dbexec0);
+
         String dbexec = "CREATE TABLE IF NOT EXISTS "+ TABLE_States +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + State + " Text);"; //1
@@ -43,8 +55,16 @@ public class DBHandler extends SQLiteOpenHelper {
         String dbexec1 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Person +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + Name + " Text,"
-                + Family + " Text);"; //1
+                + Family + " Text);"; //2
         db.execSQL(dbexec1);
+
+
+        String dbexec2 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Score +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + GameID + " Integer,"//1
+                + Code + " Text, "//2
+                + Score + " Integer);"; //3
+        db.execSQL(dbexec2);
     }
 
     @Override
@@ -101,7 +121,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(State, "0");
-        for (int i=1;i<8;i++){
+        for (int i=1;i<9;i++){
             db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(i)});
         }
         db.close();
@@ -136,5 +156,29 @@ public class DBHandler extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         return count;
+    }
+
+    //GCode
+    public boolean getCodeState(){
+        String countQuery = "SELECT  * FROM " + TABLE_GCode;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        if (cursor.getCount()>0){
+            cursor.close();
+            return true;
+        }
+        else {
+            cursor.close();
+            return false;
+        }
+
+    }
+
+    public void AddGCode(GCode gCode){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Code, gCode.getGCode());
+        db.insert(TABLE_GCode, null, contentValues);
+        db.close();
     }
 }

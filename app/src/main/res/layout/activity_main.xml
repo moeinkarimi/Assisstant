@@ -216,7 +216,6 @@
                     android:layout_weight=".5"
                     android:background="@drawable/btnselector2"
                     android:clickable="true"
-                    android:onClick="setBtnGroupOnClickListener"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

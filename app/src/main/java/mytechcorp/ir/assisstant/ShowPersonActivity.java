@@ -3,12 +3,16 @@ package mytechcorp.ir.assisstant;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -22,9 +26,10 @@ import Models.Person;
 
 public class ShowPersonActivity extends AppCompatActivity {
 
-    ListView lvPerson;
+    GridView lvPerson;
     SQLiteDatabase db;
     DBHandler dbHandler;
+    Button btnAddPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +37,25 @@ public class ShowPersonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_person);
 
         dbHandler =new DBHandler(this);
+        btnAddPerson = findViewById(R.id.btnAddPerson);
         lvPerson = findViewById(R.id.lvPerson);
         loadData();
+
+        btnAddPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddPersonActivity apa = new AddPersonActivity(ShowPersonActivity.this);
+                apa.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                apa.show();
+                apa.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        loadData();
+                    }
+                });
+            }
+        });
+
     }
 
     private void loadData() {

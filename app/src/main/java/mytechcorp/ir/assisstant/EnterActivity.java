@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import Models.CustomTypefaceSpan;
 import Models.Person;
 
 public class EnterActivity extends AppCompatActivity {
@@ -31,7 +36,9 @@ public class EnterActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
     DBHandler dbHandler;
+    Typeface tf;
 
+    final int sdk = android.os.Build.VERSION.SDK_INT;
     private static final String TABLE_States = "States";
 
     @SuppressLint("WrongViewCast")
@@ -39,7 +46,7 @@ public class EnterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter);
-        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
+        tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 
         dbHandler =new DBHandler(this);
         btnEnter = findViewById(R.id.btnEnter);
@@ -63,6 +70,10 @@ public class EnterActivity extends AppCompatActivity {
     }
 
     public void setBtnSaveOnClickListener(View v) {
+
+        SpannableStringBuilder ssbuilder = new SpannableStringBuilder(getString(R.string.err_wrong_input));
+        ssbuilder.setSpan(new CustomTypefaceSpan("", this.tf), 0, ssbuilder.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+
         if(!txtName.getText().toString().equals("") && !txtFamily.getText().toString().equals("")){
             dbHandler.AddPerson(
                     new Person(
@@ -74,8 +85,33 @@ public class EnterActivity extends AppCompatActivity {
             txtFamily.setText("");
             loadData();
         }
-        else{
-            Toast.makeText(this, "لطفا نام و نام خانوادگی را وارد کنید", Toast.LENGTH_LONG).show();
+        else if(txtName.getText().toString().equals("") && txtFamily.getText().toString().equals("")){
+            txtName.setError(ssbuilder);
+            txtFamily.setError(ssbuilder);
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                txtName.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.eterror) );
+                txtFamily.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.eterror) );
+            } else {
+                txtName.setBackground(ContextCompat.getDrawable(this, R.drawable.eterror));
+                txtFamily.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.eterror) );
+            }
+        }
+        else if(txtName.getText().toString().equals("")){
+            txtName.setError(ssbuilder);
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                txtName.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.eterror) );
+            } else {
+                txtName.setBackground(ContextCompat.getDrawable(this, R.drawable.eterror));
+            }
+        }
+
+        else if(txtFamily.getText().toString().equals("")){
+            txtFamily.setError(ssbuilder);
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                txtFamily.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.eterror) );
+            } else {
+                txtFamily.setBackground(ContextCompat.getDrawable(this, R.drawable.eterror));
+            }
         }
     }
 

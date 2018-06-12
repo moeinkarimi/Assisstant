@@ -40,6 +40,7 @@
         android:paddingRight="5dp"
         android:paddingStart="15dp"
         android:paddingTop="5dp"
+        android:singleLine="true"
         android:textDirection="rtl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

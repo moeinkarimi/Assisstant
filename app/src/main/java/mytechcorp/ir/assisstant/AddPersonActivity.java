@@ -58,7 +58,6 @@ public class AddPersonActivity extends Dialog {
         txtFamily = findViewById(R.id.txtFamily);
 
         if(ID != 0) {
-            Log.d("ID" , String.valueOf(ID));
             Person person = dbHandler.GetPerson(ID);
             txtName.setText(person.getPersonName());
             txtFamily.setText(person.getPersonFamily());

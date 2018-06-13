@@ -117,7 +117,6 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         Person person = new Person(cursor.getString(1), cursor.getString(2));
-        Log.d("Name : ", person.getPersonName());
         return person;
     }
 
@@ -151,7 +150,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public void UpdateState(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        Log.d("ID", String.valueOf(id));
         values.put(State, "1");
         db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(id)});
         db.close();

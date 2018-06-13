@@ -100,6 +100,27 @@ public class DBHandler extends SQLiteOpenHelper {
         return personList;
     }
 
+    public void UpdatePerson(Person person,int i){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Name, person.getPersonName());
+        values.put(Family, person.getPersonFamily());
+        db.update(TABLE_Person,values,"ID =?",new String[] {String.valueOf(i)});
+        db.close();
+    }
+
+    public Person GetPerson(int id){
+        String query = "SELECT * FROM " + TABLE_Person + " WHERE ID = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        Person person = new Person(cursor.getString(1), cursor.getString(2));
+        Log.d("Name : ", person.getPersonName());
+        return person;
+    }
+
     public int GetPersonCount(){
         String query = "SELECT * FROM " + TABLE_Person;
         SQLiteDatabase db = this.getReadableDatabase();

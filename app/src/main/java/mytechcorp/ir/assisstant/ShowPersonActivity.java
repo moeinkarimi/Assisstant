@@ -8,14 +8,17 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -44,7 +47,7 @@ public class ShowPersonActivity extends AppCompatActivity {
         btnAddPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddPersonActivity apa = new AddPersonActivity(ShowPersonActivity.this);
+                AddPersonActivity apa = new AddPersonActivity(ShowPersonActivity.this, 0);
                 apa.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 apa.show();
                 apa.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -53,6 +56,8 @@ public class ShowPersonActivity extends AppCompatActivity {
                         loadData();
                     }
                 });
+
+
             }
         });
 
@@ -99,9 +104,20 @@ public class ShowPersonActivity extends AppCompatActivity {
                     builder.setItems(options, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
+                            int id = Integer.parseInt(((TextView)view.findViewById(R.id.lblID)).getText().toString());
+                            Log.d("id", String.valueOf(id));
                             switch (options[which]){
                                 case "ویرایش":
-                                    Toast.makeText(ShowPersonActivity.this, "ویرایش", Toast.LENGTH_LONG).show();
+                                    AddPersonActivity apa = new AddPersonActivity(ShowPersonActivity.this, id);
+                                    apa.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    apa.show();
+                                    apa.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                        @Override
+                                        public void onDismiss(DialogInterface dialogInterface) {
+                                            loadData();
+                                        }
+                                    });
                                     break;
                                 case "حذف":
                                     Toast.makeText(ShowPersonActivity.this, "حذف", Toast.LENGTH_LONG).show();

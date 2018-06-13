@@ -70,8 +70,8 @@ public class AddPersonActivity extends Dialog {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String s = String.valueOf(ID);
-                if(s == null) {
+
+                if(ID == 0) {
                     SpannableStringBuilder ssbuilder = new SpannableStringBuilder("مقدار درخواستی را وارد کنید");
                     ssbuilder.setSpan(new CustomTypefaceSpan("", tf), 0, ssbuilder.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 

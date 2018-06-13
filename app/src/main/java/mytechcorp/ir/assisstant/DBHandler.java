@@ -128,6 +128,11 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public void DeletePerson(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(TABLE_Person, ID + "=" + id, null);
+    }
+
     //State
     public void AddState(){
         SQLiteDatabase db = this.getWritableDatabase();

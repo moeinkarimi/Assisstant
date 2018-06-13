@@ -106,7 +106,6 @@ public class ShowPersonActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
 
                             int id = Integer.parseInt(((TextView)view.findViewById(R.id.lblID)).getText().toString());
-                            Log.d("id", String.valueOf(id));
                             switch (options[which]){
                                 case "ویرایش":
                                     AddPersonActivity apa = new AddPersonActivity(ShowPersonActivity.this, id);
@@ -120,7 +119,8 @@ public class ShowPersonActivity extends AppCompatActivity {
                                     });
                                     break;
                                 case "حذف":
-                                    Toast.makeText(ShowPersonActivity.this, "حذف", Toast.LENGTH_LONG).show();
+                                    dbHandler.DeletePerson(id);
+                                    loadData();
                                     break;
                             }
                         }

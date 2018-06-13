@@ -121,9 +121,9 @@ public class AddPersonActivity extends Dialog {
                                 new Person(
                                         txtName.getText().toString(),
                                         txtFamily.getText().toString()
-                                ),
-                                ID
+                                ), ID
                         );
+
                         txtName.setText("");
                         txtFamily.setText("");
                         dismiss();

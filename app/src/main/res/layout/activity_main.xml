@@ -128,7 +128,7 @@
                 app:customFont="@string/Font" />
 
             <mytechcorp.ir.assisstant.TextViewPlus
-                android:id="@+id/textViewPlus14"
+                android:id="@+id/lblAllScores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="{جمع کل}"
@@ -288,7 +288,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="مستند سازی"
+                        android:text="8 - مستند سازی"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -351,7 +351,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="بازی گروهی"
+                        android:text="7 - بازی گروهی"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -414,7 +414,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="رکورد"
+                        android:text="6 - رکورد"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -477,7 +477,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="ساخت"
+                        android:text="5 - ساخت"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -512,6 +512,7 @@
                     android:layout_weight=".5"
                     android:background="@drawable/btnselector2"
                     android:clickable="true"
+                    android:onClick="setBtnPuzzleOnClickListener"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -539,7 +540,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="پازل"
+                        android:text="4 - پازل"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -560,8 +561,8 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -574,6 +575,7 @@
                     android:layout_weight=".5"
                     android:background="@drawable/btnselector2"
                     android:clickable="true"
+                    android:onClick="setBtnMysteryOnClickListener"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -601,7 +603,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="معما"
+                        android:text="3 - معما"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -622,8 +624,8 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -664,7 +666,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="مطالعه"
+                        android:text="2 - مطالعه"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -726,7 +728,7 @@
                         android:layoutDirection="rtl"
                         android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="جدول"
+                        android:text="1 - جدول"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"

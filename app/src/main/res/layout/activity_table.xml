@@ -7,29 +7,38 @@
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/ivTable"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="214dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:background="@drawable/dataitems"
-        android:padding="8dp"
-        android:src="@mipmap/ic_trickypuzzle" />
+        android:focusable="true"
+        android:layout_margin="8dp"
+        android:focusableInTouchMode="true">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/ivTable"
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:src="@drawable/table1" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:background="@drawable/dataitems"
-        android:scrollbars="none"
-        android:layoutDirection="rtl">
+        android:layoutDirection="rtl"
+        android:scrollbars="none">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:layoutDirection="rtl"
@@ -41,10 +50,11 @@
 
             <Button
                 android:id="@+id/btnEnter"
-                android:layout_width="120dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/btnselector2"
+                android:gravity="center"
                 android:layoutDirection="rtl"
                 android:onClick="setBtnEnterOnClickListener"
                 android:paddingBottom="10dp"
@@ -64,7 +74,7 @@
             <LinearLayout
                 android:id="@+id/linearLayouttable"
                 android:layout_width="0dp"
-                android:layout_height="309dp"
+                android:layout_height="wrap_content"
                 android:layoutDirection="rtl"
                 android:orientation="vertical"
                 android:padding="7dp"
@@ -73,11 +83,13 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <mytechcorp.ir.assisstant.TextViewPlus
-                    android:id="@+id/textViewPlus"
+                    android:id="@+id/questionCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="تعداد سوالات : n"
+                    android:nextFocusLeft="@id/questionCount"
+                    android:nextFocusUp="@id/questionCount"
+                    android:text="تعداد سوالات : 22"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     app:customFont="@string/Font" />
@@ -98,7 +110,7 @@
                         app:customFont="@string/Font" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/txtQues"
                         android:layout_width="80dp"
                         android:layout_height="45dp"
                         android:layout_margin="5dp"
@@ -137,11 +149,11 @@
                 </LinearLayout>
 
                 <mytechcorp.ir.assisstant.TextViewPlus
-                    android:id="@+id/textViewPlus9"
+                    android:id="@+id/tvQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="{سوال}"
+                    android:text="شماره سوال را وارد نمایید"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     app:customFont="@string/Font" />
@@ -166,7 +178,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
@@ -174,11 +186,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/btnselector2"
-                        android:onClick="setBtnSelectOnClickListener"
+                        android:onClick="setBtnSaveOnClickLisetener"
                         android:text="ثبت"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/btnselector2"

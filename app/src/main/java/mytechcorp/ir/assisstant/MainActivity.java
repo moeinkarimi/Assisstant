@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     DBHandler dbHandler;
 
-    LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode;
+    LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode, btnMystery, btnPuzzle;
     ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc;
     public static Activity fa;
 
-    TextViewPlus lblPersonCount;
+    TextViewPlus lblPersonCount, lblAllScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,57 +46,67 @@ public class MainActivity extends AppCompatActivity {
         btnGroup = findViewById(R.id.btnGroup);
         btnTable = findViewById(R.id.btnTable);
         btnReading = findViewById(R.id.btnReading);
+        btnMystery = findViewById(R.id.btnMystery);
+        btnPuzzle = findViewById(R.id.btnPuzzle);
         btnShowPerson = findViewById(R.id.btnShowPerson);
         btnDoc = findViewById(R.id.btnDoc);
         btnEnd = findViewById(R.id.btnEnd);
         btnFinallyCode = findViewById(R.id.btnFinallyCode);
 
+        lblAllScores = findViewById(R.id.lblAllScores);
         lblPersonCount = findViewById(R.id.lblPersonCount);
         lblPersonCount.setText(String.valueOf(dbHandler.GetPersonCount())+ " نفر");
+        lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores()));
         checkImageViewVisibility();
 
-    }
-
-    public void setBtnBuildOnClickListener(View v) {
-        Intent intent = new Intent(this, DescriptionActivity.class);
-        intent.putExtra("Game","5");
-        startActivity(intent);
-        //this.finish();
-    }
-
-    public void setBtnRecordOnClickListener(View v) {
-        Intent intent = new Intent(this, DescriptionActivity.class);
-        intent.putExtra("Game","6");
-        startActivity(intent);
-        //this.finish();
-    }
-
-    public void setBtnGroupOnClickListener(View v) {
-        Intent intent = new Intent(this, DescriptionActivity.class);
-        intent.putExtra("Game","7");
-        startActivity(intent);
-        //this.finish();
     }
 
     public void setBtnTableOnClickListener(View v) {
         Intent intent = new Intent(this, TableActivity.class);
         intent.putExtra("Game","1");
         startActivity(intent);
-        //this.finish();
     }
 
     public void setBtnReadingOnClickListener(View v) {
         Intent intent = new Intent(this, ReadingActivity.class);
         intent.putExtra("Game","2");
         startActivity(intent);
-        //this.finish();
+    }
+
+    public void setBtnMysteryOnClickListener(View v) {
+        Intent intent = new Intent(this, MysteryActivity.class);
+        intent.putExtra("Game","3");
+        startActivity(intent);
+    }
+
+    public void setBtnPuzzleOnClickListener(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
+        intent.putExtra("Game","4");
+        startActivity(intent);
+    }
+
+    public void setBtnBuildOnClickListener(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
+        intent.putExtra("Game","5");
+        startActivity(intent);
+    }
+
+    public void setBtnRecordOnClickListener(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
+        intent.putExtra("Game","6");
+        startActivity(intent);
+    }
+
+    public void setBtnGroupOnClickListener(View v) {
+        Intent intent = new Intent(this, DescriptionActivity.class);
+        intent.putExtra("Game","7");
+        startActivity(intent);
     }
 
     public void setBtnDocOnClickListener(View v) {
         Intent intent = new Intent(this, DescriptionActivity.class);
         intent.putExtra("Game","8");
         startActivity(intent);
-        //this.finish();
     }
 
     public void setBtnShowPersonOnClickListener(View v){

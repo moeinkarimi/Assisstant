@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:gravity="center"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/dataitems"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <mytechcorp.ir.assisstant.TextViewPlus
+            android:id="@+id/tvQues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:textColor="@color/text_color_primary"
+            android:textSize="16sp"
+            app:customFont="@string/Font" />
+
+        <mytechcorp.ir.assisstant.TextViewPlus
+            android:id="@+id/tvAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            app:customFont="@string/Font" />
+    </LinearLayout>
+</LinearLayout>

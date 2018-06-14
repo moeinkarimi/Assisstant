@@ -11,8 +11,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Answers;
 import Models.GCode;
 import Models.Person;
+import Models.Questions;
+import Models.Scores;
+import Models.ShowAnswer;
 
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -25,6 +29,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_Person = "Person";
     private static final String TABLE_Score = "Score";
     private static final String TABLE_GCode = "GCode";
+    private static final String TABLE_Questions = "Questions";
+    private static final String TABLE_Answers = "Answers";
 
     private static final String ID = "ID";
     private static final String Name = "Name";
@@ -33,6 +39,10 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String GameID = "GameID";
     private static final String Code = "Code";
     private static final String Score = "Score";
+    private static final String Question = "Question";
+    private static final String QuestionID = "QuestionID";
+    private static final String Answer = "Answer";
+    private static final String Flag = "Flag";
 
 
     public DBHandler(Context context) {
@@ -42,15 +52,15 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String dbexec0 = "CREATE TABLE IF NOT EXISTS "+ TABLE_GCode +"("
+        String dbexec = "CREATE TABLE IF NOT EXISTS "+ TABLE_GCode +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + Code + " Text);"; //1
-        db.execSQL(dbexec0);
+        db.execSQL(dbexec);
 
-        String dbexec = "CREATE TABLE IF NOT EXISTS "+ TABLE_States +"("
+        String dbexec0 = "CREATE TABLE IF NOT EXISTS "+ TABLE_States +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + State + " Text);"; //1
-        db.execSQL(dbexec);
+        db.execSQL(dbexec0);
 
         String dbexec1 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Person +"("
                 + ID + " Integer Primary Key Autoincrement," //0
@@ -62,9 +72,24 @@ public class DBHandler extends SQLiteOpenHelper {
         String dbexec2 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Score +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + GameID + " Integer,"//1
-                + Code + " Text, "//2
+                + QuestionID + " Integer, "//2
                 + Score + " Integer);"; //3
         db.execSQL(dbexec2);
+
+        String dbexec3 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Questions +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + GameID + " Integer,"//1
+                + Question + " Text,"//2
+                + Flag + " Boolean,"//3
+                + QuestionID + " Integer);"; //4
+        db.execSQL(dbexec3);
+
+        String dbexec4 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Answers +"("
+                + ID + " Integer Primary Key Autoincrement," //0
+                + GameID + " Integer,"//1
+                + Answer + " Text,"//2
+                + QuestionID + " Integer);"; //3
+        db.execSQL(dbexec4);
     }
 
     @Override
@@ -116,8 +141,7 @@ public class DBHandler extends SQLiteOpenHelper {
         if (cursor != null){
             cursor.moveToFirst();
         }
-        Person person = new Person(cursor.getString(1), cursor.getString(2));
-        return person;
+        return new Person(cursor.getString(1), cursor.getString(2));
     }
 
     public int GetPersonCount(){
@@ -188,11 +212,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         if (cursor.getCount()>0){
-            cursor.close();
             return true;
         }
         else {
-            cursor.close();
             return false;
         }
 
@@ -204,5 +226,121 @@ public class DBHandler extends SQLiteOpenHelper {
         contentValues.put(Code, gCode.getGCode());
         db.insert(TABLE_GCode, null, contentValues);
         db.close();
+    }
+
+    //Questions
+    public void AddQuestion(Questions questions){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(GameID, questions.getQGameID());
+        contentValues.put(Question, questions.getQuestion());
+        contentValues.put(QuestionID, questions.getQuestionID());
+        db.insert(TABLE_Questions, null,contentValues);
+        db.close();
+    }
+
+    public Questions GetQuestion(int QuestionID, int GameId){
+        String query = "SELECT * FROM " + TABLE_Questions + " WHERE QuestionID = " + QuestionID+" AND GameID = " + GameId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        return new Questions(cursor.getString(2));
+    }
+
+    public int GetQuestionCount(){
+        String query = "SELECT * FROM " + TABLE_Questions;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        cursor.moveToFirst();
+        return cursor.getCount();
+    }
+
+    public boolean GetQuestionState(int questionID, int GameId){
+        String query = "SELECT * FROM " + TABLE_Questions + " WHERE QuestionID = " + questionID+" AND GameID = " + GameId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+            if (cursor.getString(3)!= null && cursor.getString(3).equals("1")){
+                return true;
+            }
+            else
+                return false;
+        }
+        return false;
+    }
+
+    public void UpdateQuestionState(int questionID, int GameId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Flag, true);
+        db.update(TABLE_Questions,values,"QuestionID =? And GameId =? ",new String[] {String.valueOf(questionID),String.valueOf(GameId)});
+        db.close();
+
+    }
+
+    //Answer
+    public void AddAnswer(Answers answers){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(GameID, answers.getAGameID());
+        contentValues.put(Answer, answers.getAnswer());
+        contentValues.put(QuestionID, answers.getQuestionID());
+        db.insert(TABLE_Answers, null,contentValues);
+        db.close();
+    }
+
+    public List<ShowAnswer> ShowAnswerList(){
+        List<ShowAnswer> showAnswers = new ArrayList<ShowAnswer>();
+        String query = "SELECT q.Question, a.Answer FROM " + TABLE_Questions +" q INNER JOIN " + TABLE_Answers
+                + " a ON q.QuestionID = a.QuestionID Where q.GameID = 1 AND a.Answer IS NOT NULL";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor.moveToFirst()) {
+            do {
+                ShowAnswer showAnswer = new ShowAnswer();
+                showAnswer.setQuestion(cursor.getString(0));
+                showAnswer.setAnswer(cursor.getString(1));
+                showAnswers.add(showAnswer);
+            }while (cursor.moveToNext());
+        }
+        return showAnswers;
+    }
+
+    //Score
+    public void AddScore(Scores scores){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(GameID, scores.getSGameID());
+        contentValues.put(Score, scores.getScore());
+        contentValues.put(QuestionID, scores.getSQuestionID());
+        db.insert(TABLE_Score, null,contentValues);
+        db.close();
+    }
+
+    public int GetSumOfScores(){
+        String query = "SELECT SUM(Score) FROM " + TABLE_Score;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public boolean GetScoreState(int GameId){
+        String query = "SELECT * FROM " + TABLE_States + " WHERE ID = " + GameId;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+            if (cursor.getString(1)!= null && cursor.getString(1).equals("1")){
+                return true;
+            }
+            else
+                return false;
+        }
+        return false;
     }
 }

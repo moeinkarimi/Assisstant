@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import Models.CustomTypefaceSpan;
+import Models.FirstRun;
 import Models.Person;
 
 public class EnterActivity extends AppCompatActivity {
@@ -142,6 +143,12 @@ public class EnterActivity extends AppCompatActivity {
             for (int i=1;i<9;i++){
                 dbHandler.AddState();
             }
+        }
+
+        if (dbHandler.GetQuestionCount()==0)
+        {
+            FirstRun firstRun = new FirstRun();
+            firstRun.AddQuestions(this);
         }
         btnEnter.setEnabled(false);
         loadData();

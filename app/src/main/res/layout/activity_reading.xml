@@ -6,47 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".ReadingActivity">
 
-    <mytechcorp.ir.assisstant.TextViewPlus
-        android:id="@+id/mTextField2"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/test"
-        app:customFont="@string/Font"
+        android:background="@drawable/dataitems"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <mytechcorp.ir.assisstant.TextViewPlus
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            app:customFont="@string/Font"
+            app:textAllCaps="false"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <mytechcorp.ir.assisstant.TextViewPlus
+            android:id="@+id/mTextField"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            app:customFont="@string/Font"
+            app:layout_constraintBottom_toTopOf="@+id/btnEnter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <mytechcorp.ir.assisstant.TextViewPlus
+                    android:id="@+id/tvReading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="16sp"
+                    app:customFont="@string/Font"
+                    app:textAllCaps="false"
+                    tools:layout_editor_absoluteY="49dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnEnter"
-        android:layout_width="138dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
         android:background="@drawable/btnselector2"
         android:enabled="false"
         android:onClick="setBtnEnterOnClickListener"
         android:text="ورود به صفحه بعد"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mTextField" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <mytechcorp.ir.assisstant.TextViewPlus
-        android:id="@+id/mTextField"
-        android:layout_width="189dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        app:customFont="@string/Font"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mTextField2" />
 </android.support.constraint.ConstraintLayout>

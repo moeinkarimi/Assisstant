@@ -32,7 +32,9 @@
         <activity android:name=".ShowPersonActivity" />
         <activity android:name=".AnswerDialogActivity" />
         <activity android:name=".AddPersonActivity" />
-        <activity android:name=".GCodeActivity"></activity>
+        <activity android:name=".GCodeActivity" />
+        <activity android:name=".ShowScoresActivity" />
+        <activity android:name=".MysteryActivity"></activity>
     </application>
 
 </manifest>

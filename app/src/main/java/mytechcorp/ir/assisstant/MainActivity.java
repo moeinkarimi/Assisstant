@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
     DBHandler dbHandler;
 
-    LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode, btnMystery, btnPuzzle;
+    LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode, btnMystery, btnPuzzle, btnShowScores;
     ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc;
     public static Activity fa;
 
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btnDoc = findViewById(R.id.btnDoc);
         btnEnd = findViewById(R.id.btnEnd);
         btnFinallyCode = findViewById(R.id.btnFinallyCode);
+        btnShowScores = findViewById(R.id.btnShowScores);
 
         lblAllScores = findViewById(R.id.lblAllScores);
         lblPersonCount = findViewById(R.id.lblPersonCount);
@@ -59,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores()));
         checkImageViewVisibility();
 
+    }
+
+    public void setBtnShowScoresOnClickListener(View v) {
+        Intent intent = new Intent(this, ShowScoresActivity.class);
+        startActivity(intent);
     }
 
     public void setBtnTableOnClickListener(View v) {

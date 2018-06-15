@@ -95,11 +95,17 @@ public class CodeActivity extends AppCompatActivity {
 
             }
             else {
-
-                dbHandler.UpdateState(Integer.parseInt(Game));
-                startActivity(intent);
-                MainActivity.fa.finish();
-                this.finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
+                dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface,int i) {
+                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        MainActivity.fa.finish();
+                        ca.finish();
+                    }
+                });
+                dialog.show();
             }
         }
 //        else if (Game.equals("2")){
@@ -128,6 +134,7 @@ public class CodeActivity extends AppCompatActivity {
                             )
                     );
                 }
+                dbHandler.UpdateState(Integer.parseInt(Game));
                 AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("4-\tز ا").setTitle("حروف رمز");
                 dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                     @Override
@@ -141,11 +148,17 @@ public class CodeActivity extends AppCompatActivity {
                 dialog.show();
             }
             else {
-
-                dbHandler.UpdateState(Integer.parseInt(Game));
-                startActivity(intent);
-                MainActivity.fa.finish();
-                this.finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
+                dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface,int i) {
+                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        MainActivity.fa.finish();
+                        ca.finish();
+                    }
+                });
+                dialog.show();
             }
         }
         else if (Game.equals("5")){

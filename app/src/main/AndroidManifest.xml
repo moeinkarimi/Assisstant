@@ -34,7 +34,8 @@
         <activity android:name=".AddPersonActivity" />
         <activity android:name=".GCodeActivity" />
         <activity android:name=".ShowScoresActivity" />
-        <activity android:name=".MysteryActivity"></activity>
+        <activity android:name=".MysteryActivity" />
+        <activity android:name=".ReadingQuestionActivity"></activity>
     </application>
 
 </manifest>

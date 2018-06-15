@@ -257,6 +257,17 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public int GetAnswerCount(int id){
+        String query = "SELECT * FROM " + TABLE_Answers + " WHERE GameID = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        if (cursor != null){
+            cursor.moveToFirst();
+            return cursor.getCount();
+        }
+        else return 0;
+    }
+
     public boolean GetQuestionState(int questionID, int GameId){
         String query = "SELECT * FROM " + TABLE_Questions + " WHERE QuestionID = " + questionID+" AND GameID = " + GameId;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -292,10 +303,10 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<ShowAnswer> ShowAnswerList(){
+    public List<ShowAnswer> ShowAnswerList(int Gameid){
         List<ShowAnswer> showAnswers = new ArrayList<ShowAnswer>();
         String query = "SELECT q.Question, a.Answer FROM " + TABLE_Questions +" q INNER JOIN " + TABLE_Answers
-                + " a ON q.QuestionID = a.QuestionID Where q.GameID = 1 AND a.Answer IS NOT NULL";
+                + " a ON q.QuestionID = a.QuestionID Where q.GameID = "+Gameid+" AND a.Answer IS NOT NULL AND a.GameID = "+ Gameid;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query,null);
@@ -323,6 +334,14 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public int GetSumOfScores(){
         String query = "SELECT SUM(Score) FROM " + TABLE_Score;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public int GetSumOfScore(int Gameid){
+        String query = "SELECT SUM(Score) FROM " + TABLE_Score + " WHERE GameID = " + Gameid ;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         cursor.moveToFirst();

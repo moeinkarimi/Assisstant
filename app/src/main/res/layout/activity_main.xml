@@ -80,12 +80,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btnShowScores"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
             android:background="@drawable/btnselector3"
             android:clickable="true"
+            android:onClick="setBtnShowScoresOnClickListener"
             android:orientation="vertical"
             android:padding="8dp">
 
@@ -305,6 +307,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
@@ -368,12 +371,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -431,12 +435,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -494,12 +499,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -557,6 +563,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
@@ -620,6 +627,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
@@ -683,12 +691,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:src="@mipmap/ic_tick"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -749,8 +758,9 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_tick"
                         android:visibility="invisible"
-                        android:src="@mipmap/ic_tick" />
+                        android:layout_marginLeft="7dp" />
 
                 </LinearLayout>
 

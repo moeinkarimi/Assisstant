@@ -1,5 +1,7 @@
 package mytechcorp.ir.assisstant;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -27,7 +29,7 @@ public class TableActivity extends AppCompatActivity {
     Button btnEnter, btnSelect, btnSave, btnShowAnswers;
     EditText txtAnswer, txtQues;
     TextViewPlus tvQuestion;
-
+    Activity ta;
     String Game;
     private DBHandler dbHandler;
     private int qID;
@@ -40,6 +42,7 @@ public class TableActivity extends AppCompatActivity {
         PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(ivTable);
         photoViewAttacher.update();
         dbHandler =new DBHandler(this);
+        ta= this;
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
         btnEnter = findViewById(R.id.btnEnter);
         btnSelect = findViewById(R.id.btnSelect);
@@ -63,10 +66,26 @@ public class TableActivity extends AppCompatActivity {
     }
 
     public void setBtnEnterOnClickListener(View v){
-        Intent intent = new Intent(this, CodeActivity.class);
-        intent.putExtra("Game",Game);
-        startActivity(intent);
-        this.finish();
+        if(dbHandler.GetAnswerCount(1) != 22) {
+            Intent intent = new Intent(this,CodeActivity.class);
+            intent.putExtra("Game",Game);
+            startActivity(intent);
+            this.finish();
+        }
+        else if (dbHandler.GetAnswerCount(1) == 22){
+            dbHandler.UpdateState(Integer.parseInt(Game));
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("1- ف").setTitle("حروف رمز");
+            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface,int i) {
+                    Intent intent = new Intent(TableActivity.this, CodeActivity.class);
+                    intent.putExtra("Game",Game);
+                    startActivity(intent);
+                    ta.finish();
+                }
+            });
+            dialog.show();
+        }
     }
 
     public void setBtnSelectOnClickListener(View v){

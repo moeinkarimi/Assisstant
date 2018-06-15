@@ -42,7 +42,12 @@ public class MysteryActivity extends AppCompatActivity {
         ans3.setTypeface(tf);
         ans4.setTypeface(tf);
         btnEnter2.setTypeface(tf);
-
+        if(dbHandler.GetScoreState(3)) {
+            ans.toggle();
+            ans1.toggle();
+            ans3.toggle();
+            ans4.toggle();
+        }
     }
 
     public void setBtnEnterOnClickListener(View v){

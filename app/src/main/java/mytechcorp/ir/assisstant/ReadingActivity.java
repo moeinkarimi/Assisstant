@@ -16,6 +16,7 @@ public class ReadingActivity extends AppCompatActivity {
 
     TextViewPlus mTextField, tvReading, tvHeader;
     Button btnEnter;
+    private DBHandler dbHandler;
 
     String Game;
 
@@ -25,6 +26,7 @@ public class ReadingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reading);
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 
+        dbHandler = new DBHandler(this);
         btnEnter = findViewById(R.id.btnEnter);
         mTextField = findViewById(R.id.mTextField);
         tvReading = findViewById(R.id.tvReading);
@@ -44,27 +46,33 @@ public class ReadingActivity extends AppCompatActivity {
     }
 
     void startReading(){
-        new CountDownTimer(420000, 1000) {
+        if (dbHandler.GetAnswerCount(2) ==0) {
+            new CountDownTimer(390000,1000) {
 
-            @SuppressLint({"DefaultLocale","SetTextI18n"})
-            public void onTick(long millisUntilFinished) {
+                @SuppressLint({"DefaultLocale","SetTextI18n"})
+                public void onTick(long millisUntilFinished) {
 
-                mTextField.setText("زمان باقی مانده : " + String.format("%d دقیقه و  %d ثانیه",
-                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
-            }
+                    mTextField.setText("زمان باقی مانده : " + String.format("%d دقیقه و  %d ثانیه",
+                            TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                            TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                }
 
-            public void onFinish() {
-                btnEnter.setEnabled(true);
+                public void onFinish() {
+                    mTextField.setText("زمان باقی مانده : 0 دقیقه و  0 ثانیه");
+                    btnEnter.setEnabled(true);
 
-            }
-        }.start();
+                }
+            }.start();
+        }else {
+
+            mTextField.setText("زمان باقی مانده : 0 دقیقه و  0 ثانیه");
+            btnEnter.setEnabled(true);
+        }
     }
 
     public void setBtnEnterOnClickListener(View v){
-        Intent intent = new Intent(this, CodeActivity.class);
-        intent.putExtra("Game",Game);
+        Intent intent = new Intent(this, ReadingQuestionActivity.class);
         startActivity(intent);
         this.finish();
     }

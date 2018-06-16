@@ -1,5 +1,6 @@
 package mytechcorp.ir.assisstant;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +30,7 @@ import java.util.List;
 
 import Models.Person;
 
-public class ShowPersonActivity extends AppCompatActivity {
+public class ShowPersonActivity extends Activity {
 
     GridView lvPerson;
     SQLiteDatabase db;
@@ -108,7 +110,7 @@ public class ShowPersonActivity extends AppCompatActivity {
 
                     final String options[] = new String[] {"ویرایش", "حذف"};
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ShowPersonActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(ShowPersonActivity.this, R.style.AlertDialogCustom));
                     builder.setTitle("انتخاب کنید :");
 
                     builder.setItems(options, new DialogInterface.OnClickListener() {

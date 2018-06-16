@@ -96,13 +96,13 @@
         android:id="@+id/llScroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="0dp"
+        android:layout_margin="5dp"
         android:layoutDirection="rtl"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        tools:layout_editor_absoluteX="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
 
         <ScrollView
             android:layout_width="match_parent"

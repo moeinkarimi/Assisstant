@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,7 +28,7 @@ import Models.Questions;
 import Models.Scores;
 import Models.ShowAnswer;
 
-public class ReadingQuestionActivity extends AppCompatActivity {
+public class ReadingQuestionActivity extends Activity {
 
     Button btnQ1,btnQ2,btnQ3, btnEnter6;
     EditText txtAnswer2;
@@ -144,7 +145,7 @@ public class ReadingQuestionActivity extends AppCompatActivity {
         }
         else if (dbHandler.GetAnswerCount(2) == 3){
             dbHandler.UpdateState(2);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("2-\tر").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("2-\tر").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface,int i) {

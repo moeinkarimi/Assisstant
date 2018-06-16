@@ -10,9 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,10 +25,11 @@ import Models.Answers;
 import Models.Questions;
 import Models.Scores;
 
-public class TableActivity extends AppCompatActivity {
+public class TableActivity extends Activity {
 
     PhotoView ivTable;
     Button btnEnter, btnSelect, btnSave, btnShowAnswers;
+    ImageButton btnHelp;
     EditText txtAnswer, txtQues;
     TextViewPlus tvQuestion;
     Activity ta;
@@ -46,6 +49,7 @@ public class TableActivity extends AppCompatActivity {
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
         btnEnter = findViewById(R.id.btnEnter);
         btnSelect = findViewById(R.id.btnSelect);
+        btnHelp = findViewById(R.id.btnHelp);
         btnSave = findViewById(R.id.btnSave);
         btnShowAnswers = findViewById(R.id.btnShowAnswers);
         txtAnswer = findViewById(R.id.txtAnswer);
@@ -82,7 +86,7 @@ public class TableActivity extends AppCompatActivity {
         }
         else if (dbHandler.GetAnswerCount(1) == 22){
             //dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("1- ف").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface,int i) {
@@ -103,16 +107,22 @@ public class TableActivity extends AppCompatActivity {
                 Questions q = dbHandler.GetQuestion(qID,1);
                 tvQuestion.setText(q.getQuestion());
             } else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
         }
         else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
+    }
+
+    public void setBtnHelpOnClickListener(View v){
+        HelpActivity cdd = new HelpActivity(TableActivity.this, 1);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
     }
 
     public void setBtnSaveOnClickLisetener(View v){

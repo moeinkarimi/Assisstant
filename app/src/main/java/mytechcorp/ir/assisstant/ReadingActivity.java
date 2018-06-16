@@ -1,21 +1,29 @@
 package mytechcorp.ir.assisstant;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.concurrent.TimeUnit;
 
-public class ReadingActivity extends AppCompatActivity {
+public class ReadingActivity extends Activity {
 
     TextViewPlus mTextField, tvReading, tvHeader;
     Button btnEnter;
+    ImageButton btnHelp;
     private DBHandler dbHandler;
 
     String Game;
@@ -28,6 +36,7 @@ public class ReadingActivity extends AppCompatActivity {
 
         dbHandler = new DBHandler(this);
         btnEnter = findViewById(R.id.btnEnter);
+        btnHelp = findViewById(R.id.btnHelp);
         mTextField = findViewById(R.id.mTextField);
         tvReading = findViewById(R.id.tvReading);
         tvHeader = findViewById(R.id.tvHeader);
@@ -45,13 +54,33 @@ public class ReadingActivity extends AppCompatActivity {
         startReading();
     }
 
+    public void setBtnHelpOnClickListener(View v){
+        HelpActivity cdd = new HelpActivity(this, 3);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
+    }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-        MainActivity.fa.finish();
-        finish();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("بازگشت");
+        builder.setMessage("در صورت بازگشت به صفحه قبل، زمان مطالعه از اول محاسبه خواهد شد.\nآیا مطمئنید ؟");
+        builder.setPositiveButton("بله", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(ReadingActivity.this,MainActivity.class);
+                startActivity(intent);
+                MainActivity.fa.finish();
+                finish();
+            }
+        }).setNegativeButton("خیر",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setIcon(R.mipmap.ic_close_web);
+        builder.create().show();
+
     }
 
     void startReading(){

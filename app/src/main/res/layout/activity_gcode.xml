@@ -17,7 +17,7 @@
         android:background="@drawable/squaretheme"
         android:ems="10"
         android:gravity="center"
-        android:hint="کد گروه"
+        android:hint="کد دریافتی"
         android:inputType="number"
         android:padding="8dp"
         android:singleLine="true"

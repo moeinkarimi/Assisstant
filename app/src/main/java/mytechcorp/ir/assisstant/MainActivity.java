@@ -5,9 +5,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -16,7 +19,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import mehdi.sakout.aboutpage.AboutPage;
+import mehdi.sakout.aboutpage.Element;
+
+public class MainActivity extends Activity {
 
     SQLiteDatabase db;
     DBHandler dbHandler;
@@ -128,9 +134,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setBtnGroupOnClickListener(View v) {
-        Intent intent = new Intent(this, DescriptionActivity.class);
-        intent.putExtra("Game","7");
-        startActivity(intent);
+        if(dbHandler.getCodeState(2)){
+            Intent intent = new Intent(this, DescriptionActivity.class);
+            intent.putExtra("Game","7");
+            startActivity(intent);
+        }
+        else {
+            GCodeActivity gCodeActivity = new GCodeActivity(this,2);
+            gCodeActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            gCodeActivity.show();
+        }
     }
 
     public void setBtnDocOnClickListener(View v) {
@@ -145,11 +158,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setBtnEndOnClickListener(View v){
-        btnEnd.setVisibility(View.INVISIBLE);
+        btnEnd.setVisibility(View.GONE);
         btnFinallyCode.setVisibility(View.VISIBLE);
-        btnEnd.getLayoutParams().height = 0;
-        btnFinallyCode.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
+    }
 
+    public void setBtnAboutUsOnClickListener(View v){
+        Intent intent = new Intent(this, AboutUsActivity.class);
+        startActivity(intent);
     }
 
     private void checkImageViewVisibility(){

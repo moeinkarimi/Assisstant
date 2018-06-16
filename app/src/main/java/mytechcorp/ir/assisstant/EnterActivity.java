@@ -1,6 +1,7 @@
 package mytechcorp.ir.assisstant;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -32,7 +33,7 @@ import Models.CustomTypefaceSpan;
 import Models.FirstRun;
 import Models.Person;
 
-public class EnterActivity extends AppCompatActivity {
+public class EnterActivity extends Activity {
 
     Button btnEnter, btnSave;
     EditText txtName, txtFamily;
@@ -68,7 +69,7 @@ public class EnterActivity extends AppCompatActivity {
     }
 
     public void setBtnEnterOnClickListener(View v) {
-        if(!dbHandler.getCodeState()){
+        if(!dbHandler.getCodeState(1)){
             checkGCode();
         }
         else {
@@ -132,7 +133,7 @@ public class EnterActivity extends AppCompatActivity {
 
         if (cursor.getCount() > 0) {
             //dbHandler.UpdateStates();
-            if(dbHandler.GetPersonCount()>0 && dbHandler.getCodeState()){
+            if(dbHandler.GetPersonCount()>0 && dbHandler.getCodeState(1)){
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -155,13 +156,13 @@ public class EnterActivity extends AppCompatActivity {
     }
 
     private void checkGCode(){
-        if(dbHandler.getCodeState()){
+        if(dbHandler.getCodeState(1)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         }
         else {
-            GCodeActivity gCodeActivity = new GCodeActivity(this);
+            GCodeActivity gCodeActivity = new GCodeActivity(this,1);
             gCodeActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             gCodeActivity.show();
         }

@@ -36,6 +36,8 @@
         <activity android:name=".ShowScoresActivity" />
         <activity android:name=".MysteryActivity" />
         <activity android:name=".ReadingQuestionActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

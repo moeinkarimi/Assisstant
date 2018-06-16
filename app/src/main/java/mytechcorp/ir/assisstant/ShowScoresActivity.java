@@ -1,14 +1,16 @@
 package mytechcorp.ir.assisstant;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class ShowScoresActivity extends AppCompatActivity {
+public class ShowScoresActivity extends Activity {
 
     private DBHandler dbHandler;
     LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnDoc, btnMystery, btnPuzzle;
@@ -64,7 +66,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnTableOnClickListener(View v) {
         if (dbHandler.GetScoreState(1)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("1- ف").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -72,7 +74,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnReadingOnClickListener(View v) {
         if (dbHandler.GetScoreState(2)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("2-\tر").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("2-\tر").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -80,7 +82,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnMysteryOnClickListener(View v) {
         if (dbHandler.GetScoreState(3)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("3-\tا د").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("3-\tا د").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -88,7 +90,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnPuzzleOnClickListener(View v) {
         if (dbHandler.GetScoreState(4)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("4-\tز ا").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tز ا").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -96,7 +98,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnBuildOnClickListener(View v) {
         if (dbHandler.GetScoreState(5)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("5-\tا").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("5-\tا").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -104,7 +106,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnRecordOnClickListener(View v) {
         if (dbHandler.GetScoreState(6)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("6-\tن").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("6-\tن").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -112,7 +114,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnGroupOnClickListener(View v) {
         if (dbHandler.GetScoreState(7)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("7-\tا م").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("7-\tا م").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -120,7 +122,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     public void setBtnDocOnClickListener(View v) {
         if (dbHandler.GetScoreState(8)){
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("8-\tت س").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("8-\tت س").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }

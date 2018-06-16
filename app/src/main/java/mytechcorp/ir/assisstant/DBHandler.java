@@ -208,8 +208,8 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //GCode
-    public boolean getCodeState(){
-        String countQuery = "SELECT  * FROM " + TABLE_GCode;
+    public boolean getCodeState(int id){
+        String countQuery = "SELECT  * FROM " + TABLE_GCode + " WHERE ID = "+ id;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
         if (cursor.getCount()>0){

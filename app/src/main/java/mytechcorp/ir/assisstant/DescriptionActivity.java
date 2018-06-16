@@ -1,5 +1,6 @@
 package mytechcorp.ir.assisstant;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -11,12 +12,15 @@ import android.widget.Button;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
-public class DescriptionActivity extends AppCompatActivity {
+import Models.Coding;
+
+public class DescriptionActivity extends Activity {
 
     PhotoView ivTable2;
     Button btnEnter;
     TextViewPlus tvDesc, tvHeader;
     String Game;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,7 @@ public class DescriptionActivity extends AppCompatActivity {
         btnEnter = findViewById(R.id.btnEnter);
         tvDesc = findViewById(R.id.tvDesc);
         tvHeader = findViewById(R.id.tvHeader);
-
+        dbHandler = new DBHandler(this);
         ivTable2 = findViewById(R.id.ivTable2);
 
 
@@ -51,8 +55,10 @@ public class DescriptionActivity extends AppCompatActivity {
                 tvDesc.setText(R.string.recordDesc);
                 break;
             case "7":
+                Coding coding = new Coding(this);
+                coding.CheckCode(dbHandler.GetGCode(2),57);
                 tvHeader.setText(R.string.bazigroohi);
-                tvDesc.setText(R.string.bazigroohiDesc);
+                tvDesc.setText("زمان مسابقه : " + coding.GetMatchTime() + "\n\n" + getString(R.string.bazigroohiDesc));
                 PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(ivTable2);
                 photoViewAttacher.update();
                 ivTable2.setVisibility(View.VISIBLE);

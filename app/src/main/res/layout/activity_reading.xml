@@ -26,20 +26,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <mytechcorp.ir.assisstant.TextViewPlus
-            android:id="@+id/tvHeader"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:textColor="@color/text"
-            android:textSize="22sp"
-            app:customFont="@string/Font"
-            app:textAllCaps="false"
-            tools:layout_editor_absoluteY="49dp" />
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnHelp2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/circlebuttonselector"
+                android:onClick="setBtnHelpOnClickListener"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_help"
+                android:textSize="21sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="5dp" />
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/tvHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="13dp"
+                android:gravity="center"
+                android:textColor="@color/text"
+                android:textSize="22sp"
+                app:customFont="@string/Font"
+                app:textAllCaps="false"
+                tools:layout_editor_absoluteY="49dp" />
+
+        </LinearLayout>
 
         <mytechcorp.ir.assisstant.TextViewPlus
             android:id="@+id/mTextField"

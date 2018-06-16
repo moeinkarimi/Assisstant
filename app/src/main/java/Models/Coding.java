@@ -77,4 +77,27 @@ public class Coding {
     public String ConvertCodeToScore(){
         return Integer.toString(Integer.parseInt(gameScore, 6), 10);
     }
+
+    public String GetMatchTime() {
+        if (gameScore.equals("09"))
+            return "15 دقیقه اول";
+        else if (gameScore.equals("18"))
+            return "15 دقیقه دوم";
+        else if (gameScore.equals("27"))
+            return "15 دقیقه سوم";
+        else if (gameScore.equals("36"))
+            return "15 دقیقه چهارم";
+        else if (gameScore.equals("45"))
+            return "15 دقیقه پنجم";
+        else if (gameScore.equals("54"))
+            return "15 دقیقه ششم";
+        else if (gameScore.equals("63"))
+            return "15 دقیقه هفتم";
+        else if (gameScore.equals("72"))
+            return "15 دقیقه هشتم";
+        else if (gameScore.equals("81"))
+            return "15 دقیقه نهم";
+        else
+            return "کد اشتباه است";
+    }
 }

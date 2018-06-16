@@ -1,5 +1,6 @@
 package mytechcorp.ir.assisstant;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -19,6 +22,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.util.List;
+
+import Models.Person;
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
 
@@ -61,7 +76,6 @@ public class MainActivity extends Activity {
         btnShowPerson = findViewById(R.id.btnShowPerson);
         btnDoc = findViewById(R.id.btnDoc);
         btnEnd = findViewById(R.id.btnEnd);
-        btnFinallyCode = findViewById(R.id.btnFinallyCode);
         btnShowScores = findViewById(R.id.btnShowScores);
 
         lblAllScores = findViewById(R.id.lblAllScores);
@@ -69,7 +83,12 @@ public class MainActivity extends Activity {
         lblPersonCount.setText(String.valueOf(dbHandler.GetPersonCount())+ " نفر");
         lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores()));
         checkImageViewVisibility();
-
+        String persons ="";
+        List<Person> personList = dbHandler.getAllPerson();
+        for (Person person : personList) {
+            persons +=  person.getPersonName()+" "+person.getPersonFamily();
+        }
+        Log.d("persons " , persons);
     }
 
     @Override
@@ -157,9 +176,23 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void setBtnEndOnClickListener(View v){
-        btnEnd.setVisibility(View.GONE);
-        btnFinallyCode.setVisibility(View.VISIBLE);
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                ).withListener(new MultiplePermissionsListener() {
+            @Override public void onPermissionsChecked(MultiplePermissionsReport report) {
+                FinalActivity Fad = new FinalActivity(fa);
+                Fad.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                Fad.show();
+            }
+            @Override public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions,PermissionToken token) {
+
+            }
+        }).check();
     }
 
     public void setBtnAboutUsOnClickListener(View v){

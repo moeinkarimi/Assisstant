@@ -229,48 +229,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/btnFinallyCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/btnselector3"
-        android:baselineAligned="false"
-        android:clickable="true"
-        android:layoutDirection="rtl"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/circlebg"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_iconfinish" />
-
-        <mytechcorp.ir.assisstant.TextViewPlus
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="ورود به مرحله پایانی"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light"
-            android:textSize="16sp"
-            app:customFont="@string/Font" />
-
-        <Space
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="5dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/llScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

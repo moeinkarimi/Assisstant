@@ -130,7 +130,7 @@ public class CodeActivity extends Activity {
                     );
                 }
                 dbHandler.UpdateState(Integer.parseInt(Game));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tز ا").setTitle("حروف رمز");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tز ا\n با بازگشت به همین صفحه می توانید تصویر کامل شده را ببینید.").setTitle("حروف رمز");
                 dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface,int i) {

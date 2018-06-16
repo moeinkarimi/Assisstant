@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mytechcorp.ir.assisstant">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,7 +40,8 @@
         <activity android:name=".MysteryActivity" />
         <activity android:name=".ReadingQuestionActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".FinalActivity"></activity>
     </application>
 
 </manifest>

@@ -171,7 +171,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(State, "0");
-        for (int i=1;i<9;i++){
+        for (int i=1;i<10;i++){
             db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(i)});
         }
         db.close();
@@ -332,6 +332,20 @@ public class DBHandler extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return showAnswers;
+    }
+
+
+    public String GetAnswer(int Gameid){
+        String query = "SELECT Answer FROM " + TABLE_Answers
+                + " Where GameID = "+ Gameid+ " AND Answer IS NOT NULL";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        else
+            return "";
     }
 
     //Score

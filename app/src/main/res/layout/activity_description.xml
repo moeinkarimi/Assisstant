@@ -56,7 +56,15 @@
             app:textAllCaps="false"
             tools:layout_editor_absoluteY="49dp" />
 
+        <ImageView
+            android:id="@+id/ivPuzzle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/tolid"
+            android:visibility="gone" />
+
         <ScrollView
+            android:id="@+id/scroll1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

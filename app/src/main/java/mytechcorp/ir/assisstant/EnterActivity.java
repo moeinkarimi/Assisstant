@@ -141,7 +141,7 @@ public class EnterActivity extends Activity {
 
         }
         else {
-            for (int i=1;i<9;i++){
+            for (int i=1;i<10;i++){
                 dbHandler.AddState();
             }
         }

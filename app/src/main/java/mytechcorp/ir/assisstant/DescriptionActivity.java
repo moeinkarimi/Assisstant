@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
@@ -20,6 +22,8 @@ public class DescriptionActivity extends Activity {
     Button btnEnter;
     TextViewPlus tvDesc, tvHeader;
     String Game;
+    ImageView ivPuzzle;
+    ScrollView scroll1;
     private DBHandler dbHandler;
 
     @Override
@@ -32,6 +36,8 @@ public class DescriptionActivity extends Activity {
         tvHeader = findViewById(R.id.tvHeader);
         dbHandler = new DBHandler(this);
         ivTable2 = findViewById(R.id.ivTable2);
+        ivPuzzle = findViewById(R.id.ivPuzzle);
+        scroll1 = findViewById(R.id.scroll1);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -43,10 +49,19 @@ public class DescriptionActivity extends Activity {
 
         switch (Game){
             case "4":
-                tvHeader.setText(R.string.puzzle);
-                tvDesc.setText(R.string.puzzleDesc);
+                if(dbHandler.GetScoreState(4)){
+                    tvHeader.setText(R.string.puzzle);
+                    scroll1.setVisibility(View.GONE);
+                    ivPuzzle.setVisibility(View.VISIBLE);
+                }else {
+                    scroll1.setVisibility(View.VISIBLE);
+                    ivPuzzle.setVisibility(View.GONE);
+                    tvHeader.setText(R.string.puzzle);
+                    tvDesc.setText(R.string.puzzleDesc);
+                }
                 break;
             case "5":
+
                 tvHeader.setText(R.string.maket);
                 tvDesc.setText(R.string.maketDesc);
                 break;

@@ -45,6 +45,15 @@ public class ReadingActivity extends AppCompatActivity {
         startReading();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
+    }
+
     void startReading(){
         if (dbHandler.GetAnswerCount(2) ==0) {
             new CountDownTimer(390000,1000) {

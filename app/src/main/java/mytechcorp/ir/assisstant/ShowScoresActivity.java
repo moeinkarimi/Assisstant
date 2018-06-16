@@ -12,7 +12,7 @@ public class ShowScoresActivity extends AppCompatActivity {
 
     private DBHandler dbHandler;
     LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnDoc, btnMystery, btnPuzzle;
-    TextViewPlus lblTScore, lblRScore, lblMScore, lblPScore, lblMakeScore, lblRecordScore, lblGGScore, lblDocScore, lblAllScores2;
+    TextViewPlus lblTScore, lblRScore, lblMScore, lblPScore, lblMakeScore, lblRecordScore, lblGGScore, lblDocScore, lblAllScores2, lblGpCode;
 
 
     @Override
@@ -38,6 +38,7 @@ public class ShowScoresActivity extends AppCompatActivity {
         lblRecordScore = findViewById(R.id.lblRecordScore);
         lblGGScore = findViewById(R.id.lblGGScore);
         lblDocScore = findViewById(R.id.lblDocScore);
+        lblGpCode = findViewById(R.id.lblGpCode);
 
 
         lblAllScores2.setText("مجموع امتیازات : " + String.valueOf(dbHandler.GetSumOfScores()));
@@ -49,6 +50,16 @@ public class ShowScoresActivity extends AppCompatActivity {
         lblRecordScore.setText(String.valueOf(dbHandler.GetSumOfScore(6)));
         lblGGScore.setText(String.valueOf(dbHandler.GetSumOfScore(7)));
         lblDocScore.setText(String.valueOf(dbHandler.GetSumOfScore(8)));
+        lblGpCode.setText(dbHandler.GetGCode(1));
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
     }
 
     public void setBtnTableOnClickListener(View v) {

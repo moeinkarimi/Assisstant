@@ -65,6 +65,15 @@ public class DescriptionActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
+    }
+
     public void setBtnEnterOnClickListener(View v){
         Intent intent = new Intent(this, CodeActivity.class);
         intent.putExtra("Game",Game);

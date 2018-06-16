@@ -13,9 +13,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import Models.Coding;
 import Models.Scores;
 
 public class CodeActivity extends AppCompatActivity {
@@ -96,15 +98,7 @@ public class CodeActivity extends AppCompatActivity {
             }
             else {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
-                dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface,int i) {
-                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        MainActivity.fa.finish();
-                        ca.finish();
-                    }
-                });
+                dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
         }
@@ -149,73 +143,164 @@ public class CodeActivity extends AppCompatActivity {
             }
             else {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
-                dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface,int i) {
-                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        MainActivity.fa.finish();
-                        ca.finish();
-                    }
-                });
+                dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
         }
         else if (Game.equals("5")){
-            dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("5-\tا").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    ca.finish();
+            Coding coding = new Coding(this);
+            if(!txtCode.getText().toString().equals("")) {
+                if (coding.CheckCode(txtCode.getText().toString(),76)) {
+                    if (!dbHandler.GetScoreState(5)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        5,
+                                        Integer.parseInt(coding.ConvertCodeToScore()),
+                                        50
+                                )
+                        );
+                    }
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("5-\tا").setTitle("حروف رمز");
+                    dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface,int i) {
+                            Intent intent = new Intent(CodeActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            MainActivity.fa.finish();
+                            ca.finish();
+                        }
+                    });
+                    dialog.show();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    dialog.setNeutralButton("باشه",null);
+                    dialog.show();
                 }
-            });
-            dialog.show();
+            }
+            else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                dialog.setNeutralButton("باشه", null);
+                dialog.show();
+            }
+
         }
         else if (Game.equals("6")){
-            dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("6-\tن").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    ca.finish();
+            Coding coding = new Coding(this);
+            if(!txtCode.getText().toString().equals("")) {
+                if (coding.CheckCode(txtCode.getText().toString(),42)) {
+                    if (!dbHandler.GetScoreState(6)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        6,
+                                        Integer.parseInt(coding.ConvertCodeToScore()),
+                                        60
+                                )
+                        );
+                    }
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("6-\tن").setTitle("حروف رمز");
+                    dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface,int i) {
+                            Intent intent = new Intent(CodeActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            MainActivity.fa.finish();
+                            ca.finish();
+                        }
+                    });
+                    dialog.show();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    dialog.setNeutralButton("باشه", null);
+                    dialog.show();
                 }
-            });
-            dialog.show();
+            }else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                dialog.setNeutralButton("باشه", null);
+                dialog.show();
+            }
+
         }
         else if (Game.equals("7")){
-            dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("7-\tا م").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    ca.finish();
+            Coding coding = new Coding(this);
+            if(!txtCode.getText().toString().equals("")) {
+                if (coding.CheckCode(txtCode.getText().toString(),57)) {
+                    if (!dbHandler.GetScoreState(7)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        7,
+                                        Integer.parseInt(coding.ConvertCodeToScore()),
+                                        70
+                                )
+                        );
+                    }
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("7-\tا م").setTitle("حروف رمز");
+                    dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface,int i) {
+                            Intent intent = new Intent(CodeActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            MainActivity.fa.finish();
+                            ca.finish();
+                        }
+                    });
+                    dialog.show();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    dialog.setNeutralButton("باشه",null);
+                    dialog.show();
                 }
-            });
-            dialog.show();
+            }else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                dialog.setNeutralButton("باشه", null);
+                dialog.show();
+            }
         }
         else if (Game.equals("8")){
-            dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("8-\tت س").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    ca.finish();
+            Coding coding = new Coding(this);
+            if(!txtCode.getText().toString().equals("")) {
+                if (coding.CheckCode(txtCode.getText().toString(),18)) {
+                    if (!dbHandler.GetScoreState(8)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        8,
+                                        Integer.parseInt(coding.ConvertCodeToScore()),
+                                        80
+                                )
+                        );
+                    }
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("8-\tت س").setTitle("حروف رمز");
+                    dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface,int i) {
+                            Intent intent = new Intent(CodeActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            MainActivity.fa.finish();
+                            ca.finish();
+                        }
+                    });
+                    dialog.show();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    dialog.setNeutralButton("باشه",null);
+                    dialog.show();
                 }
-            });
-            dialog.show();
+            }else {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                dialog.setNeutralButton("باشه", null);
+                dialog.show();
+            }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
     }
 }

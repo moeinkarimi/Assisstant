@@ -1,16 +1,20 @@
 package mytechcorp.ir.assisstant;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +64,26 @@ public class MainActivity extends AppCompatActivity {
         lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores()));
         checkImageViewVisibility();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("خروج");
+        builder.setMessage("آیا مطمئنید ؟");
+        builder.setPositiveButton("بله", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                System.exit(0);
+            }
+        }).setNegativeButton("خیر",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setIcon(R.mipmap.ic_close_web);
+        builder.create().show();
     }
 
     public void setBtnShowScoresOnClickListener(View v) {

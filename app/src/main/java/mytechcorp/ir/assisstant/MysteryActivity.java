@@ -84,4 +84,12 @@ public class MysteryActivity extends AppCompatActivity {
             dialog.show();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
+    }
 }

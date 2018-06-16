@@ -31,6 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_GCode = "GCode";
     private static final String TABLE_Questions = "Questions";
     private static final String TABLE_Answers = "Answers";
+    private static final String TABLE_Groups = "Groups";
 
     private static final String ID = "ID";
     private static final String Name = "Name";
@@ -227,6 +228,18 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_GCode, null, contentValues);
         db.close();
     }
+
+    public String GetGCode(int id){
+        String query = "SELECT  * FROM " + TABLE_GCode + " WHERE ID = "+ id;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount()>0){
+            cursor.moveToFirst();
+            return cursor.getString(1);
+        }
+        return "";
+    }
+
 
     //Questions
     public void AddQuestion(Questions questions){

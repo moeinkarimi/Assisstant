@@ -35,20 +35,59 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_weight="0.83"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <mytechcorp.ir.assisstant.TextViewPlus
                 android:id="@+id/lblAllScores2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="0.91"
                 android:textAlignment="center"
                 android:textColor="@color/selectedButton"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:customFont="@string/Font" />
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="65dp"
+                android:layout_weight="0.09"
+                android:background="@drawable/circlebg"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <mytechcorp.ir.assisstant.TextViewPlus
+                    android:id="@+id/lblgp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.5"
+                    android:text="کد گروه"
+                    android:textAlignment="center"
+                    android:textColor="@color/selectedButton"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:customFont="@string/Font" />
+
+                <mytechcorp.ir.assisstant.TextViewPlus
+                    android:id="@+id/lblGpCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.5"
+                    android:textAlignment="center"
+                    android:textColor="@color/selectedButton"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:customFont="@string/Font" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
@@ -132,13 +171,13 @@
 
                     <LinearLayout
                         android:id="@+id/iVDoc"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -151,7 +190,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -209,13 +248,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView8"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -228,7 +267,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -286,13 +325,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView7"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -305,7 +344,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -363,13 +402,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView6"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -382,7 +421,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -440,13 +479,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView5"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -459,7 +498,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -517,13 +556,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView4"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -536,7 +575,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>
@@ -594,13 +633,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView3"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -611,11 +650,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
-                            app:customFont="@string/Font"
-                            android:paddingTop="1dp" />
+                            app:customFont="@string/Font" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -670,13 +709,13 @@
 
                     <LinearLayout
                         android:id="@+id/imageView"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="7dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@mipmap/ic_gold_frame"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:scaleType="fitCenter"
@@ -689,7 +728,7 @@
                             android:layout_gravity="center"
                             android:paddingTop="1dp"
                             android:textAlignment="center"
-                            android:textColor="@color/selectedButton"
+                            android:textColor="@color/white"
                             android:textSize="18sp"
                             app:customFont="@string/Font" />
                     </LinearLayout>

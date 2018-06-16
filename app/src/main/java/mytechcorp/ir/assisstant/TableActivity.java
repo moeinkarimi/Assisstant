@@ -65,6 +65,14 @@ public class TableActivity extends AppCompatActivity {
         btnShowAnswers.setTypeface(tf);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(TableActivity.this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
+    }
+
     public void setBtnEnterOnClickListener(View v){
         if(dbHandler.GetAnswerCount(1) != 22) {
             Intent intent = new Intent(this,CodeActivity.class);
@@ -73,7 +81,7 @@ public class TableActivity extends AppCompatActivity {
             this.finish();
         }
         else if (dbHandler.GetAnswerCount(1) == 22){
-            dbHandler.UpdateState(Integer.parseInt(Game));
+            //dbHandler.UpdateState(Integer.parseInt(Game));
             AlertDialog.Builder dialog = new AlertDialog.Builder(this).setMessage("1- ف").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                 @Override

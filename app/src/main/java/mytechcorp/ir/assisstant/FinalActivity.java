@@ -1,13 +1,16 @@
 package mytechcorp.ir.assisstant;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,48 +57,63 @@ public class FinalActivity extends Dialog {
         btnSave2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!txtCode3.getText().toString().equals("")){
-                    dbHandler.UpdateState(9);
-                    dbHandler.AddAnswer(
-                            new Answers(
-                                    txtCode3.getText().toString(),
-                                    9,
-                                    91
-                            )
-                    );
-                    if (txtCode3.getText().toString().equals("فردا از آن ماست")
-                            ||txtCode3.getText().toString().equals("فردااز آن ماست")
-                            ||txtCode3.getText().toString().equals("فرداازآن ماست")
-                            ||txtCode3.getText().toString().equals("فردا ازآن ماست")
-                            ||txtCode3.getText().toString().equals("فردا از ان ماست")
-                            ||txtCode3.getText().toString().equals("فردااز ان ماست")
-                            ||txtCode3.getText().toString().equals("فرداازان ماست")
-                            ||txtCode3.getText().toString().equals("فردا ازان ماست")){
-                        dbHandler.AddScore(
-                                new Scores(
-                                        9,
-                                        50,
-                                        91
-                                )
-                        );
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(a, R.style.AlertDialogCustom));
+                builder.setTitle("ثبت نهایی");
+                builder.setMessage("در صورت فشردن دکمه بله جمله ی شما ثبت می شود و دیگر امکان بازگشت وجود ندارد. همچنین در فایل خروجی هیچگونه اطلاعاتی پس از آن درج نمیگردد.\nآیا مطمئنید ؟");
+                builder.setPositiveButton("بله", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(!txtCode3.getText().toString().equals("")){
+                            dbHandler.UpdateState(9);
+                            dbHandler.AddAnswer(
+                                    new Answers(
+                                            txtCode3.getText().toString(),
+                                            9,
+                                            91
+                                    )
+                            );
+                            if (txtCode3.getText().toString().equals("فردا از آن ماست")
+                                    ||txtCode3.getText().toString().equals("فردااز آن ماست")
+                                    ||txtCode3.getText().toString().equals("فرداازآن ماست")
+                                    ||txtCode3.getText().toString().equals("فردا ازآن ماست")
+                                    ||txtCode3.getText().toString().equals("فردا از ان ماست")
+                                    ||txtCode3.getText().toString().equals("فردااز ان ماست")
+                                    ||txtCode3.getText().toString().equals("فرداازان ماست")
+                                    ||txtCode3.getText().toString().equals("فردا ازان ماست")){
+                                dbHandler.AddScore(
+                                        new Scores(
+                                                9,
+                                                50,
+                                                91
+                                        )
+                                );
+                            }
+                            else {
+                                Toast.makeText(a, "متاسفانه پاسخ شما صحیح نمی باشد.", Toast.LENGTH_LONG).show();
+                            }
+                            GetOutput();
+                        }
+                        else {
+                            Toast.makeText(a,"متاسفانه فرصت شما از دست رفت.",Toast.LENGTH_LONG).show();
+                            dbHandler.UpdateState(9);
+                            dbHandler.AddAnswer(
+                                    new Answers(
+                                            " ",
+                                            9,
+                                            91
+                                    )
+                            );
+                            GetOutput();
+                        }
                     }
-                    else {
-                        Toast.makeText(a, "متاسفانه پاسخ شما صحیح نمی باشد.", Toast.LENGTH_LONG).show();
+                }).setNegativeButton("خیر",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
                     }
-                    GetOutput();
-                }
-                else {
-                    Toast.makeText(a, "متاسفانه فرصت شما از دست رفت.", Toast.LENGTH_LONG).show();
-                    dbHandler.UpdateState(9);
-                    dbHandler.AddAnswer(
-                            new Answers(
-                                    " ",
-                                    9,
-                                    91
-                            )
-                    );
-                    GetOutput();
-                }
+                }).setIcon(R.mipmap.ic_warning);
+                builder.create().show();
+
             }
         });
 

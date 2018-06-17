@@ -36,7 +36,8 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8">
+                android:layout_weight="0.8"
+                android:scrollbars="none">
 
                 <mytechcorp.ir.assisstant.TextViewPlus
                     android:id="@+id/tvpDesc"

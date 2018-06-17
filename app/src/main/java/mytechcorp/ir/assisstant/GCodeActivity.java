@@ -65,22 +65,29 @@ public class GCodeActivity extends Dialog {
                 ssbuilder.setSpan(new CustomTypefaceSpan("",tf),0,ssbuilder.length(),Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 
                 if (!txtGCode.getText().toString().equals("")) {
-                    if (ID ==1){
-                        if(dbHandler.getCodeState(ID)){
-                            Intent intent = new Intent(c, MainActivity.class);
-                            c.startActivity(intent);
-                            c.finish();
+
+                    if (ID ==1) {
+                        if (txtGCode.getText().toString().length()==2) {
+                            if (dbHandler.getCodeState(ID)) {
+                                Intent intent = new Intent(c,MainActivity.class);
+                                c.startActivity(intent);
+                                c.finish();
+                            } else {
+                                dbHandler.AddGCode(
+                                        new GCode(
+                                                txtGCode.getText().toString()
+                                        )
+                                );
+                                Intent intent = new Intent(c,MainActivity.class);
+                                c.startActivity(intent);
+                                c.finish();
+                            }
+                        }else {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(c, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد.\n کد باید دو رقمی باشد.").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+                            dialog.setNeutralButton("باشه",null);
+                            dialog.show();
                         }
-                        else {
-                            dbHandler.AddGCode(
-                                    new GCode(
-                                            txtGCode.getText().toString()
-                                    )
-                            );
-                            Intent intent = new Intent(c, MainActivity.class);
-                            c.startActivity(intent);
-                            c.finish();
-                        }
+
                     }
                     else if (ID == 2){
                         Coding code = new Coding(c);
@@ -121,7 +128,7 @@ public class GCodeActivity extends Dialog {
                                 dialog.show();
                             }
                             else {
-                                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(c, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(c, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                                 dialog.setNeutralButton("باشه",null);
                                 dialog.show();
                             }

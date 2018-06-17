@@ -19,7 +19,7 @@ public class Coding {
 
 
     public boolean CheckCode(String Code, int Gameid){
-        if (Code.isEmpty() || Code.length()<7 || Code.length()>7){
+        if (Code.isEmpty() || Code.length()!=7){
             return false;
         }
         InitCode(Code);

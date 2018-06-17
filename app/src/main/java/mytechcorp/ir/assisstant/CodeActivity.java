@@ -98,7 +98,7 @@ public class CodeActivity extends Activity {
 
             }
             else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
@@ -143,7 +143,7 @@ public class CodeActivity extends Activity {
                 dialog.show();
             }
             else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
@@ -174,13 +174,13 @@ public class CodeActivity extends Activity {
                     });
                     dialog.show();
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                     dialog.setNeutralButton("باشه",null);
                     dialog.show();
                 }
             }
             else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
@@ -212,12 +212,12 @@ public class CodeActivity extends Activity {
                     });
                     dialog.show();
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                     dialog.setNeutralButton("باشه", null);
                     dialog.show();
                 }
             }else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
@@ -249,12 +249,12 @@ public class CodeActivity extends Activity {
                     });
                     dialog.show();
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                     dialog.setNeutralButton("باشه",null);
                     dialog.show();
                 }
             }else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
@@ -285,12 +285,12 @@ public class CodeActivity extends Activity {
                     });
                     dialog.show();
                 } else {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                     dialog.setNeutralButton("باشه",null);
                     dialog.show();
                 }
             }else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا کد را وارد کنید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }

@@ -107,13 +107,13 @@ public class TableActivity extends Activity {
                 Questions q = dbHandler.GetQuestion(qID,1);
                 tvQuestion.setText(q.getQuestion());
             } else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
         }
         else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }

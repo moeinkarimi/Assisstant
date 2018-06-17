@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_weight="0.17"
-            app:srcCompat="@drawable/ic_action_achievement" />
+            android:src="@drawable/ic_action_achievement" />
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -93,7 +93,7 @@ public class MysteryActivity extends Activity {
             dialog.show();
         }
         else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا تمام گزینه های صحیح را انتخاب نمایید").setTitle("خطا");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا تمام گزینه های صحیح را انتخاب نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }

@@ -129,24 +129,25 @@ public class FinalActivity extends Dialog {
         try{
             String report;
             String persons = "";
-            persons = String.valueOf(dbHandler.GetLocal())+"\n";
+//            persons = String.valueOf(dbHandler.GetLocal())+"\n";
             List<Person> personList = dbHandler.getAllPerson();
             for (Person person : personList) {
-                persons +=  person.getPersonName()+"\n"+person.getPersonFamily()+"\n"+person.getGrade()+"\n";
+                persons += String.valueOf(dbHandler.GetLocal())+ "\n" + person.getPersonName()+"\n"+person.getPersonFamily()+"\n"+person.getGrade()+"\n";
             }
-            report = persons +" \n\n"
-                   + "TKL : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetPersonCount()), 10), 2)  +" \t\n" //کل افراد
-                   + "RNVSH : " + dbHandler.GetAnswer(9) +" \t \n" //رمز نهایی
-                   + "JKE : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScores()), 10), 2)  +" \t \n" //جمع کل امتیاز
-                   + "EBT : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(1)), 10), 2)   +" \t \n" //امتیاز بازی جدول
-                   + "EBM : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(2)), 10), 2) +" \t \n" //امتیاز بازی مطالعه
-                   + "EBMO : "  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(3)), 10), 2) +" \t \n" //امتیاز بازی معما
-                   + "EBP : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(4)), 10), 2)  +" \t \n" //امتیاز بازی پازل
-                   + "EBMA : "  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(5)), 10), 2)  +" \t \n" //امتیاز بازی ماکت
-                   + "EBR : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(6)), 10), 2)  +" \t \n" //امتیاز بازی رکورد
-                   + "EBG : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(7)), 10), 2)  +" \t \n" //امتیاز بازی گروهی
-                   + "EBMS : "  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(8) ), 10), 2) +" \t \n" //امتیاز بازی مستند سازی
-                   + "ERN : "   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(9)), 10), 2); //امتیاز رمز نهایی
+            report =
+                     "TKL : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetPersonCount()), 10), 2)   +"\n" //کل افراد
+                   + "RNVSH : \n" + dbHandler.GetAnswer(9) +"\n" //رمز نهایی
+                   + "JKE : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScores()), 10), 2)  +"\n" //جمع کل امتیاز
+                   + "EBT : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(1)), 10), 2)  +"\n" //امتیاز بازی جدول
+                   + "EBM : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(2)), 10), 2)  +"\n" //امتیاز بازی مطالعه
+                   + "EBMO : \n"  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(3)), 10), 2)  +"\n" //امتیاز بازی معما
+                   + "EBP : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(4)), 10), 2)  +"\n" //امتیاز بازی پازل
+                   + "EBMA : \n"  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(5)), 10), 2)  +"\n" //امتیاز بازی ماکت
+                   + "EBR : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(6)), 10), 2)  +"\n" //امتیاز بازی رکورد
+                   + "EBG : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(7)), 10), 2)  +"\n" //امتیاز بازی گروهی
+                   + "EBMS : \n"  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(8) ), 10), 2) +"\n" //امتیاز بازی مستند سازی
+                   + "ERN : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(9)), 10), 2) + "\n"  //امتیاز رمز نهایی
+                   + persons;
             Date currentTime = Calendar.getInstance().getTime();
             File gpxfile = new File(file, "output " + currentTime.toString().replace(":", " - ") + ".mnk");
             FileWriter writer = new FileWriter(gpxfile);

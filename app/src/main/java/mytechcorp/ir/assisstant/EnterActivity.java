@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class EnterActivity extends Activity {
     Button btnEnter, btnSave;
     EditText txtName, txtFamily;
     ListView lvPerson;
+    Spinner spLocal, spGrade;
 
     SQLiteDatabase db;
     DBHandler dbHandler;
@@ -59,12 +61,23 @@ public class EnterActivity extends Activity {
         txtName = findViewById(R.id.txtName);
         txtFamily = findViewById(R.id.txtFamily);
         lvPerson = findViewById(R.id.lvPerson);
-
+        spLocal = findViewById(R.id.spLocal);
+        spGrade = findViewById(R.id.spGrade);
         btnEnter.setTypeface(tf);
         btnSave.setTypeface(tf);
         txtName.setTypeface(tf);
         txtFamily.setTypeface(tf);
         start();
+
+        String[] local = new String[]{"1", "2", "3", "4", "5", "6", "7", "8",
+                                    "9", "10", "11", "12", "13", "14", "15"
+                                    , "16", "17" , "18", "19", "20", "21", "22"};
+        ArrayAdapter<String> localadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, local);
+        spLocal.setAdapter(localadapter);
+
+        String[] Grade = new String[]{"پایه هشتم", "پایه نهم", "پایه دهم"};
+        ArrayAdapter<String> Gradeadapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Grade);
+        spGrade.setAdapter(Gradeadapter);
 
     }
 
@@ -88,7 +101,9 @@ public class EnterActivity extends Activity {
             dbHandler.AddPerson(
                     new Person(
                             txtName.getText().toString(),
-                            txtFamily.getText().toString()
+                            txtFamily.getText().toString(),
+                            Integer.parseInt(spLocal.getSelectedItem().toString()),
+                            spGrade.getSelectedItem().toString()
                     )
             );
             txtName.setText("");
@@ -141,7 +156,7 @@ public class EnterActivity extends Activity {
 
         }
         else {
-            for (int i=1;i<10;i++){
+            for (int i=1;i<11;i++){
                 dbHandler.AddState();
             }
         }
@@ -178,6 +193,7 @@ public class EnterActivity extends Activity {
             map.put("id",String.valueOf(person.getPersonID()));
             map.put("name", person.getPersonName());
             map.put("family", person.getPersonFamily());
+            map.put("grade", person.getGrade());
             Items.add(map);
         }
 
@@ -192,10 +208,10 @@ public class EnterActivity extends Activity {
             ListAdapter adapter = new SimpleAdapter(this, Items,
                     R.layout.showpersoncard,
                     new String[]{
-                            "id", "name", "family"
+                            "id", "name", "family","grade"
                     },
                     new int[]{
-                            R.id.lblID, R.id.lblpersonName, R.id.lblpersonFamily
+                            R.id.lblID, R.id.lblpersonName, R.id.lblpersonFamily, R.id.lblpersonGrade
                     });
 
             lvPerson.setAdapter(adapter);

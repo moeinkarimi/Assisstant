@@ -26,8 +26,11 @@ public class CodeActivity extends Activity {
     Button btnSave;
     String Game;
     EditText txtCode, txtCode2;
+    TextViewPlus tvpCode;
     DBHandler dbHandler;
     public static Activity ca;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class CodeActivity extends Activity {
         txtCode2 = findViewById(R.id.txtCode2);
         ca = this;
         dbHandler = new DBHandler(this);
+        tvpCode = findViewById(R.id.tvpCode);
 
         btnSave.setTypeface(tf);
         txtCode.setTypeface(tf);
@@ -70,6 +74,7 @@ public class CodeActivity extends Activity {
 
         Intent intent = new Intent(this, MainActivity.class);
         if (Game.equals("1")){
+            tvpCode.setText("لطفا رمز جدول را وارد کنید :");
             txtCode.setVisibility(View.GONE);
             txtCode2.setVisibility(View.VISIBLE);
             if(txtCode2.getText().toString().equals("راه نجات جوامع")){
@@ -116,6 +121,7 @@ public class CodeActivity extends Activity {
 //            this.finish();
 //        }
         else if (Game.equals("4")){
+            tvpCode.setText("لطفا رمز پازل را وارد کنید :");
             txtCode.setVisibility(View.GONE);
             txtCode2.setVisibility(View.VISIBLE);
             if(txtCode2.getText().toString().equals("تولیدملی")
@@ -150,6 +156,7 @@ public class CodeActivity extends Activity {
         }
         else if (Game.equals("5")){
             Coding coding = new Coding(this);
+            tvpCode.setText("لطفا رمز ماکت را وارد کنید :");
             if(!txtCode.getText().toString().equals("")) {
                 if (coding.CheckCode(txtCode.getText().toString(),76)) {
                     if (!dbHandler.GetScoreState(5)) {
@@ -188,6 +195,7 @@ public class CodeActivity extends Activity {
         }
         else if (Game.equals("6")){
             Coding coding = new Coding(this);
+            tvpCode.setText("لطفا رمز رکورد را وارد کنید :");
             if(!txtCode.getText().toString().equals("")) {
                 if (coding.CheckCode(txtCode.getText().toString(),42)) {
                     if (!dbHandler.GetScoreState(6)) {
@@ -225,6 +233,7 @@ public class CodeActivity extends Activity {
         }
         else if (Game.equals("7")){
             Coding coding = new Coding(this);
+            tvpCode.setText("لطفا رمز بازی گروهی را وارد کنید :");
             if(!txtCode.getText().toString().equals("")) {
                 if (coding.CheckCode(txtCode.getText().toString(),57)) {
                     if (!dbHandler.GetScoreState(7)) {
@@ -261,6 +270,7 @@ public class CodeActivity extends Activity {
         }
         else if (Game.equals("8")){
             Coding coding = new Coding(this);
+            tvpCode.setText("لطفا رمز مستند را وارد کنید :");
             if(!txtCode.getText().toString().equals("")) {
                 if (coding.CheckCode(txtCode.getText().toString(),18)) {
                     if (!dbHandler.GetScoreState(8)) {

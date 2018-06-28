@@ -7,6 +7,34 @@
     tools:context=".EnterActivity">
 
     <mytechcorp.ir.assisstant.TextViewPlus
+        android:id="@+id/lbl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:text="پایه :"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:customFont="@string/Font"
+        app:layout_constraintEnd_toStartOf="@+id/spLocal"
+        app:layout_constraintTop_toBottomOf="@+id/txtFamily" />
+
+    <mytechcorp.ir.assisstant.TextViewPlus
+        android:id="@+id/lbl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="44dp"
+        android:text="منطقه :"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:customFont="@string/Font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl2" />
+
+    <mytechcorp.ir.assisstant.TextViewPlus
         android:id="@+id/lbl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="44dp"
         android:text="نام خانوادگی : "
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -72,14 +101,15 @@
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/btnselector2"
         android:onClick="setBtnSaveOnClickListener"
         android:text="ثبت"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFamily" />
+        app:layout_constraintTop_toBottomOf="@+id/spGrade" />
 
     <Button
         android:id="@+id/btnEnter"
@@ -138,6 +168,33 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <Spinner
+        android:id="@+id/spGrade"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp"
+        android:addStatesFromChildren="false"
+        app:barrierDirection="right"
+        app:layout_constraintEnd_toStartOf="@+id/lbl4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFamily" />
+
+    <Spinner
+        android:id="@+id/spLocal"
+        android:layout_width="83dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:addStatesFromChildren="false"
+        app:barrierDirection="right"
+        app:layout_constraintEnd_toStartOf="@+id/lbl3"
+        app:layout_constraintTop_toBottomOf="@+id/lbl2" />
 
 
 </android.support.constraint.ConstraintLayout>

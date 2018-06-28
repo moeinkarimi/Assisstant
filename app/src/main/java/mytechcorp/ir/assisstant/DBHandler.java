@@ -44,6 +44,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String QuestionID = "QuestionID";
     private static final String Answer = "Answer";
     private static final String Flag = "Flag";
+    private static final String Local = "Local";
+    private static final String Grade = "Grade";
 
 
     public DBHandler(Context context) {
@@ -63,12 +65,13 @@ public class DBHandler extends SQLiteOpenHelper {
                 + State + " Text);"; //1
         db.execSQL(dbexec0);
 
-        String dbexec1 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Person +"("
+        String Pers = "CREATE TABLE IF NOT EXISTS "+ TABLE_Person +"("
                 + ID + " Integer Primary Key Autoincrement," //0
                 + Name + " Text,"
-                + Family + " Text);"; //2
-        db.execSQL(dbexec1);
-
+                + Family + " Text,"
+                + Local + " Integer,"
+                + Grade + " Text);"; //2
+        db.execSQL(Pers);
 
         String dbexec2 = "CREATE TABLE IF NOT EXISTS "+ TABLE_Score +"("
                 + ID + " Integer Primary Key Autoincrement," //0
@@ -104,6 +107,8 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Name,person.getPersonName());
         values.put(Family,person.getPersonFamily());
+        values.put(Local,person.getLocal());
+        values.put(Grade,person.getGrade());
         db.insert(TABLE_Person, null, values);
         db.close();
     }
@@ -120,10 +125,23 @@ public class DBHandler extends SQLiteOpenHelper {
                 person.setPersonID(Integer.parseInt(cursor.getString(0)));
                 person.setPersonName(cursor.getString(1));
                 person.setPersonFamily(cursor.getString(2));
+                person.setGrade(cursor.getString(4));
                 personList.add(person);
             }while (cursor.moveToNext());
         }
         return personList;
+    }
+
+    public int GetLocal(){
+        String query = "SELECT * FROM " + TABLE_Person;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            return Integer.parseInt(cursor.getString(3));
+        }else {
+            return 0;
+        }
     }
 
     public void UpdatePerson(Person person,int i){
@@ -131,6 +149,9 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Name, person.getPersonName());
         values.put(Family, person.getPersonFamily());
+        values.put(Local, person.getLocal());
+        values.put(Grade, person.getGrade());
+
         db.update(TABLE_Person,values,"ID =?",new String[] {String.valueOf(i)});
         db.close();
     }
@@ -171,7 +192,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(State, "0");
-        for (int i=1;i<10;i++){
+        for (int i=1;i<11;i++){
             db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(i)});
         }
         db.close();
@@ -239,7 +260,6 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return "";
     }
-
 
     //Questions
     public void AddQuestion(Questions questions){

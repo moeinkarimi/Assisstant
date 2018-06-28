@@ -13,8 +13,10 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import Models.CustomTypefaceSpan;
@@ -25,6 +27,7 @@ public class AddPersonActivity extends Dialog {
 
     Button btnSave;
     EditText txtName, txtFamily;
+    Spinner spLocal2, spGrade2;
 
     Activity c;
     SQLiteDatabase db;
@@ -56,12 +59,27 @@ public class AddPersonActivity extends Dialog {
         btnSave = findViewById(R.id.btnSave);
         txtName = findViewById(R.id.txtName);
         txtFamily = findViewById(R.id.txtFamily);
+        spLocal2 = findViewById(R.id.spLocal2);
+        spGrade2 = findViewById(R.id.spGrade2);
 
         if(ID != 0) {
             Person person = dbHandler.GetPerson(ID);
             txtName.setText(person.getPersonName());
             txtFamily.setText(person.getPersonFamily());
         }
+
+
+        String[] local = new String[]{"1", "2", "3", "4", "5", "6", "7", "8",
+                "9", "10", "11", "12", "13", "14", "15"
+                , "16", "17" , "18", "19", "20", "21", "22"};
+        ArrayAdapter<String> localadapter = new ArrayAdapter<>(c, android.R.layout.simple_spinner_dropdown_item, local);
+        spLocal2.setAdapter(localadapter);
+
+        String[] Grade = new String[]{"پایه هشتم", "پایه نهم", "پایه دهم"};
+        ArrayAdapter<String> Gradeadapter = new ArrayAdapter<>(c, android.R.layout.simple_spinner_dropdown_item, Grade);
+        spGrade2.setAdapter(Gradeadapter);
+        int position = localadapter.getPosition(String.valueOf(dbHandler.GetLocal()));
+        spLocal2.setSelection(position);
 
         btnSave.setTypeface(tf);
         txtName.setTypeface(tf);
@@ -79,7 +97,9 @@ public class AddPersonActivity extends Dialog {
                         dbHandler.AddPerson(
                                 new Person(
                                         txtName.getText().toString(),
-                                        txtFamily.getText().toString()
+                                        txtFamily.getText().toString(),
+                                        Integer.parseInt(spLocal2.getSelectedItem().toString()),
+                                        spGrade2.getSelectedItem().toString()
                                 )
                         );
                         txtName.setText("");
@@ -119,7 +139,9 @@ public class AddPersonActivity extends Dialog {
                         dbHandler.UpdatePerson(
                                 new Person(
                                         txtName.getText().toString(),
-                                        txtFamily.getText().toString()
+                                        txtFamily.getText().toString(),
+                                        Integer.parseInt(spLocal2.getSelectedItem().toString()),
+                                        spGrade2.getSelectedItem().toString()
                                 ), ID
                         );
 

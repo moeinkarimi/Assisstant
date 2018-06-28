@@ -53,7 +53,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:baselineAligned="false"
         android:layoutDirection="rtl"
@@ -63,7 +63,7 @@
         <LinearLayout
             android:id="@+id/btnShowPerson"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
             android:background="@drawable/btnselector3"
@@ -102,8 +102,8 @@
                 android:id="@+id/textViewPlus10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:text="مشخصات اعضای گروه"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
@@ -125,7 +125,7 @@
         <LinearLayout
             android:id="@+id/btnShowScores"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
             android:background="@drawable/btnselector3"
@@ -164,8 +164,8 @@
                 android:id="@+id/textViewPlus13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:text="مجموع امتیازات"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
@@ -755,13 +755,13 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
                         android:src="@mipmap/ic_tick"
-                        android:visibility="invisible"
-                        android:layout_marginLeft="7dp" />
+                        android:visibility="invisible" />
 
                 </LinearLayout>
 

@@ -65,7 +65,7 @@ public class ShowScoresActivity extends Activity {
     }
 
     public void setBtnTableOnClickListener(View v) {
-        if (dbHandler.GetScoreState(1)){
+        if (dbHandler.GetScoreState(1) || dbHandler.GetAnswerCount(1) == 22){
             AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه", null);
             dialog.show();

@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/pesoniv"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="103dp"
+            android:layout_height="105dp"
             android:layout_weight=".01"
             android:background="@drawable/circlebg"
             android:scaleType="fitCenter"
@@ -46,9 +46,9 @@
                 android:id="@+id/lblpersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start"
                 android:padding="3dp"
                 android:text="نام"
-                android:gravity="start"
                 android:textColor="@android:color/black"
                 app:customFont="@string/Font" />
 
@@ -56,9 +56,19 @@
                 android:id="@+id/lblpersonFamily"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start"
                 android:padding="3dp"
                 android:text="نام خانوادگی"
+                android:textColor="@android:color/black"
+                app:customFont="@string/Font" />
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/lblpersonGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="start"
+                android:padding="3dp"
+                android:text="پایه"
                 android:textColor="@android:color/black"
                 app:customFont="@string/Font" />
         </LinearLayout>

@@ -60,31 +60,9 @@ public class ReadingActivity extends Activity {
         cdd.show();
     }
 
-    @Override
-    public void onBackPressed() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
-        builder.setTitle("بازگشت");
-        builder.setMessage("در صورت بازگشت به صفحه قبل، زمان مطالعه از اول محاسبه خواهد شد.\nآیا مطمئنید ؟");
-        builder.setPositiveButton("بله", new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(ReadingActivity.this,MainActivity.class);
-                startActivity(intent);
-                MainActivity.fa.finish();
-                finish();
-            }
-        }).setNegativeButton("خیر",new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        }).setIcon(R.mipmap.ic_close_web);
-        builder.create().show();
-
-    }
 
     void startReading(){
-        if (dbHandler.GetAnswerCount(2) ==0) {
+        if (dbHandler.GetAnswerCount(2) == 0 || !dbHandler.GetScoreState(10)) {
             new CountDownTimer(390000,1000) {
 
                 @SuppressLint({"DefaultLocale","SetTextI18n"})
@@ -99,7 +77,7 @@ public class ReadingActivity extends Activity {
                 public void onFinish() {
                     mTextField.setText("زمان باقی مانده : 0 دقیقه و  0 ثانیه");
                     btnEnter.setEnabled(true);
-
+                    dbHandler.UpdateState(10);
                 }
             }.start();
         }else {

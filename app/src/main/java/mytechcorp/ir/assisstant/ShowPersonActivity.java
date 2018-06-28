@@ -80,26 +80,28 @@ public class ShowPersonActivity extends Activity {
         final ArrayList<HashMap<String, String>> Items = new ArrayList<HashMap<String, String>>();
 
         List<Person> personList = dbHandler.getAllPerson();
-        for (Person person : personList) {
+        for(Person person : personList){
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("id",String.valueOf(person.getPersonID()));
-            map.put("name",person.getPersonName());
-            map.put("family",person.getPersonFamily());
+            map.put("name", person.getPersonName());
+            map.put("family", person.getPersonFamily());
+            map.put("grade", person.getGrade());
             Items.add(map);
         }
 
-        if (Items.isEmpty()) {
+        if (Items.isEmpty()){
             String[] notfound = {"متأسفانه داده ای وجود ندارد.\n لطفا نام افراد گروه را اضافه کنید."};
             ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,R.layout.personnotfound,R.id.desctb2,notfound);
             lvPerson.setAdapter(adapter1);
-        } else {
-            ListAdapter adapter = new SimpleAdapter(this,Items,
+        }
+        else {
+            ListAdapter adapter = new SimpleAdapter(this, Items,
                     R.layout.showpersoncard,
                     new String[]{
-                            "id","name","family"
+                            "id", "name", "family","grade"
                     },
                     new int[]{
-                            R.id.lblID,R.id.lblpersonName,R.id.lblpersonFamily
+                            R.id.lblID, R.id.lblpersonName, R.id.lblpersonFamily, R.id.lblpersonGrade
                     });
 
             lvPerson.setAdapter(adapter);

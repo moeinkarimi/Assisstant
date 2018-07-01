@@ -156,7 +156,7 @@ public class AddPersonActivity extends Dialog {
                             txtFamily.setBackgroundDrawable(ContextCompat.getDrawable(c, R.drawable.eterror));
                         } else {
                             txtName.setBackground(ContextCompat.getDrawable(c, R.drawable.eterror));
-                            txtFamily.setBackgroundDrawable(ContextCompat.getDrawable(c, R.drawable.eterror));
+                            txtFamily.setBackground(ContextCompat.getDrawable(c, R.drawable.eterror));
                         }
                     } else if (txtName.getText().toString().equals("")) {
                         txtName.setError(ssbuilder);

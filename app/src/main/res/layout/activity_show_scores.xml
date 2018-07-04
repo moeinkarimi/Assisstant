@@ -660,7 +660,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/btnTable"
+                    android:id="@+id/Score"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -674,6 +674,83 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_diamond" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="امتیاز کل هفته های قبل"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:id="@+id/imageView"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/clickcirclebutton"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:scaleType="fitCenter"
+                        android:visibility="visible">
+
+                        <mytechcorp.ir.assisstant.TextViewPlus
+                            android:id="@+id/lblAScore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingTop="1dp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            app:customFont="@string/Font" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnTable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnTableOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Score">
 
                     <ImageView
                         android:layout_width="40dp"

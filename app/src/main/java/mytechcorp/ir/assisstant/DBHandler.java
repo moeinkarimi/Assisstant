@@ -379,8 +379,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public int GetSumOfScores(){
-        String query = "SELECT SUM(Score) FROM " + TABLE_Score;
+    public int GetSumOfScores(int GameId ){
+        String query = "SELECT SUM(Score) FROM " + TABLE_Score+ " WHERE GameID >= "+ GameId;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         cursor.moveToFirst();

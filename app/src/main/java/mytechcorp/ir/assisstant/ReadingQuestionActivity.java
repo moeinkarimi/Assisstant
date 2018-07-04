@@ -65,10 +65,10 @@ public class ReadingQuestionActivity extends Activity {
 
     public void setBtnEnterOnClickListener(View v) {
         if (dbHandler.GetAnswerCount(2) != 3){
-            if ((qID == 1 && txtAnswer2.getText().toString().equals("خداودین"))
-                    || (qID == 1 && txtAnswer2.getText().toString().equals("خدا ودین"))
+            if ((qID == 1 && txtAnswer2.getText().toString().equals("خدا"))
+                    /*|| (qID == 1 && txtAnswer2.getText().toString().equals("خدا ودین"))
                     || (qID == 1 && txtAnswer2.getText().toString().equals("خدا و دین"))
-                    || (qID == 1 && txtAnswer2.getText().toString().equals("خداو دین"))) {
+                    || (qID == 1 && txtAnswer2.getText().toString().equals("خداو دین"))*/) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(
@@ -90,7 +90,7 @@ public class ReadingQuestionActivity extends Activity {
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if ((qID == 2 && txtAnswer2.getText().toString().equals("سیاست"))) {
+            } else if ((qID == 2 && txtAnswer2.getText().toString().equals("اقتصادی"))) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(
@@ -112,10 +112,10 @@ public class ReadingQuestionActivity extends Activity {
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if ((qID == 3 && txtAnswer2.getText().toString().equals("احساسات و عقل"))
-                    || (qID == 3 && txtAnswer2.getText().toString().equals("احساساتو عقل"))
+            } else if ((qID == 3 && txtAnswer2.getText().toString().equals("کارتر"))
+                    /*|| (qID == 3 && txtAnswer2.getText().toString().equals("احساساتو عقل"))
                     || (qID == 3 && txtAnswer2.getText().toString().equals("احساسات وعقل"))
-                    || (qID == 3 && txtAnswer2.getText().toString().equals("احساساتوعقل"))) {
+                    || (qID == 3 && txtAnswer2.getText().toString().equals("احساساتوعقل"))*/) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(
@@ -145,7 +145,7 @@ public class ReadingQuestionActivity extends Activity {
         }
         else if (dbHandler.GetAnswerCount(2) == 3){
             dbHandler.UpdateState(2);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("2-\tر").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("2-\tل ل ا").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface,int i) {

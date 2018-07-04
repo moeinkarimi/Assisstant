@@ -26,6 +26,7 @@ public class ReadingActivity extends Activity {
     ImageButton btnHelp;
     private DBHandler dbHandler;
 
+    public static Activity ca;
     String Game;
 
     @Override
@@ -33,7 +34,7 @@ public class ReadingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading);
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
-
+        ca = this;
         dbHandler = new DBHandler(this);
         btnEnter = findViewById(R.id.btnEnter);
         btnHelp = findViewById(R.id.btnHelp);
@@ -61,9 +62,32 @@ public class ReadingActivity extends Activity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("خروج");
+        builder.setMessage("در صورت خروج زمان مطالعه از ابتدا محاسبه خواهد شد.آیا مطمئنید ؟");
+        builder.setPositiveButton("بله", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(ca, MainActivity.class);
+                startActivity(intent);
+                MainActivity.fa.finish();
+                finish();
+
+            }
+        }).setNegativeButton("خیر",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setIcon(R.mipmap.ic_close_web);
+        builder.create().show();
+    }
+
     void startReading(){
-        if (dbHandler.GetAnswerCount(2) == 0 || !dbHandler.GetScoreState(10)) {
-            new CountDownTimer(390000,1000) {
+        if (!dbHandler.GetScoreState(10)) {
+            new CountDownTimer(30000,1000) {
 
                 @SuppressLint({"DefaultLocale","SetTextI18n"})
                 public void onTick(long millisUntilFinished) {

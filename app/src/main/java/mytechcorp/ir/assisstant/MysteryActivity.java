@@ -66,21 +66,21 @@ public class MysteryActivity extends Activity {
     public void setBtnEnterOnClickListener(View v){
         Intent intent = new Intent(this, MainActivity.class);
         if (ans.isChecked()
-                && ans1.isChecked()
+                && !ans1.isChecked()
                 && !ans2.isChecked()
                 && ans3.isChecked()
-                && ans4.isChecked()){
+                && !ans4.isChecked()){
             if(!dbHandler.GetScoreState(3)) {
                 dbHandler.AddScore(
                         new Scores(
                                 3,
-                                20,
+                                10,
                                 30
                         )
                 );
             }
             dbHandler.UpdateState(3);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("3-\tا د").setTitle("حروف رمز");
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("3-\tز ا ا ").setTitle("حروف رمز");
             dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface,int i) {

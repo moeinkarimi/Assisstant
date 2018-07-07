@@ -10,7 +10,7 @@ public class Coding {
     Activity a;
     private DBHandler dbHandler;
     private int gameCode, addedNum, groupCode1,groupCode2;
-    private String gameScore;
+    private String gameScore, groupCode;
 
     public Coding(Activity c) {
         this.a = c;
@@ -99,5 +99,11 @@ public class Coding {
             return "15 دقیقه نهم";
         else
             return "کد اشتباه است";
+    }
+
+    public String GetGroupCode(String Code){
+        groupCode = Code.substring(0,2);
+        gameScore= Code.substring(2,7);
+        return groupCode;
     }
 }

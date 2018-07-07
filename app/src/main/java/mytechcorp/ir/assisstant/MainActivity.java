@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
         lblAllScores = findViewById(R.id.lblAllScores);
         lblPersonCount = findViewById(R.id.lblPersonCount);
         lblPersonCount.setText(String.valueOf(dbHandler.GetPersonCount())+ " نفر");
-        lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores()));
+        lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores(0)));
         checkImageViewVisibility();
         String persons ="";
         List<Person> personList = dbHandler.getAllPerson();

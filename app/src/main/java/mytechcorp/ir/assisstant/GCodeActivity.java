@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import Models.Coding;
 import Models.CustomTypefaceSpan;
 import Models.GCode;
 import Models.Person;
+import Models.Scores;
 
 public class GCodeActivity extends Dialog {
 
@@ -67,23 +69,25 @@ public class GCodeActivity extends Dialog {
                 if (!txtGCode.getText().toString().equals("")) {
 
                     if (ID ==1) {
-                        if (txtGCode.getText().toString().length()==2) {
+                        if (txtGCode.getText().toString().length()==7) {
                             if (dbHandler.getCodeState(ID)) {
                                 Intent intent = new Intent(c,MainActivity.class);
                                 c.startActivity(intent);
                                 c.finish();
                             } else {
+                                Coding coding = new Coding(c);
                                 dbHandler.AddGCode(
                                         new GCode(
-                                                txtGCode.getText().toString()
+                                                coding.GetGroupCode(txtGCode.getText().toString())
                                         )
                                 );
+                                dbHandler.AddScore(new Scores(0, Integer.parseInt(coding.ConvertCodeToScore()),0));
                                 Intent intent = new Intent(c,MainActivity.class);
                                 c.startActivity(intent);
                                 c.finish();
                             }
                         }else {
-                            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(c, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد.\n کد باید دو رقمی باشد.").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(c, R.style.AlertDialogCustom)).setMessage("کد وارد شده غلط می باشد.\n کد باید هفت رقمی باشد.").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                             dialog.setNeutralButton("باشه",null);
                             dialog.show();
                         }

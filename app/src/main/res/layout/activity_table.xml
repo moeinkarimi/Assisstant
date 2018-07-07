@@ -94,7 +94,7 @@
                         android:layout_margin="14dp"
                         android:nextFocusLeft="@id/questionCount"
                         android:nextFocusUp="@id/questionCount"
-                        android:text="تعداد سوالات : 22"
+                        android:text="تعداد سوالات : 15"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         app:customFont="@string/Font" />

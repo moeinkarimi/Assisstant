@@ -72,14 +72,14 @@ public class FinalActivity extends Dialog {
                                             91
                                     )
                             );
-                            if (txtCode3.getText().toString().equals("فردا از آن ماست")
-                                    ||txtCode3.getText().toString().equals("فردااز آن ماست")
+                            if (txtCode3.getText().toString().equals("استقلال آزادی جمهوری اسلامی")
+                                    /*||txtCode3.getText().toString().equals("فردااز آن ماست")
                                     ||txtCode3.getText().toString().equals("فرداازآن ماست")
                                     ||txtCode3.getText().toString().equals("فردا ازآن ماست")
                                     ||txtCode3.getText().toString().equals("فردا از ان ماست")
                                     ||txtCode3.getText().toString().equals("فردااز ان ماست")
                                     ||txtCode3.getText().toString().equals("فرداازان ماست")
-                                    ||txtCode3.getText().toString().equals("فردا ازان ماست")){
+                                    ||txtCode3.getText().toString().equals("فردا ازان ماست")*/){
                                 dbHandler.AddScore(
                                         new Scores(
                                                 9,
@@ -137,7 +137,7 @@ public class FinalActivity extends Dialog {
             report =
                      "TKL : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetPersonCount()), 10), 2)   +"\n" //کل افراد
                    + "RNVSH : \n" + dbHandler.GetAnswer(9) +"\n" //رمز نهایی
-                   + "JKE : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScores()), 10), 2)  +"\n" //جمع کل امتیاز
+                   + "JKE : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScores(0)), 10), 2)  +"\n" //جمع کل امتیاز
                    + "EBT : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(1)), 10), 2)  +"\n" //امتیاز بازی جدول
                    + "EBM : \n"   + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(2)), 10), 2)  +"\n" //امتیاز بازی مطالعه
                    + "EBMO : \n"  + Integer.toString(Integer.parseInt(String.valueOf(dbHandler.GetSumOfScore(3)), 10), 2)  +"\n" //امتیاز بازی معما

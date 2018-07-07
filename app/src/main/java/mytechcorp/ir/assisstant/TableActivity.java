@@ -126,7 +126,7 @@ public class TableActivity extends Activity {
     }
 
     public void setBtnSaveOnClickLisetener(View v){
-        if ((qID==1 && txtAnswer.getText().toString().equals("غیرت"))){
+        if ((qID==1 && txtAnswer.getText().toString().equals("ابن سبیل"))){
 
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
@@ -151,7 +151,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==2 && txtAnswer.getText().toString().equals("فطرت"))){
+        else if ((qID==2 && txtAnswer.getText().toString().equals("برکت"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -175,8 +175,8 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==3 && txtAnswer.getText().toString().equals("امر به معروف"))
-                ||(qID==3 && txtAnswer.getText().toString().equals("امربه معروف"))
+        else if ((qID==3 && txtAnswer.getText().toString().equals("تولی و تبری"))
+                ||(qID==3 && txtAnswer.getText().toString().equals("تولی وتبری"))
                 ){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
@@ -201,7 +201,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==4 && txtAnswer.getText().toString().equals("حجاب"))){
+        else if ((qID==4 && txtAnswer.getText().toString().equals("بندگی"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -225,7 +225,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==5 && txtAnswer.getText().toString().equals("انسانیت"))){
+        else if ((qID==5 && txtAnswer.getText().toString().equals("بدر"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -249,8 +249,8 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==6 && txtAnswer.getText().toString().equals("شرمساری"))
-                ||(qID==6 && txtAnswer.getText().toString().equals("شرم ساری"))){
+        else if ((qID==6 && txtAnswer.getText().toString().equals("رزق"))
+                /*||(qID==6 && txtAnswer.getText().toString().equals("شرم ساری"))*/){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -274,7 +274,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==7 && txtAnswer.getText().toString().equals("شور"))){
+        else if ((qID==7 && txtAnswer.getText().toString().equals("قصد"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -298,7 +298,8 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==8 && txtAnswer.getText().toString().equals("مست"))){
+        else if ((qID==8 && txtAnswer.getText().toString().equals("وفاداری"))
+                || (qID==8 && txtAnswer.getText().toString().equals("وفا داری"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -322,7 +323,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==9 && txtAnswer.getText().toString().equals("تیر"))){
+        else if ((qID==9 && txtAnswer.getText().toString().equals("آب"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -346,8 +347,8 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==10 && txtAnswer.getText().toString().equals("یأس"))
-                ||(qID==10 && txtAnswer.getText().toString().equals("یاس"))){
+        else if ((qID==10 && txtAnswer.getText().toString().equals("رستگاری"))
+                /*||(qID==10 && txtAnswer.getText().toString().equals("یاس"))*/){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -371,7 +372,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==11 && txtAnswer.getText().toString().equals("حج"))){
+        else if ((qID==11 && txtAnswer.getText().toString().equals("نذر"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -395,7 +396,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==12 && txtAnswer.getText().toString().equals("مو"))){
+        else if ((qID==12 && txtAnswer.getText().toString().equals("نان"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -419,7 +420,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==13 && txtAnswer.getText().toString().equals("فحش"))){
+        else if ((qID==13 && txtAnswer.getText().toString().equals("تین"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -443,7 +444,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==14 && txtAnswer.getText().toString().equals("شرم"))){
+        else if ((qID==14 && txtAnswer.getText().toString().equals("یعقوب"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -467,7 +468,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==15 && txtAnswer.getText().toString().equals("ایمان"))){
+        else if ((qID==15 && txtAnswer.getText().toString().equals("بخشنده"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -491,7 +492,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==16 && txtAnswer.getText().toString().equals("مادران آسمانی"))
+        /*else if ((qID==16 && txtAnswer.getText().toString().equals("مادران آسمانی"))
                 ||(qID==16 && txtAnswer.getText().toString().equals("مادران اسمانی"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
@@ -659,7 +660,7 @@ public class TableActivity extends Activity {
             {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
         else {
             Toast.makeText(this, "پاسخ غلط است", Toast.LENGTH_SHORT).show();
         }

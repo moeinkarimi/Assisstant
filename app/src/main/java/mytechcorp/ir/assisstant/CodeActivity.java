@@ -6,17 +6,10 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import Models.Coding;
 import Models.Scores;
@@ -41,7 +34,7 @@ public class CodeActivity extends Activity {
         txtCode2 = findViewById(R.id.txtCode2);
         ca = this;
         dbHandler = new DBHandler(this);
-        tvpCode = findViewById(R.id.tvpCode);
+        tvpCode = findViewById(R.id.tvpCodec);
 
         btnSave.setTypeface(tf);
         txtCode.setTypeface(tf);
@@ -56,18 +49,36 @@ public class CodeActivity extends Activity {
                 txtCode.setVisibility(View.GONE);
                 txtCode2.setVisibility(View.VISIBLE);
                 if(dbHandler.GetScoreState(1)){
-                    txtCode2.setText("راه نجات جوامع");
+                    txtCode2.setText("یاری رسانی");
                 }
             }
             else if (Game.equals("4")) {
                 txtCode.setVisibility(View.GONE);
                 txtCode2.setVisibility(View.VISIBLE);
                 if(dbHandler.GetScoreState(4)){
-                    txtCode2.setText("تولید ملی");
+                    txtCode2.setText("صرفه جویی");
                 }
             }
         }
 
+        if (Game.equals("1")){
+            tvpCode.setText("لطفا رمز جدول را وارد کنید :");
+        }
+        else if (Game.equals("4")){
+            tvpCode.setText("لطفا رمز پازل را وارد کنید :");
+        }
+        else if (Game.equals("5")){
+            tvpCode.setText("لطفا رمز ماکت را وارد کنید :");
+        }
+        else if (Game.equals("6")){
+            tvpCode.setText("لطفا رمز رکورد را وارد کنید :");
+        }
+        else if (Game.equals("7")){
+            tvpCode.setText("لطفا رمز بازی گروهی را وارد کنید :");
+        }
+        else if (Game.equals("8")) {
+            tvpCode.setText("لطفا رمز مستند را وارد کنید :");
+        }
     }
 
     public void setBtnSaveOnClickListener(View v) {
@@ -77,7 +88,7 @@ public class CodeActivity extends Activity {
             tvpCode.setText("لطفا رمز جدول را وارد کنید :");
             txtCode.setVisibility(View.GONE);
             txtCode2.setVisibility(View.VISIBLE);
-            if(txtCode2.getText().toString().equals("راه نجات جوامع")){
+            if(txtCode2.getText().toString().equals("یاری رسانی")){
                 if (!dbHandler.GetScoreState(1)){
                     dbHandler.AddScore(
                             new Scores(
@@ -89,7 +100,7 @@ public class CodeActivity extends Activity {
 
                 }
                 dbHandler.UpdateState(Integer.parseInt(Game));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1-\tس ا ت ق").setTitle("حروف رمز");
                 dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface,int i) {
@@ -124,8 +135,8 @@ public class CodeActivity extends Activity {
             tvpCode.setText("لطفا رمز پازل را وارد کنید :");
             txtCode.setVisibility(View.GONE);
             txtCode2.setVisibility(View.VISIBLE);
-            if(txtCode2.getText().toString().equals("تولیدملی")
-                    ||txtCode2.getText().toString().equals("تولید ملی")){
+            if(txtCode2.getText().toString().equals("صرفه جویی")
+                    /*||txtCode2.getText().toString().equals("تولید ملی")*/){
                 if (!dbHandler.GetScoreState(4)){
                     dbHandler.AddScore(
                             new Scores(
@@ -136,7 +147,7 @@ public class CodeActivity extends Activity {
                     );
                 }
                 dbHandler.UpdateState(Integer.parseInt(Game));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tز ا\n با بازگشت به همین صفحه می توانید تصویر کامل شده را ببینید.").setTitle("حروف رمز");
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tی د\n با بازگشت به همین صفحه می توانید تصویر کامل شده را ببینید.").setTitle("حروف رمز");
                 dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface,int i) {
@@ -169,7 +180,7 @@ public class CodeActivity extends Activity {
                         );
                     }
                     dbHandler.UpdateState(Integer.parseInt(Game));
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("5-\tا").setTitle("حروف رمز");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("5-\tه ج م").setTitle("حروف رمز");
                     dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface,int i) {
@@ -208,7 +219,7 @@ public class CodeActivity extends Activity {
                         );
                     }
                     dbHandler.UpdateState(Integer.parseInt(Game));
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("6-\tن").setTitle("حروف رمز");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("6-\tر و ی").setTitle("حروف رمز");
                     dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface,int i) {
@@ -246,7 +257,7 @@ public class CodeActivity extends Activity {
                         );
                     }
                     dbHandler.UpdateState(Integer.parseInt(Game));
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("7-\tا م").setTitle("حروف رمز");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1-\tل س ا ").setTitle("حروف رمز");
                     dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface,int i) {
@@ -283,7 +294,7 @@ public class CodeActivity extends Activity {
                         );
                     }
                     dbHandler.UpdateState(Integer.parseInt(Game));
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("8-\tت س").setTitle("حروف رمز");
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("8-\tم ا ی").setTitle("حروف رمز");
                     dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface,int i) {

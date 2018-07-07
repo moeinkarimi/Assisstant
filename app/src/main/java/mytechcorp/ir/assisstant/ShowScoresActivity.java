@@ -14,7 +14,7 @@ public class ShowScoresActivity extends Activity {
 
     private DBHandler dbHandler;
     LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnDoc, btnMystery, btnPuzzle;
-    TextViewPlus lblTScore, lblRScore, lblMScore, lblPScore, lblMakeScore, lblRecordScore, lblGGScore, lblDocScore, lblAllScores2, lblGpCode;
+    TextViewPlus lblAScore, lblTScore, lblRScore, lblMScore, lblPScore, lblMakeScore, lblRecordScore, lblGGScore, lblDocScore, lblAllScores2, lblGpCode;
 
 
     @Override
@@ -32,6 +32,7 @@ public class ShowScoresActivity extends Activity {
         btnDoc = findViewById(R.id.btnDoc);
 
         lblAllScores2 = findViewById(R.id.lblAllScores2);
+        lblAScore = findViewById(R.id.lblAScore);
         lblTScore = findViewById(R.id.lblTScore);
         lblRScore = findViewById(R.id.lblRScore);
         lblMScore = findViewById(R.id.lblMScore);
@@ -43,7 +44,8 @@ public class ShowScoresActivity extends Activity {
         lblGpCode = findViewById(R.id.lblGpCode);
 
 
-        lblAllScores2.setText("مجموع امتیازات : " + String.valueOf(dbHandler.GetSumOfScores()));
+        lblAllScores2.setText("مجموع امتیازات : " + String.valueOf(dbHandler.GetSumOfScores(1)));
+        lblAScore.setText(String.valueOf(dbHandler.GetSumOfScore(0)));
         lblTScore.setText(String.valueOf(dbHandler.GetSumOfScore(1)));
         lblRScore.setText(String.valueOf(dbHandler.GetSumOfScore(2)));
         lblMScore.setText(String.valueOf(dbHandler.GetSumOfScore(3)));

@@ -87,7 +87,7 @@ public class ReadingActivity extends Activity {
 
     void startReading(){
         if (!dbHandler.GetScoreState(10)) {
-            new CountDownTimer(30000,1000) {
+            new CountDownTimer(300000,1000) {
 
                 @SuppressLint({"DefaultLocale","SetTextI18n"})
                 public void onTick(long millisUntilFinished) {

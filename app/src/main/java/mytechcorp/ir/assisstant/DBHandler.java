@@ -409,4 +409,14 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public String GetFirstPerson(){
+        String query = "SELECT * FROM " + TABLE_Person + " Limit 1";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor.getString(1) + " " + cursor.getString(2);
+    }
 }

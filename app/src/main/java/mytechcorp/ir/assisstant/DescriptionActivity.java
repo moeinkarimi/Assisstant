@@ -70,10 +70,8 @@ public class DescriptionActivity extends Activity {
                 tvDesc.setText(R.string.recordDesc);
                 break;
             case "7":
-                Coding coding = new Coding(this);
-                coding.CheckCode(dbHandler.GetGCode(2),57);
                 tvHeader.setText(R.string.bazigroohi);
-                tvDesc.setText("زمان مسابقه : " + coding.GetMatchTime() + "\n\n" + getString(R.string.bazigroohiDesc));
+                tvDesc.setText(getString(R.string.bazigroohiDesc));
                 PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(ivTable2);
                 photoViewAttacher.update();
                 ivTable2.setVisibility(View.VISIBLE);
@@ -96,9 +94,13 @@ public class DescriptionActivity extends Activity {
     }
 
     public void setBtnEnterOnClickListener(View v){
-        Intent intent = new Intent(this, CodeActivity.class);
+        /*Intent intent = new Intent(this, CodeActivity.class);
         intent.putExtra("Game",Game);
         startActivity(intent);
-        this.finish();
+        this.finish();*/
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
     }
 }

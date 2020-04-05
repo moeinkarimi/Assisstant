@@ -52,7 +52,8 @@ public class ReadingActivity extends Activity {
         tvReading.setText(R.string.readingDesc);
 
         btnEnter.setTypeface(tf);
-        startReading();
+        btnEnter.setEnabled(true);
+        //startReading();
     }
 
     public void setBtnHelpOnClickListener(View v){
@@ -62,7 +63,7 @@ public class ReadingActivity extends Activity {
     }
 
 
-    @Override
+/*    @Override
     public void onBackPressed() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
         builder.setTitle("خروج");
@@ -83,7 +84,7 @@ public class ReadingActivity extends Activity {
             }
         }).setIcon(R.mipmap.ic_close_web);
         builder.create().show();
-    }
+    }*/
 
     void startReading(){
         if (!dbHandler.GetScoreState(10)) {

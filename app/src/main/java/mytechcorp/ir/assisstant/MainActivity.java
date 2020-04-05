@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
     ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc;
     public static Activity fa;
 
-    TextViewPlus lblPersonCount, lblAllScores;
+    TextViewPlus lblPersonCount, lblAllScores, textViewPlus10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,15 +71,12 @@ public class MainActivity extends Activity {
 
         lblAllScores = findViewById(R.id.lblAllScores);
         lblPersonCount = findViewById(R.id.lblPersonCount);
+        textViewPlus10 = findViewById(R.id.textViewPlus10);
         lblPersonCount.setText(String.valueOf(dbHandler.GetPersonCount())+ " نفر");
         lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores(0)));
         checkImageViewVisibility();
-        String persons ="";
-        List<Person> personList = dbHandler.getAllPerson();
-        for (Person person : personList) {
-            persons +=  person.getPersonName()+" "+person.getPersonFamily();
-        }
-        Log.d("persons " , persons);
+        textViewPlus10.setText(dbHandler.GetFirstPerson());
+
     }
 
     @Override
@@ -144,16 +141,16 @@ public class MainActivity extends Activity {
     }
 
     public void setBtnGroupOnClickListener(View v) {
-        if(dbHandler.getCodeState(2)){
+//        if(dbHandler.getCodeState(2)){
             Intent intent = new Intent(this, DescriptionActivity.class);
             intent.putExtra("Game","7");
             startActivity(intent);
-        }
+        /*}
         else {
             GCodeActivity gCodeActivity = new GCodeActivity(this,2);
             gCodeActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             gCodeActivity.show();
-        }
+        }*/
     }
 
     public void setBtnDocOnClickListener(View v) {

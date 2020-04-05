@@ -4,11 +4,12 @@
     <string name="err_wrong_input">مقدار درخواستی را وارد کنید</string>
     <string name="maket">ماکت</string>
     <string name="mostand">مستند</string>
-    <string name="record">رکورد</string>
+    <string name="record">آشپزی</string>
     <string name="reading">مطالعه</string>
     <string name="mystery">معما</string>
     <string name="puzzle">پازل</string>
-    <string name="bazigroohi">بازی گروهی</string>
+    <string name="publicInfo">اطلاعات عمومی</string>
+    <string name="bazigroohi">بازی خانوادگی</string>
 
     <string name="maketDesc">
 برگه ماکتی در اختیار دارید را به کمک چسب و قیچی و خط کش و .... بریده و از روی دستور العمل بسازید. در قسمت های مشخص شده اعداد بهم وصل شوند و حروف به قطعه دیگر. بعد از ساخت به مربی مربوطه نشان دهید و کد مرتبط به ماکت را تحویل بگیرد و در محل مورد نظر تایپ کنید.\n
@@ -176,7 +177,7 @@
     </string>
 
     <string name="Aboutus">
-        طراحی : اتحادیه انجمن های اسلامی دانش آموزان شهر تهران\n
-        گرافیست و برنامه نویسی : معین کریمی
+        طراحی بازی ها:  \n
+        برنامه نویس : معین کریمی
     </string>
 </resources>

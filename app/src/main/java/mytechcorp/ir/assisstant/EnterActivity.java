@@ -35,7 +35,9 @@ import java.util.List;
 
 import Models.CustomTypefaceSpan;
 import Models.FirstRun;
+import Models.GCode;
 import Models.Person;
+import Models.Scores;
 
 public class EnterActivity extends Activity {
 
@@ -70,10 +72,10 @@ public class EnterActivity extends Activity {
         btnSave.setTypeface(tf);
         txtName.setTypeface(tf);
         txtFamily.setTypeface(tf);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+//        {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+//        }
         start();
 
         String[] local = new String[]{"1", "2", "3", "4", "5", "6", "7", "8",
@@ -184,9 +186,13 @@ public class EnterActivity extends Activity {
             finish();
         }
         else {
-            GCodeActivity gCodeActivity = new GCodeActivity(this,1);
-            gCodeActivity.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            gCodeActivity.show();
+            dbHandler.AddGCode(
+                    new GCode(
+                            "1"
+                    )
+            );
+            dbHandler.UpdateState(10);
+            dbHandler.AddScore(new Scores(0, 0,0));
         }
     }
 

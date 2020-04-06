@@ -49,7 +49,32 @@
 
 
             <Button
-                android:id="@+id/btnEnter"
+                android:id="@+id/btnBackToMain"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btnselector2"
+                android:gravity="center"
+                android:layoutDirection="rtl"
+                android:onClick="setBtnBackOnClickListener"
+                android:paddingStart="15dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:text="بازگشت به قبل"
+                android:textDirection="rtl"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnEnter3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btnEnter3"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -57,19 +82,17 @@
                 android:gravity="center"
                 android:layoutDirection="rtl"
                 android:onClick="setBtnEnterOnClickListener"
-                android:paddingBottom="10dp"
-                android:paddingEnd="5dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
                 android:paddingStart="15dp"
+                android:paddingLeft="5dp"
                 android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
                 android:text="ورود به صفحه بعد"
                 android:textDirection="rtl"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayouttable"
-                app:layout_constraintVertical_bias="0.7" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayouttable" />
 
             <LinearLayout
                 android:id="@+id/linearLayouttable"
@@ -94,7 +117,7 @@
                         android:layout_margin="14dp"
                         android:nextFocusLeft="@id/questionCount"
                         android:nextFocusUp="@id/questionCount"
-                        android:text="تعداد سوالات : 15"
+                        android:text="تعداد سوالات : "
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         app:customFont="@string/Font" />

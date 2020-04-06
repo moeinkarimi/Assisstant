@@ -60,5 +60,8 @@ public class HelpActivity extends Dialog {
         else if (ID == 7) {
             tvpDesc.setText(R.string.GIHelp);
         }
+        else if (ID == 8) {
+            tvpDesc.setText(R.string.IntellMysteryHelp);
+        }
     }
 }

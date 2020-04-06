@@ -1,12 +1,12 @@
 package mytechcorp.ir.assisstant;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,11 +48,11 @@ public class MysteryActivity extends Activity {
         ans3.setTypeface(tf);
         ans4.setTypeface(tf);
         btnEnter2.setTypeface(tf);
+
         if(dbHandler.GetScoreState(3)) {
+            //Namayesh Javab haye doroste Moama QorAni
             ans.toggle();
-            ans1.toggle();
             ans3.toggle();
-            ans4.toggle();
         }
     }
 
@@ -64,7 +64,26 @@ public class MysteryActivity extends Activity {
     }
 
     public void setBtnEnterOnClickListener(View v){
-        Intent intent = new Intent(this, MainActivity.class);
+        final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("ثبت پاسخ");
+        builder.setMessage("آیا مطمئنید ؟");
+        builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Answer();
+                dbHandler.UpdateState(3);
+            }
+        }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).setIcon(R.mipmap.ic_tick);
+        builder.create().show();
+    }
+
+    private void Answer(){
+        // ! => ghalat
         if (ans.isChecked()
                 && !ans1.isChecked()
                 && !ans2.isChecked()
@@ -74,28 +93,11 @@ public class MysteryActivity extends Activity {
                 dbHandler.AddScore(
                         new Scores(
                                 3,
-                                10,
-                                30
+                                30,
+                                1
                         )
                 );
             }
-            dbHandler.UpdateState(3);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("3-\tز ا ا ").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(MysteryActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    ma.finish();
-                }
-            });
-            dialog.show();
-        }
-        else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا تمام گزینه های صحیح را انتخاب نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
-            dialog.setNeutralButton("باشه", null);
-            dialog.show();
         }
     }
 

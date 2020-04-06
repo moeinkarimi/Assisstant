@@ -49,14 +49,16 @@ public class CodeActivity extends Activity {
                 txtCode.setVisibility(View.GONE);
                 txtCode2.setVisibility(View.VISIBLE);
                 if(dbHandler.GetScoreState(1)){
-                    txtCode2.setText("یاری رسانی");
+                    txtCode2.setText(this.getString(R.string.TableCode));
+                    btnSave.setText("ورود به صفحه اصلی");
                 }
             }
             else if (Game.equals("4")) {
                 txtCode.setVisibility(View.GONE);
                 txtCode2.setVisibility(View.VISIBLE);
                 if(dbHandler.GetScoreState(4)){
-                    txtCode2.setText("صرفه جویی");
+                    txtCode2.setText(this.getString(R.string.PuzzleCode));
+                    btnSave.setText("ورود به صفحه اصلی");
                 }
             }
         }
@@ -84,41 +86,46 @@ public class CodeActivity extends Activity {
     public void setBtnSaveOnClickListener(View v) {
 
         Intent intent = new Intent(this, MainActivity.class);
-        if (Game.equals("1")){
-            tvpCode.setText("لطفا رمز جدول را وارد کنید :");
-            txtCode.setVisibility(View.GONE);
-            txtCode2.setVisibility(View.VISIBLE);
-            if(txtCode2.getText().toString().equals("یاری رسانی")){
-                if (!dbHandler.GetScoreState(1)){
-                    dbHandler.AddScore(
-                            new Scores(
-                                    1,
-                                    10,
-                                    0
-                            )
-                    );
+        if (btnSave.getText().toString().equals("ورود به صفحه اصلی")){
+            startActivity(intent);
+            MainActivity.fa.finish();
+            ca.finish();
+        }
+        else {
+            if (Game.equals("1")) {
+                tvpCode.setText("لطفا رمز جدول را وارد کنید :");
+                txtCode.setVisibility(View.GONE);
+                txtCode2.setVisibility(View.VISIBLE);
+                if (txtCode2.getText().toString().replace(" ", "").equals(this.getString(R.string.TableCode).replace(" ", ""))) {
+                    if (!dbHandler.GetScoreState(1)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        1,
+                                        10,
+                                        0
+                                )
+                        );
 
-                }
-                dbHandler.UpdateState(Integer.parseInt(Game));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1-\tس ا ت ق").setTitle("حروف رمز");
+                    }
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                /*AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1-\tس ا ت ق").setTitle("حروف رمز");
                 dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface,int i) {
-                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                        startActivity(intent);
+                    public void onClick(DialogInterface dialogInterface,int i) {*/
+                        Intent intent1 = new Intent(CodeActivity.this, MainActivity.class);
+                        startActivity(intent1);
                         MainActivity.fa.finish();
                         ca.finish();
-                    }
+                 /*   }
                 });
-                dialog.show();
+                dialog.show();*/
 
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+                    dialog.setNeutralButton("باشه", null);
+                    dialog.show();
+                }
             }
-            else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
-                dialog.setNeutralButton("باشه", null);
-                dialog.show();
-            }
-        }
 //        else if (Game.equals("2")){
 //            dbHandler.UpdateState(Integer.parseInt(Game));
 //            startActivity(intent);
@@ -131,41 +138,33 @@ public class CodeActivity extends Activity {
 //            MainActivity.fa.finish();
 //            this.finish();
 //        }
-        else if (Game.equals("4")){
-            tvpCode.setText("لطفا رمز پازل را وارد کنید :");
-            txtCode.setVisibility(View.GONE);
-            txtCode2.setVisibility(View.VISIBLE);
-            if(txtCode2.getText().toString().equals("صرفه جویی")
-                    /*||txtCode2.getText().toString().equals("تولید ملی")*/){
-                if (!dbHandler.GetScoreState(4)){
-                    dbHandler.AddScore(
-                            new Scores(
-                                    4,
-                                    20,
-                                    40
-                            )
-                    );
-                }
-                dbHandler.UpdateState(Integer.parseInt(Game));
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("4-\tی د\n با بازگشت به همین صفحه می توانید تصویر کامل شده را ببینید.").setTitle("حروف رمز");
-                dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface,int i) {
-                        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        MainActivity.fa.finish();
-                        ca.finish();
+            else if (Game.equals("4")) {
+                tvpCode.setText("لطفا رمز پازل را وارد کنید :");
+                txtCode.setVisibility(View.GONE);
+                txtCode2.setVisibility(View.VISIBLE);
+                if (txtCode2.getText().toString().replace(" ", "").equals(this.getString(R.string.PuzzleCode).replace(" ", ""))) {
+                    if (!dbHandler.GetScoreState(4)) {
+                        dbHandler.AddScore(
+                                new Scores(
+                                        4,
+                                        30,
+                                        40
+                                )
+                        );
                     }
-                });
-                dialog.show();
+                    dbHandler.UpdateState(Integer.parseInt(Game));
+                    Intent intent1 = new Intent(CodeActivity.this, MainActivity.class);
+                    startActivity(intent1);
+                    MainActivity.fa.finish();
+                    ca.finish();
+                } else {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+                    dialog.setNeutralButton("باشه", null);
+                    dialog.show();
+                }
             }
-            else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا پاسخ صحیح را وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
-                dialog.setNeutralButton("باشه", null);
-                dialog.show();
-            }
-        }
-        else if (Game.equals("5")){
+
+        /*else if (Game.equals("5")){
             Coding coding = new Coding(this);
             tvpCode.setText("لطفا رمز ماکت را وارد کنید :");
             if(!txtCode.getText().toString().equals("")) {
@@ -315,6 +314,7 @@ public class CodeActivity extends Activity {
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
+        }*/
         }
     }
 

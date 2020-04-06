@@ -1,24 +1,15 @@
 package mytechcorp.ir.assisstant;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,7 +18,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,8 +101,8 @@ public class EnterActivity extends Activity {
                     new Person(
                             txtName.getText().toString(),
                             txtFamily.getText().toString(),
-                            Integer.parseInt(spLocal.getSelectedItem().toString()),
-                            spGrade.getSelectedItem().toString()
+                            0,
+                            ""
                     )
             );
             txtName.setText("");
@@ -165,7 +155,7 @@ public class EnterActivity extends Activity {
 
         }
         else {
-            for (int i=1;i<11;i++){
+            for (int i=1;i<13;i++){
                 dbHandler.AddState();
             }
         }
@@ -191,7 +181,7 @@ public class EnterActivity extends Activity {
                             "1"
                     )
             );
-            dbHandler.UpdateState(10);
+            dbHandler.UpdateState(12);
             dbHandler.AddScore(new Scores(0, 0,0));
         }
     }

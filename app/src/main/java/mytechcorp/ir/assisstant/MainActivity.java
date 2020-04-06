@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     DBHandler dbHandler;
 
     LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode, btnMystery, btnPuzzle, btnShowScores;
-    ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc;
+    ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc, imageView13,imageView17;
     ImageButton btnAppDesc, btnScoreDesc, btnSpecialDesc;
 
     public static Activity fa;
@@ -56,6 +56,8 @@ public class MainActivity extends Activity {
         imageView5 = findViewById(R.id.imageView5);
         imageView6 = findViewById(R.id.btnSpecialDesc1);
         imageView7 = findViewById(R.id.imageView7);
+        imageView13 = findViewById(R.id.imageView13);
+        imageView17 = findViewById(R.id.imageView17);
         iVDoc = findViewById(R.id.iVDoc);
 
         btnBuild = findViewById(R.id.btnBuild);
@@ -148,12 +150,6 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void setBtnGIOnClickListener(View v) {
-        Intent intent = new Intent(this, GeneralInfoActivity.class);
-        intent.putExtra("Game","9");
-        startActivity(intent);
-    }
-
     public void setBtnGroupOnClickListener(View v) {
 //        if(dbHandler.getCodeState(2)){
             Intent intent = new Intent(this, DescriptionActivity.class);
@@ -170,6 +166,18 @@ public class MainActivity extends Activity {
     public void setBtnDocOnClickListener(View v) {
         Intent intent = new Intent(this, DescriptionActivity.class);
         intent.putExtra("Game","8");
+        startActivity(intent);
+    }
+
+    public void setBtnGIOnClickListener(View v) {
+        Intent intent = new Intent(this, GeneralInfoActivity.class);
+        intent.putExtra("Game","9");
+        startActivity(intent);
+    }
+
+    public void setBtnIntelliMysteryOnClickListener(View v) {
+        Intent intent = new Intent(this, IntelligenceMysteryActivity.class);
+        intent.putExtra("Game","10");
         startActivity(intent);
     }
 
@@ -228,6 +236,12 @@ public class MainActivity extends Activity {
         }
         if(dbHandler.GetStateData(8).equals("1")){
             iVDoc.setVisibility(View.VISIBLE);
+        }
+        if(dbHandler.GetStateData(9).equals("1")){
+            imageView13.setVisibility(View.VISIBLE);
+        }
+        if(dbHandler.GetStateData(10).equals("1")){
+            imageView17.setVisibility(View.VISIBLE);
         }
     }
 

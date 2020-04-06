@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:singleLine="false"
-            android:text="@string/mysteryDesc"
+            android:text="@string/mysteryQues"
             android:textColor="@color/text"
             android:textSize="16sp"
             app:customFont="@string/Font"
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="5dp"
-                    android:text="1-	کسانی که در آسایش و سختی انفاق می کنند"
+                    android:text="@string/MysAns1"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="5dp"
-                    android:text="2-	کسانی که در راه خدا انفاق می کنند"
+                    android:text="@string/MysAns2"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="5dp"
-                    android:text="3-	کسانی که ایمان آورده و عمل صالح انجام می دهند"
+                    android:text="@string/MysAns3"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="5dp"
-                    android:text="4-	کسانی که خشم خود را فرو می برند و از مردم خطاکار می گذرند"
+                    android:text="@string/MysAns4"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="5dp"
-                    android:text="5-	کسانی که پاداششان نزد خداوند اعطای علم و حکمت است"
+                    android:text="@string/MysAns5"
                     android:textSize="16sp" />
             </LinearLayout>
         </ScrollView>

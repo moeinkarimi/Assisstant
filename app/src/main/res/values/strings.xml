@@ -1,65 +1,138 @@
 <resources>
-    <string name="app_name">{اسم خوب :) }</string>
+    <string name="app_name">رونا</string>
     <string name="Font">fonts/IRANSansMobile_Light.ttf</string>
     <string name="err_wrong_input">مقدار درخواستی را وارد کنید</string>
     <string name="maket">ماکت</string>
     <string name="mostand">چالش یا پویش</string>
     <string name="record">آشپزی</string>
-    <string name="reading">مطالعه</string>
-    <string name="mystery">معما</string>
+    <string name="reading">داستان دنباله دار</string>
+    <string name="mystery">مذهبی</string>
+    <string name="InMystery">معما</string>
     <string name="puzzle">پازل</string>
     <string name="publicInfo">اطلاعات عمومی</string>
     <string name="bazigroohi">بازی خانوادگی</string>
+    <string name="special">ویژه</string>
+    <string name="main">اصلی</string>
+    <string name="QCount">15</string><!--تعداد سوال -->
 
 
+    <!--Puzzle Code-->
+    <string name="PuzzleCode">
+
+    </string>
+
+    <!--Table Code-->
+    <string name="TableCode">
+
+    </string>
 
 
     <!--Table Questions-->
     <string name="s1">
 1.	یکی از موارد مصرف خمس و زکات – به معنای در راه مانده
     </string>
+    <string name="sj1">
+ابن سبیل
+    </string>
+
     <string name="s2">
 2.	از ثمرات انقاق در زمینه های مختلف مادی و معنوی زندگی
     </string>
+    <string name="sj2">
+برکت
+    </string>
+
     <string name="s3">
 3.	2 مورد از فروع دین که معمولا با هم بیان می شوند و وظیفه ما را نسبت به دوستان و دشمنان خدا مشخص می کنند
     </string>
+    <string name="sj3">
+
+    </string>
+
     <string name="s4">
 4.	تعبد
     </string>
+    <string name="sj4">
+
+    </string>
+
     <string name="s5">
 5.	اولین غزوه مسلمین.
     </string>
+    <string name="sj5">
+
+    </string>
+
     <string name="s6">
 6.	روزی
     </string>
+    <string name="sj6">
+
+    </string>
+
     <string name="s7">
 7.	نیت
     </string>
+    <string name="sj7">
+
+    </string>
+
     <string name="s8">
 8.	از خود گذشتن و سر سپردگی به فرد، باور و یا هر چیزی.
     </string>
+    <string name="sj8">
+
+    </string>
+
     <string name="s9">
 9.	مایع حیات
     </string>
+    <string name="sj9">
+
+    </string>
+
     <string name="s10">
 10.	فلاح
     </string>
+    <string name="sj10">
+
+    </string>
+
     <string name="s11">
 11.	تصمیم به واجب کردن کاری بر خود، در راه خدا.
     </string>
+    <string name="sj11">
+
+    </string>
+
     <string name="s12">
 12.	اگر سر سفره باشد ، موجب برکت سفره خواهد شد
     </string>
+    <string name="sj12">
+
+    </string>
+
     <string name="s13">
 13.	انجیر
     </string>
+    <string name="sj13">
+
+    </string>
+
     <string name="s14">
 14.	یکی از پیامبران الهی که نام دیگر ایشان اسرائیل است
     </string>
+    <string name="sj14">
+
+    </string>
+
     <string name="s15">
 15.	رحمان
     </string>
+    <string name="sj15">
+
+    </string>
+
 
     <!--Reading Questions-->
 
@@ -120,6 +193,14 @@
     </string>
 
     <string name="FinalHelp">
+        در این قسمت با استفاده از تمام حروفی که در مراحل قبل بدست آوردید باید یک جمله معنادار بسازید.\n
+        دقت کنید حروفی که در هر مرحله دریافت کرده اید به ترتیب نیستند ولی شماره مراحل به ترتیب است .\n
+        همچنین در این بخش شما فقط یکبار فرصت دارید تا جمله را تایپ و دکمه ثبت را بزنید.\n
+        با زدن دکمه ثبت یک فایل از نتایج مراحل شما در مسیر اصلی دستگاه در پوشه Assisstant Output ساخته می شود که باید آن را به مربی خود تحویل دهید.
+
+    </string>
+
+    <string name="IntellMysteryHelp">
         در این قسمت با استفاده از تمام حروفی که در مراحل قبل بدست آوردید باید یک جمله معنادار بسازید.\n
         دقت کنید حروفی که در هر مرحله دریافت کرده اید به ترتیب نیستند ولی شماره مراحل به ترتیب است .\n
         همچنین در این بخش شما فقط یکبار فرصت دارید تا جمله را تایپ و دکمه ثبت را بزنید.\n
@@ -201,10 +282,6 @@
 
     </string>
 
-    <string name="mysteryDesc">
-        با توجه به آیات : هود  116/ 8 انفال / کهف 49\n
-        کدام عبارت ها در خصوص واژه ی \" مجرمین\" صحیح تر است\n
-    </string>
 
     <string name="Aboutus">
         طراحی بازی ها:  \n
@@ -419,6 +496,68 @@
     <string name="TQanswer10">
         گزینه 410
 </string>
+
+
+    <!--Mystery Question-->
+    <string name="mysteryQues">
+        با توجه به آیات : هود  116/ 8 انفال / کهف 49\n
+        کدام عبارت ها در خصوص واژه ی \" مجرمین\" صحیح تر است\n
+    </string>
+    <string name="MysAns1">
+
+    </string>
+    <string name="MysAns2">
+
+    </string>
+    <string name="MysAns3">
+
+    </string>
+    <string name="MysAns4">
+
+    </string>
+    <string name="MysAns5">
+
+    </string>
+
+    <!--Intelligence Mystery Question-->
+    <string name="IntelligenceMysteryQues">
+        kldfldsjflkkldfldsjflksdfjklsjdfklsdfjklsjdfkl \n
+        kldfldsjflkkldfldsjflksdfjklsjdfklsdfjklsjdfkl \n
+        kldfldsjflkldfldsjflksdfjklsjdfklkldfldsjflksdfjklsjdfklksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflkldfldsjflksdfjklsjdfklksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+        kldfldsjflksdfjklsjdfkl \n
+    </string>
+    <string name="IntelligenceMysteryAnswer">
+
+    </string>
 
 
 </resources>

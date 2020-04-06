@@ -276,7 +276,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_Questions + " WHERE QuestionID = " + QuestionID+" AND GameID = " + GameId;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null){
+        if (cursor.getCount() > 0){
             cursor.moveToFirst();
         }
         return new Questions(cursor.getString(2));
@@ -294,7 +294,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_Answers + " WHERE GameID = " + id;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
-        if (cursor != null){
+        if (cursor.getCount() > 0){
             cursor.moveToFirst();
             return cursor.getCount();
         }
@@ -305,7 +305,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_Questions + " WHERE QuestionID = " + questionID+" AND GameID = " + GameId;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null){
+        if (cursor.getCount() > 0){
             cursor.moveToFirst();
             if (cursor.getString(3)!= null && cursor.getString(3).equals("1")){
                 return true;
@@ -360,7 +360,19 @@ public class DBHandler extends SQLiteOpenHelper {
                 + " Where GameID = "+ Gameid+ " AND Answer IS NOT NULL";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null) {
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        else
+            return "";
+    }
+    public String GetAnswer(int Gameid, int QID){
+        String query = "SELECT Answer FROM " + TABLE_Answers
+                + " Where GameID = "+ Gameid+ " AND QuestionID = " +QID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             return cursor.getString(0);
         }

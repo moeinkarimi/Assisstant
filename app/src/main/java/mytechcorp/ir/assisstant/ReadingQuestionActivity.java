@@ -1,11 +1,11 @@
 package mytechcorp.ir.assisstant;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,91 +65,106 @@ public class ReadingQuestionActivity extends Activity {
 
     public void setBtnEnterOnClickListener(View v) {
         if (dbHandler.GetAnswerCount(2) != 3){
-            if (qID == 1 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr1j)) {
+            final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+            builder.setTitle("ثبت پاسخ");
+            builder.setMessage("آیا مطمئنید ؟");
+            builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Answer();
+                }
+            }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).setIcon(R.mipmap.ic_tick);
+            builder.create().show();
+        }
+        else if (dbHandler.GetAnswerCount(2) == 3){
+            dbHandler.UpdateState(2);
+            Intent intent = new Intent(ReadingQuestionActivity.this, MainActivity.class);
+            startActivity(intent);
+            MainActivity.fa.finish();
+            rq.finish();
+        }
+    }
+
+    void Answer(){
+
+        if (dbHandler.GetAnswerCount(2) != 3){
+            if (!dbHandler.GetQuestionState(qID,2)) {
+                dbHandler.AddAnswer(
+                        new Answers(
+                                txtAnswer2.getText().toString(),
+                                2,
+                                qID
+                        )
+                );
+            }
+
+            if (qID == 1 && txtAnswer2.getText().toString().replace(" ", "").equals(this.getString(R.string.sr1j))) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
-                    dbHandler.AddAnswer(
-                            new Answers(
-                                    txtAnswer2.getText().toString(),
-                                    2,
-                                    qID
-                            )
-                    );
                     dbHandler.AddScore(
                             new Scores(
                                     2,
-                                    7,
+                                    10,
                                     qID
                             )
                     );
                     Toast.makeText(this,"پاسخ صحیح است",Toast.LENGTH_SHORT).show();
-                    dbHandler.UpdateQuestionState(qID,2);
+                    dbHandler.UpdateQuestionState(qID, 2);
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if (qID == 2 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr2j)) {
+            } else if (qID == 2 && txtAnswer2.getText().toString().replace(" ", "").equals(this.getString(R.string.sr2j))) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
-                    dbHandler.AddAnswer(
-                            new Answers(
-                                    txtAnswer2.getText().toString(),
-                                    2,
-                                    qID
-                            )
-                    );
                     dbHandler.AddScore(
                             new Scores(
                                     2,
-                                    7,
+                                    10,
                                     qID
                             )
                     );
                     Toast.makeText(this,"پاسخ صحیح است",Toast.LENGTH_SHORT).show();
-                    dbHandler.UpdateQuestionState(qID,2);
+                    dbHandler.UpdateQuestionState(qID, 2);
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if (qID == 3 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr3j)) {
+            } else if (qID == 3 && txtAnswer2.getText().toString().replace(" ", "").equals(this.getString(R.string.sr3j))) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
-                    dbHandler.AddAnswer(
-                            new Answers(
-                                    txtAnswer2.getText().toString(),
-                                    2,
-                                    qID
-                            )
-                    );
                     dbHandler.AddScore(
                             new Scores(
                                     2,
-                                    7,
+                                    10,
                                     qID
                             )
                     );
                     Toast.makeText(this,"پاسخ صحیح است",Toast.LENGTH_SHORT).show();
-                    dbHandler.UpdateQuestionState(qID,2);
+                    dbHandler.UpdateQuestionState(qID, 2);
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this,"پاسخ غلط است",Toast.LENGTH_SHORT).show();
+
+                if (!dbHandler.GetQuestionState(qID,2)) {
+
+                    dbHandler.UpdateQuestionState(qID, 2);
+                }
             }
             txtAnswer2.setText("");
             loadData();
         }
         else if (dbHandler.GetAnswerCount(2) == 3){
             dbHandler.UpdateState(2);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("2-\tل ل ا").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
-                    Intent intent = new Intent(ReadingQuestionActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    MainActivity.fa.finish();
-                    rq.finish();
-                }
-            });
-            dialog.show();
+            Intent intent = new Intent(ReadingQuestionActivity.this, MainActivity.class);
+            startActivity(intent);
+            MainActivity.fa.finish();
+            rq.finish();
         }
     }
 

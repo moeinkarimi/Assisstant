@@ -261,6 +261,70 @@
                 tools:context=".MainActivity">
 
                 <LinearLayout
+                    android:id="@+id/btnMystery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/btnselector2"
+                    android:clickable="true"
+                    android:onClick="setBtnMysteryOnClickListener"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnReading">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/circlebg"
+                        android:padding="5dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_quran" />
+
+                    <mytechcorp.ir.assisstant.TextViewPlus
+                        android:id="@+id/textViewPlus17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="13dp"
+                        android:layoutDirection="rtl"
+                        android:paddingTop="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/mystery"
+                        android:textAlignment="center"
+                        android:textColor="@color/text"
+                        android:textDirection="rtl"
+                        android:textSize="17sp"
+                        app:customFont="@string/Font" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/circlebg"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_lock"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/btnBuild"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -320,7 +384,7 @@
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -384,7 +448,7 @@
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
 
                 </LinearLayout>
@@ -450,7 +514,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -514,7 +578,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -578,7 +642,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -618,7 +682,7 @@
                         android:layoutDirection="rtl"
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
-                        android:text="ویژه ها"
+                        android:text="@string/special"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -656,7 +720,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnMystery">
+                    app:layout_constraintTop_toBottomOf="@+id/btnIntelliMystery">
 
                     <ImageView
                         android:layout_width="40dp"
@@ -701,7 +765,7 @@
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -765,33 +829,33 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/btnMystery"
+                    android:id="@+id/btnIntelliMystery"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight=".5"
                     android:background="@drawable/btnselector2"
                     android:clickable="true"
-                    android:onClick="setBtnMysteryOnClickListener"
+                    android:onClick="setBtnIntelliMysteryOnClickListener"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnReading">
+                    app:layout_constraintTop_toBottomOf="@+id/btnMystery">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginBottom="7dp"
-                        android:layout_marginRight="8dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="7dp"
                         android:background="@drawable/circlebg"
                         android:padding="5dp"
                         android:scaleType="fitCenter"
@@ -801,13 +865,13 @@
                         android:id="@+id/textViewPlus3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="13dp"
-                        android:layout_marginRight="15dp"
                         android:layout_marginTop="13dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="13dp"
                         android:layoutDirection="rtl"
-                        android:paddingRight="5dp"
                         android:paddingTop="5dp"
-                        android:text="@string/mystery"
+                        android:paddingRight="5dp"
+                        android:text="@string/InMystery"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"
@@ -820,16 +884,16 @@
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageView17"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginBottom="7dp"
                         android:layout_marginLeft="7dp"
-                        android:layout_marginRight="7dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -859,7 +923,7 @@
                         android:background="@drawable/circlebg"
                         android:padding="5dp"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_paper" />
+                        android:src="@mipmap/ic_book" />
 
                     <mytechcorp.ir.assisstant.TextViewPlus
                         android:id="@+id/textViewPlus2"
@@ -893,7 +957,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/circlebg"
                         android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_tick"
+                        android:src="@mipmap/ic_lock"
                         android:visibility="invisible" />
                 </LinearLayout>
 
@@ -931,7 +995,7 @@
                         android:layoutDirection="rtl"
                         android:paddingTop="5dp"
                         android:paddingRight="5dp"
-                        android:text="امتیازی ها"
+                        android:text="@string/main"
                         android:textAlignment="center"
                         android:textColor="@color/text"
                         android:textDirection="rtl"

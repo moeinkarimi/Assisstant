@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
+import java.lang.reflect.Field;
+
 import Models.Answers;
 import Models.Questions;
 import Models.Scores;
@@ -28,14 +30,14 @@ import Models.Scores;
 public class TableActivity extends Activity {
 
     PhotoView ivTable;
-    Button btnEnter, btnSelect, btnSave, btnShowAnswers;
+    Button btnEnter, btnSelect, btnSave, btnShowAnswers,btnBackToMain;
     ImageButton btnHelp;
     EditText txtAnswer, txtQues;
-    TextViewPlus tvQuestion;
+    TextViewPlus tvQuestion, questionCount;
     Activity ta;
     String Game;
     private DBHandler dbHandler;
-    private int qID;
+    private int qID,Count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +48,20 @@ public class TableActivity extends Activity {
         photoViewAttacher.update();
         dbHandler =new DBHandler(this);
         ta= this;
+        Count = Integer.parseInt(this.getString(R.string.QCount));
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
-        btnEnter = findViewById(R.id.btnEnter);
+        btnEnter = findViewById(R.id.btnEnter3);
         btnSelect = findViewById(R.id.btnSelect);
         btnHelp = findViewById(R.id.btnHelp);
         btnSave = findViewById(R.id.btnSave);
+        btnBackToMain = findViewById(R.id.btnBackToMain);
         btnShowAnswers = findViewById(R.id.btnShowAnswers);
         txtAnswer = findViewById(R.id.txtAnswer);
         txtQues = findViewById(R.id.txtQues);
-        tvQuestion = (TextViewPlus)findViewById(R.id.tvQuestion);
+        tvQuestion = findViewById(R.id.tvQuestion);
+        questionCount = findViewById(R.id.questionCount);
 
+        questionCount.setText("تعداد سوالات: " + this.getString(R.string.QCount));
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
         {
@@ -67,6 +73,12 @@ public class TableActivity extends Activity {
         btnSave.setTypeface(tf);
         txtAnswer.setTypeface(tf);
         btnShowAnswers.setTypeface(tf);
+        btnBackToMain.setTypeface(tf);
+
+        if(dbHandler.GetAnswerCount(1) != Count) {
+            btnEnter.setEnabled(false);
+        }
+
     }
 
     @Override
@@ -76,44 +88,50 @@ public class TableActivity extends Activity {
         MainActivity.fa.finish();
         finish();
     }
+    public void setBtnBackOnClickListener(View v) {
+        Intent intent = new Intent(TableActivity.this,MainActivity.class);
+        startActivity(intent);
+        MainActivity.fa.finish();
+        finish();
+    }
 
     public void setBtnEnterOnClickListener(View v){
-        if(dbHandler.GetAnswerCount(1) != 22) {
-            Intent intent = new Intent(this,CodeActivity.class);
+        if(dbHandler.GetAnswerCount(1) != Count) {
+            Intent intent = new Intent(this,MainActivity.class);
             intent.putExtra("Game",Game);
             startActivity(intent);
             this.finish();
         }
-        else if (dbHandler.GetAnswerCount(1) == 22){
-            //dbHandler.UpdateState(Integer.parseInt(Game));
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
-            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface,int i) {
+        else if (dbHandler.GetAnswerCount(1) == Count){
+//            //dbHandler.UpdateState(Integer.parseInt(Game));
+//            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("1- ف").setTitle("حروف رمز");
+//            dialog.setNeutralButton("باشه",new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface,int i) {
                     Intent intent = new Intent(TableActivity.this, CodeActivity.class);
                     intent.putExtra("Game",Game);
                     startActivity(intent);
                     ta.finish();
-                }
-            });
-            dialog.show();
+//                }
+//            });
+//            dialog.show();
         }
     }
 
     public void setBtnSelectOnClickListener(View v){
         if (!txtQues.getText().toString().equals("")) {
             qID = Integer.parseInt(txtQues.getText().toString());
-            if (qID > 0 && qID < 23) {
+            if (qID > 0 && qID < Count+1) {
                 Questions q = dbHandler.GetQuestion(qID,1);
                 tvQuestion.setText(q.getQuestion());
             } else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا "+Count+" وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
                 dialog.setNeutralButton("باشه", null);
                 dialog.show();
             }
         }
         else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا 22 وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom)).setMessage("لطفا یک عدد بین 1 تا "+Count+" وارد نمایید").setTitle("خطا").setIcon(R.mipmap.ic_close_web);
             dialog.setNeutralButton("باشه", null);
             dialog.show();
         }
@@ -126,7 +144,45 @@ public class TableActivity extends Activity {
     }
 
     public void setBtnSaveOnClickLisetener(View v){
-        if ((qID==1 && txtAnswer.getText().toString().equals("ابن سبیل"))){
+        try{
+            Field resourceField = R.string.class.getDeclaredField("sj"+String.valueOf(qID));
+            int resourceId = resourceField.getInt(resourceField);
+            String Question = this.getString(resourceId).replace(" ", "");
+            if (txtAnswer.getText().toString().replace(" ", "").equals(Question)){
+                if(!dbHandler.GetQuestionState(qID,1)) {
+                    dbHandler.AddAnswer(
+                            new Answers(
+                                    txtAnswer.getText().toString(),
+                                    1,
+                                    qID
+                            )
+                    );
+                    dbHandler.AddScore(
+                            new Scores(
+                                    1,
+                                    1,
+                                    qID
+                            )
+                    );
+                    Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
+                    dbHandler.UpdateQuestionState(qID,1);
+
+                }else
+                {
+                    Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else {
+                Toast.makeText(this, "پاسخ غلط است", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+
+        /*if ((qID==1 && txtAnswer.getText().toString().equals("ابن سبیل"))){
 
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
@@ -175,9 +231,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==3 && txtAnswer.getText().toString().equals("تولی و تبری"))
-                ||(qID==3 && txtAnswer.getText().toString().equals("تولی وتبری"))
-                ){
+        else if ((qID==3 && txtAnswer.getText().toString().equals("تولی و تبری"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -249,8 +303,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==6 && txtAnswer.getText().toString().equals("رزق"))
-                /*||(qID==6 && txtAnswer.getText().toString().equals("شرم ساری"))*/){
+        else if ((qID==6 && txtAnswer.getText().toString().equals("رزق"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -298,8 +351,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==8 && txtAnswer.getText().toString().equals("وفاداری"))
-                || (qID==8 && txtAnswer.getText().toString().equals("وفا داری"))){
+        else if ((qID==8 && txtAnswer.getText().toString().equals("وفاداری"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -347,8 +399,7 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        else if ((qID==10 && txtAnswer.getText().toString().equals("رستگاری"))
-                /*||(qID==10 && txtAnswer.getText().toString().equals("یاس"))*/){
+        else if ((qID==10 && txtAnswer.getText().toString().equals("رستگاری"))){
             if(!dbHandler.GetQuestionState(qID,1)){
                 dbHandler.AddAnswer(
                         new Answers(
@@ -492,178 +543,10 @@ public class TableActivity extends Activity {
                 Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
             }
         }
-        /*else if ((qID==16 && txtAnswer.getText().toString().equals("مادران آسمانی"))
-                ||(qID==16 && txtAnswer.getText().toString().equals("مادران اسمانی"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==17 && txtAnswer.getText().toString().equals("چادر"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==18 && txtAnswer.getText().toString().equals("چشم"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==19 && txtAnswer.getText().toString().equals("مار"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==20 && txtAnswer.getText().toString().equals("دار"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==21 && txtAnswer.getText().toString().equals("امید"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }
-        else if ((qID==22 && txtAnswer.getText().toString().equals("یوسف"))){
-            if(!dbHandler.GetQuestionState(qID,1)){
-                dbHandler.AddAnswer(
-                        new Answers(
-                                txtAnswer.getText().toString(),
-                                1,
-                                qID
-                        )
-                );
-                dbHandler.AddScore(
-                        new Scores(
-                                1,
-                                1,
-                                qID
-                        )
-                );
-                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_SHORT).show();
-                dbHandler.UpdateQuestionState(qID,1);
-            }
-            else
-            {
-                Toast.makeText(this, "قبلا به این سوال پاسخ داده اید", Toast.LENGTH_SHORT).show();
-            }
-        }*/
+
         else {
             Toast.makeText(this, "پاسخ غلط است", Toast.LENGTH_SHORT).show();
-        }
+        }*/
         txtAnswer.setText("");
         txtQues.setText("");
     }

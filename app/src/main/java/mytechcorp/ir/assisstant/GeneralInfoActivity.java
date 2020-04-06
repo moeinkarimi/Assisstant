@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class GeneralInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_general_info);
         dbHandler = new DBHandler(this);
         rq = this;
+        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/IRANSansMobile_Light.ttf");
 
         spQues1 = findViewById(R.id.spQues1);
         tvQDesc = findViewById(R.id.tvQDesc);
@@ -53,6 +55,13 @@ public class GeneralInfoActivity extends AppCompatActivity {
         rbJ2 = findViewById(R.id.rbJ2);
         rbJ3 = findViewById(R.id.rbJ3);
         rbJ4 = findViewById(R.id.rbJ4);
+        rbJ1.setTypeface(tf);
+        rbJ2.setTypeface(tf);
+        rbJ3.setTypeface(tf);
+        rbJ4.setTypeface(tf);
+        btnCheckAnswer.setTypeface(tf);
+        btnBack1.setTypeface(tf);
+
 
         String[] QuesName = new String[]{"سوال 1","سوال 2","سوال 3","سوال 4","سوال 5","سوال 6","سوال 7","سوال 8","سوال 9","سوال 10" };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, QuesName);
@@ -62,6 +71,10 @@ public class GeneralInfoActivity extends AppCompatActivity {
         if(bundle != null)
         {
             Game = bundle.getString("Game");
+        }
+
+        if (dbHandler.GetAnswerCount(9) == 10){
+            btnCheckAnswer.setText("رفتن به صفحه اصلی");
         }
 
         spQues1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -94,23 +107,29 @@ public class GeneralInfoActivity extends AppCompatActivity {
 
     public void setBtnCheckOnClickListener(View v) {
         if (dbHandler.GetAnswerCount(9) != 10){
-            final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
-            builder.setTitle("ثبت پاسخ");
-            builder.setMessage("آیا مطمئنید ؟");
-            builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Answer();
-                }
-            }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
 
-                }
-            }).setIcon(R.mipmap.ic_tick);
-            builder.create().show();
+            if (!dbHandler.GetQuestionState(qID,9)) {
+                final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+                builder.setTitle("ثبت پاسخ");
+                builder.setMessage("آیا مطمئنید ؟");
+                builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Answer();
+                    }
+                }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setIcon(R.mipmap.ic_tick);
+                builder.create().show();
+            }
+            else {
+                Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
+            }
         }
-        else if (dbHandler.GetAnswerCount(9) == 3){
+        else if (dbHandler.GetAnswerCount(9) == 10){
             dbHandler.UpdateState(9);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -125,6 +144,9 @@ public class GeneralInfoActivity extends AppCompatActivity {
         rbJ2.setChecked(false);
         rbJ3.setChecked(false);
         rbJ4.setChecked(false);
+        if (dbHandler.GetAnswerCount(9) == 10){
+            btnCheckAnswer.setText("رفتن به صفحه اصلی");
+        }
         try {
             Field resourceField = R.string.class.getDeclaredField("gis"+String.valueOf(id+1));
             Field rbjtext1 = R.string.class.getDeclaredField("gisj1"+String.valueOf(id+1));
@@ -187,6 +209,9 @@ public class GeneralInfoActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
+        }
+        if (dbHandler.GetAnswerCount(9) == 10) {
+            dbHandler.UpdateState(9);
         }
     }
 

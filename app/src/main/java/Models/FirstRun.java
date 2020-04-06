@@ -41,6 +41,18 @@ public class FirstRun {
         dbHandler.AddQuestion(new Questions(a.getString(R.string.sr1),2,1,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.sr2),2,2,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.sr3),2,3,false));
+
+        //Add GI Questions
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis1),9,1,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis2),9,2,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis3),9,3,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis4),9,4,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis5),9,5,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis6),9,6,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis7),9,7,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis8),9,8,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis9),9,9,false));
+        dbHandler.AddQuestion(new Questions(a.getString(R.string.gis10),9,10,false));
     }
 
 }

@@ -389,7 +389,36 @@
         گزینه 410
     </string>
 
+    <string name="TQanswer1">
+گزینه 11
+</string>
+    <string name="TQanswer2">
 
+</string>
+    <string name="TQanswer3">
+
+</string>
+    <string name="TQanswer4">
+
+</string>
+    <string name="TQanswer5">
+
+</string>
+    <string name="TQanswer6">
+
+</string>
+    <string name="TQanswer7">
+
+</string>
+    <string name="TQanswer8">
+
+</string>
+    <string name="TQanswer9">
+گزینه 39
+</string>
+    <string name="TQanswer10">
+        گزینه 410
+</string>
 
 
 </resources>

@@ -4,11 +4,15 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -16,6 +20,7 @@ import java.util.List;
 
 public class GeneralInfoActivity extends AppCompatActivity {
 
+    Button btnCheckAnswer;
     Spinner spQues1;
     TextViewPlus tvQDesc;
     RadioButton rbJ1, rbJ2, rbJ3, rbJ4;
@@ -30,6 +35,7 @@ public class GeneralInfoActivity extends AppCompatActivity {
 
         spQues1 = findViewById(R.id.spQues1);
         tvQDesc = findViewById(R.id.tvQDesc);
+        btnCheckAnswer = findViewById(R.id.btnCheckAnswer);
         rbJ1 = findViewById(R.id.rbJ1);
         rbJ2 = findViewById(R.id.rbJ2);
         rbJ3 = findViewById(R.id.rbJ3);
@@ -67,6 +73,29 @@ public class GeneralInfoActivity extends AppCompatActivity {
         HelpActivity cdd = new HelpActivity(this, 7);
         cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         cdd.show();
+    }
+
+
+    public void setBtnCheckOnClickListener(View v) throws NoSuchFieldException {
+        try {
+
+            Field resourceField = R.string.class.getDeclaredField("TQanswer"+String.valueOf(qID));
+            int resourceId = resourceField.getInt(resourceField);
+            String answer = this.getString(resourceId);
+            RadioGroup radioGroup = findViewById(R.id.radio_group);
+            int radioButtonID = radioGroup.getCheckedRadioButtonId();
+            RadioButton radioButton = radioGroup.findViewById(radioButtonID);
+            String selectedtext = radioButton.getText().toString();
+            Log.d("rb Text: ", selectedtext);
+            if (selectedtext.equals(answer)){
+                Toast.makeText(this, "پاسخ صحیح است", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(this, "پاسخ غلط است", Toast.LENGTH_LONG).show();
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
 

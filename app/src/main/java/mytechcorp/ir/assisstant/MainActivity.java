@@ -15,6 +15,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -26,8 +27,6 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.util.List;
 
-import Models.Person;
-
 public class MainActivity extends Activity {
 
     SQLiteDatabase db;
@@ -35,6 +34,8 @@ public class MainActivity extends Activity {
 
     LinearLayout btnGroup, btnRecord, btnBuild, btnTable, btnReading, btnShowPerson, btnDoc, btnEnd, btnFinallyCode, btnMystery, btnPuzzle, btnShowScores;
     ImageView imageView, imageView8, imageView3, imageView4, imageView5, imageView6, imageView7, iVDoc;
+    ImageButton btnAppDesc, btnScoreDesc, btnSpecialDesc;
+
     public static Activity fa;
 
     TextViewPlus lblPersonCount, lblAllScores, textViewPlus10;
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
         imageView3 = findViewById(R.id.imageView3);
         imageView4 = findViewById(R.id.imageView4);
         imageView5 = findViewById(R.id.imageView5);
-        imageView6 = findViewById(R.id.imageView6);
+        imageView6 = findViewById(R.id.btnSpecialDesc1);
         imageView7 = findViewById(R.id.imageView7);
         iVDoc = findViewById(R.id.iVDoc);
 
@@ -69,9 +70,14 @@ public class MainActivity extends Activity {
         btnEnd = findViewById(R.id.btnEnd);
         btnShowScores = findViewById(R.id.btnShowScores);
 
+        btnAppDesc = findViewById(R.id.btnAppDesc);
+        btnSpecialDesc = findViewById(R.id.btnSpecialDesc);
+        btnSpecialDesc = findViewById(R.id.btnScoreDesc);
+
         lblAllScores = findViewById(R.id.lblAllScores);
         lblPersonCount = findViewById(R.id.lblPersonCount);
         textViewPlus10 = findViewById(R.id.textViewPlus10);
+
         lblPersonCount.setText(String.valueOf(dbHandler.GetPersonCount())+ " نفر");
         lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores(0)));
         checkImageViewVisibility();
@@ -100,8 +106,10 @@ public class MainActivity extends Activity {
     }
 
     public void setBtnShowScoresOnClickListener(View v) {
-        Intent intent = new Intent(this, ShowScoresActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, ShowScoresActivity.class);
+        startActivity(intent);*/
+
+        lblAllScores.setText(String.valueOf(dbHandler.GetSumOfScores(0)));
     }
 
     public void setBtnTableOnClickListener(View v) {
@@ -137,6 +145,12 @@ public class MainActivity extends Activity {
     public void setBtnRecordOnClickListener(View v) {
         Intent intent = new Intent(this, DescriptionActivity.class);
         intent.putExtra("Game","6");
+        startActivity(intent);
+    }
+
+    public void setBtnGIOnClickListener(View v) {
+        Intent intent = new Intent(this, GeneralInfoActivity.class);
+        intent.putExtra("Game","9");
         startActivity(intent);
     }
 
@@ -215,6 +229,24 @@ public class MainActivity extends Activity {
         if(dbHandler.GetStateData(8).equals("1")){
             iVDoc.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setBtnAppDescOnClickListener(View v){
+        HelpActivity cdd = new HelpActivity(this, 4);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
+    }
+
+    public void setBtnScoreDescOnClickListener(View v){
+        HelpActivity cdd = new HelpActivity(this, 5);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
+    }
+
+    public void setBtnSpecialDescOnClickListener(View v){
+        HelpActivity cdd = new HelpActivity(this, 6);
+        cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        cdd.show();
     }
 
 

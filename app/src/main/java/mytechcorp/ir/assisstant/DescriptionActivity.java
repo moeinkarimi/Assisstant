@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,11 +19,9 @@ import Models.Coding;
 
 public class DescriptionActivity extends Activity {
 
-    PhotoView ivTable2;
     Button btnEnter;
-    TextViewPlus tvDesc, tvHeader;
+    TextViewPlus tvDesc, tvHeader, tvLink;
     String Game;
-    ImageView ivPuzzle;
     ScrollView scroll1;
     private DBHandler dbHandler;
 
@@ -35,9 +34,8 @@ public class DescriptionActivity extends Activity {
         tvDesc = findViewById(R.id.tvDesc);
         tvHeader = findViewById(R.id.tvHeader);
         dbHandler = new DBHandler(this);
-        ivTable2 = findViewById(R.id.ivTable2);
-        ivPuzzle = findViewById(R.id.ivPuzzle);
         scroll1 = findViewById(R.id.scroll1);
+        tvLink = findViewById(R.id.tvLink);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -49,39 +47,33 @@ public class DescriptionActivity extends Activity {
 
         switch (Game){
             case "4":
-                if(dbHandler.GetScoreState(4)){
-                    tvHeader.setText(R.string.puzzle);
-                    scroll1.setVisibility(View.GONE);
-                    ivPuzzle.setVisibility(View.VISIBLE);
-                }else {
-                    scroll1.setVisibility(View.VISIBLE);
-                    ivPuzzle.setVisibility(View.GONE);
-                    tvHeader.setText(R.string.puzzle);
-                    tvDesc.setText(R.string.puzzleDesc);
-                }
+                tvHeader.setText(R.string.puzzle);
+                tvDesc.setText(R.string.puzzleDesc);
+                tvLink.setText(R.string.PuzzleLink);
                 break;
             case "5":
 
                 tvHeader.setText(R.string.maket);
                 tvDesc.setText(R.string.maketDesc);
+                tvLink.setText(R.string.MakeLink);
                 break;
             case "6":
                 tvHeader.setText(R.string.record);
                 tvDesc.setText(R.string.recordDesc);
+                tvLink.setText(R.string.CookingLink);
                 break;
             case "7":
                 tvHeader.setText(R.string.bazigroohi);
                 tvDesc.setText(getString(R.string.bazigroohiDesc));
-                PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(ivTable2);
-                photoViewAttacher.update();
-                ivTable2.setVisibility(View.VISIBLE);
+                tvLink.setText(R.string.FamilyGameLink);
                 break;
             case "8":
                 tvHeader.setText(R.string.mostand);
                 tvDesc.setText(R.string.mostanadDesc);
+                tvLink.setText(R.string.ChallengeLink);
                 break;
         }
-
+        tvLink.setMovementMethod(LinkMovementMethod.getInstance());
 
     }
 

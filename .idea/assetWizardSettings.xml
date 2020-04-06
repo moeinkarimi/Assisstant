@@ -129,8 +129,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\Moein\Desktop\world.png" />
-                                      <entry key="outputName" value="ic_gen_info" />
+                                      <entry key="imageAsset" value="C:\Users\Moein\Desktop\score.png" />
+                                      <entry key="outputName" value="ic_score" />
                                     </map>
                                   </option>
                                 </PersistentState>

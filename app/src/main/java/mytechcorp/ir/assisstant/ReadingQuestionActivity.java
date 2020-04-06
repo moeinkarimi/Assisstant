@@ -65,10 +65,7 @@ public class ReadingQuestionActivity extends Activity {
 
     public void setBtnEnterOnClickListener(View v) {
         if (dbHandler.GetAnswerCount(2) != 3){
-            if ((qID == 1 && txtAnswer2.getText().toString().equals("خدا"))
-                    /*|| (qID == 1 && txtAnswer2.getText().toString().equals("خدا ودین"))
-                    || (qID == 1 && txtAnswer2.getText().toString().equals("خدا و دین"))
-                    || (qID == 1 && txtAnswer2.getText().toString().equals("خداو دین"))*/) {
+            if (qID == 1 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr1j)) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(
@@ -90,7 +87,7 @@ public class ReadingQuestionActivity extends Activity {
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if ((qID == 2 && txtAnswer2.getText().toString().equals("اقتصادی"))) {
+            } else if (qID == 2 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr2j)) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(
@@ -112,10 +109,7 @@ public class ReadingQuestionActivity extends Activity {
                 } else {
                     Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
                 }
-            } else if ((qID == 3 && txtAnswer2.getText().toString().equals("کارتر"))
-                    /*|| (qID == 3 && txtAnswer2.getText().toString().equals("احساساتو عقل"))
-                    || (qID == 3 && txtAnswer2.getText().toString().equals("احساسات وعقل"))
-                    || (qID == 3 && txtAnswer2.getText().toString().equals("احساساتوعقل"))*/) {
+            } else if (qID == 3 && txtAnswer2.getText().toString().replace(" ", "").equals(R.string.sr3j)) {
 
                 if (!dbHandler.GetQuestionState(qID,2)) {
                     dbHandler.AddAnswer(

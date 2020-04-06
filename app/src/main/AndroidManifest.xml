@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GeneralInfoActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme" />
@@ -41,7 +42,7 @@
         <activity android:name=".ReadingQuestionActivity" />
         <activity android:name=".AboutUsActivity" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".FinalActivity"></activity>
+        <activity android:name=".FinalActivity" />
     </application>
 
 </manifest>

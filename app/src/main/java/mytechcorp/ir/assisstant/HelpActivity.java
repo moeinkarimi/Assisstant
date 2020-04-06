@@ -48,5 +48,17 @@ public class HelpActivity extends Dialog {
         else if (ID == 3) {
             tvpDesc.setText(R.string.ReadingHelp);
         }
+        else if (ID == 4) {
+            tvpDesc.setText(R.string.AppDesc);
+        }
+        else if (ID == 5) {
+            tvpDesc.setText(R.string.ScoreDesc);
+        }
+        else if (ID == 6) {
+            tvpDesc.setText(R.string.SpecialDesc);
+        }
+        else if (ID == 7) {
+            tvpDesc.setText(R.string.GIHelp);
+        }
     }
 }

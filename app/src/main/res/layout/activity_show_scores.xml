@@ -402,7 +402,7 @@
                         android:layout_weight="1" />
 
                     <LinearLayout
-                        android:id="@+id/imageView6"
+                        android:id="@+id/btnSpecialDesc1"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:layout_marginBottom="6dp"

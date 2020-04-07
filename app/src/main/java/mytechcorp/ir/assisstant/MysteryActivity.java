@@ -52,7 +52,9 @@ public class MysteryActivity extends Activity {
         if(dbHandler.GetScoreState(3)) {
             //Namayesh Javab haye doroste Moama QorAni
             ans.toggle();
+            ans1.toggle();
             ans3.toggle();
+            ans4.toggle();
         }
     }
 
@@ -63,25 +65,28 @@ public class MysteryActivity extends Activity {
         cdd.show();
     }
 
-    public void setBtnEnterOnClickListener(View v){
-        final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
-        builder.setTitle("ثبت پاسخ");
-        builder.setMessage("آیا مطمئنید ؟");
-        builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Answer();
-                dbHandler.UpdateState(3);
-            }
-        }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+    public void setBtnEnterOnClickListener(View v) {
+        if (!dbHandler.GetStateData(3).equals("1")) {
+            final android.app.AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+            builder.setTitle("ثبت پاسخ");
+            builder.setMessage("آیا مطمئنید ؟");
+            builder.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Answer();
+                }
+            }).setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            }
-        }).setIcon(R.mipmap.ic_tick);
-        builder.create().show();
+                }
+            }).setIcon(R.mipmap.ic_tick);
+            builder.create().show();
+        }
+        else {
+            Toast.makeText(this,"قبلا به این سوال پاسخ داده اید",Toast.LENGTH_SHORT).show();
+        }
     }
-
     private void Answer(){
         // ! => ghalat
         if (ans.isChecked()
@@ -98,7 +103,13 @@ public class MysteryActivity extends Activity {
                         )
                 );
             }
+            Toast.makeText(this, "پاسخ صحیح می باشد.", Toast.LENGTH_LONG).show();
         }
+        else {
+            Toast.makeText(this, "پاسخ غلط می باشد.", Toast.LENGTH_LONG).show();
+
+        }
+        dbHandler.UpdateState(3);
     }
 
     @Override

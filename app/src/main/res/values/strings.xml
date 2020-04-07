@@ -30,120 +30,121 @@
 
 
     <!--Table Questions-->
-    <string name="s1">
+    <string name="ts1">
     1-	هدیه ای که برای کمک به نیازمند داده می شود
     </string>
     <string name="sj1">
     صدقه
     </string>
 
-    <string name="s2">
+    <string name="ts2">
     2-	مجموعه انسان ها
     </string>
     <string name="sj2">
     مردم
     </string>
 
-    <string name="s3">
+    <string name="ts3">
     3-	تلاشگر
     </string>
     <string name="sj3">
     ساعی
     </string>
 
-    <string name="s4">
+    <string name="ts4">
     4-	حکمی که فقیه استنباط و بیان می کند
     </string>
     <string name="sj4">
     فتوا
     </string>
 
-    <string name="s5">
+    <string name="ts5">
     5-	یکی از روشهای تقسیم عادلانه بیت المال که در ایران هم در حال اجرا است
     </string>
     <string name="sj5">
     هدفمندییارانهها
     </string>
 
-    <string name="s6">
+    <string name="ts6">
     6-	نیکوکاری به زبان عربی
     </string>
     <string name="sj6">
     بر
     </string>
 
-    <string name="s7">
+    <string name="ts7">
     7-	وقتی در یک معامله هر یک از طرفین در جنس و یا مال خدعه ای ایجاد شود
     </string>
     <string name="sj7">
     غش
     </string>
 
-    <string name="s8">
+    <string name="ts8">
     8-	وظایف انسانها نسبت به دیگران
     </string>
     <string name="sj8">
     حقالناس
     </string>
 
-    <string name="s9">
+    <string name="ts9">
     9-	یقین و اعتماد
+    </string>
     <string name="sj9">
     اطمینان
     </string>
 
-    <string name="s10">
+    <string name="ts10">
     10-	فقیر
     </string>
     <string name="sj10">
     نیازمند
     </string>
 
-    <string name="s11">
+    <string name="ts11">
     11-	 درمان
     </string>
     <string name="sj11">
     شفا
     </string>
 
-    <string name="s12">
+    <string name="ts12">
     12-	محبت
     </string>
     <string name="sj12">
     مهر
     </string>
 
-    <string name="s13">
+    <string name="ts13">
     13-	نعمت را افزایش می دهد
     </string>
     <string name="sj13">
     شرک
     </string>
 
-    <string name="s14">
+    <string name="ts14">
     14-	کمک کردن به دیگران
     </string>
     <string name="sj14">
     دستگیری
     </string>
 
-    <string name="s15">
+    <string name="ts15">
     15-	حفظ  و مراقبت از چیزی که دیگری نزد شما ودیعه گذاشته است
     </string>
     <string name="sj15">
     امانتداری
     </string>
 
-    <string name="s16">
+    <string name="ts16">
     16-	جوانمرد
     </string>
     <string name="sj16">
     لوتی
     </string>
 
-    <string name="s17">
+    <string name="ts17">
     17-	نام فردی که نزد امیرالمومنین ع رفت و از ایشان خواست تا برای او از بیت المال برداشت کند و امام هم دست او را روی آتش گرفت و اثر دست درازی به بیت المال را سوختن در آتش بیان کرد.    </string>
-    </string>
+
     <string name="sj17">
     عقیل
     </string>

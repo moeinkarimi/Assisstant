@@ -81,14 +81,9 @@ public class EnterActivity extends Activity {
     }
 
     public void setBtnEnterOnClickListener(View v) {
-        if(!dbHandler.getCodeState(1)){
-            checkGCode();
-        }
-        else {
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
-        }
     }
 
     public void setBtnSaveOnClickListener(View v) {
@@ -144,7 +139,7 @@ public class EnterActivity extends Activity {
         db = dbHandler.getReadableDatabase();
         Cursor cursor = db.rawQuery(query,null);
         cursor.moveToFirst();
-
+        checkGCode();
         if (cursor.getCount() > 0) {
             //dbHandler.UpdateStates();
             if(dbHandler.GetPersonCount()>0 && dbHandler.getCodeState(1)){

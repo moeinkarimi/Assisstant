@@ -34,6 +34,7 @@ public class GeneralInfoActivity extends AppCompatActivity {
     TextViewPlus tvQDesc;
     RadioButton rbJ1, rbJ2, rbJ3, rbJ4;
     private DBHandler dbHandler;
+    RadioGroup radio_group;
 
     Activity rq;
     String Game;
@@ -55,6 +56,7 @@ public class GeneralInfoActivity extends AppCompatActivity {
         rbJ2 = findViewById(R.id.rbJ2);
         rbJ3 = findViewById(R.id.rbJ3);
         rbJ4 = findViewById(R.id.rbJ4);
+        radio_group = findViewById(R.id.radio_group);
         rbJ1.setTypeface(tf);
         rbJ2.setTypeface(tf);
         rbJ3.setTypeface(tf);
@@ -82,6 +84,7 @@ public class GeneralInfoActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 GetQuestionsAndOptions(position);
                 qID = position+1;
+                radio_group.clearCheck();
             }
 
             @Override
@@ -140,10 +143,6 @@ public class GeneralInfoActivity extends AppCompatActivity {
 
 
     private void GetQuestionsAndOptions(int id) {
-        rbJ1.setChecked(false);
-        rbJ2.setChecked(false);
-        rbJ3.setChecked(false);
-        rbJ4.setChecked(false);
         if (dbHandler.GetAnswerCount(9) == 10){
             btnCheckAnswer.setText("رفتن به صفحه اصلی");
         }

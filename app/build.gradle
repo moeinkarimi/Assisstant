@@ -8,7 +8,7 @@ android {
 
     }
     defaultConfig {
-        applicationId "mytechcorp.ir.amin"
+        applicationId "mytechcorp.ir.assisstant"
         minSdkVersion 15
         //noinspection OldTargetApi
         targetSdkVersion 26

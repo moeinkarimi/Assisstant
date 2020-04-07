@@ -2,6 +2,7 @@ package Models;
 
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.lang.reflect.Field;
 
@@ -11,22 +12,20 @@ import mytechcorp.ir.assisstant.R;
 public class FirstRun {
 
     SQLiteDatabase db;
-    DBHandler dbHandler;
 
     public void AddQuestions(Activity a){
-        dbHandler =new DBHandler(a);
+        DBHandler dbHandler = new DBHandler(a);
         //Add Table Questions
         try {
             int Count = Integer.parseInt(a.getString(R.string.QCount));
             for (int qID =1; qID<=Count;qID++){
-                Field resourceField = R.string.class.getDeclaredField("s"+String.valueOf(qID));
+                Field resourceField = R.string.class.getDeclaredField("ts"+String.valueOf(qID));
                 int resourceId = resourceField.getInt(resourceField);
                 String Question = a.getString(resourceId);
                 dbHandler.AddQuestion(new Questions(Question,1,qID,false));
             }
         }
         catch (Exception exp){
-
         }
         try {
 

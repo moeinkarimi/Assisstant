@@ -16,19 +16,23 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
 public class ReadingActivity extends Activity {
 
-    TextViewPlus mTextField, tvReading, tvHeader;
-    Button btnEnter;
+    TextViewPlus mTextField, tvReading, tvHeader, mTextPage;
+    Button btnEnter,btnNext,btnPrev;
     ImageButton btnHelp;
     private DBHandler dbHandler;
 
     public static Activity ca;
-    String Game;
+    String Game, page;
+    int pageID = 1,totalPage =0;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,28 +42,67 @@ public class ReadingActivity extends Activity {
         dbHandler = new DBHandler(this);
         btnEnter = findViewById(R.id.btnEnter);
         btnHelp = findViewById(R.id.btnHelp);
+        btnPrev = findViewById(R.id.btnPrev);
+        btnNext = findViewById(R.id.btnNext);
         mTextField = findViewById(R.id.mTextField);
         tvReading = findViewById(R.id.tvReading);
         tvHeader = findViewById(R.id.tvHeader);
+        mTextPage = findViewById(R.id.mTextPage);
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
         {
             Game = bundle.getString("Game");
         }
-
+        totalPage = Integer.parseInt(this.getString(R.string.pageCount));
         tvHeader.setText(R.string.reading);
-        tvReading.setText(R.string.readingDesc);
-
         btnEnter.setTypeface(tf);
+        btnPrev.setTypeface(tf);
+        btnNext.setTypeface(tf);
         btnEnter.setEnabled(true);
+        mTextField.setText("تعداد کل صفحات: " + this.getString(R.string.pageCount));
+        getPage(pageID);
         //startReading();
+    }
+
+    private void getPage(int pageId) {
+        try {
+            Field resourceField = R.string.class.getDeclaredField("RDP"+String.valueOf(pageId));
+            int resourceId = resourceField.getInt(resourceField);
+            page = this.getString(resourceId);
+            tvReading.setText(page);
+            mTextPage.setText("صفحه: " + pageID);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void setBtnHelpOnClickListener(View v){
         HelpActivity cdd = new HelpActivity(this, 3);
         cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         cdd.show();
+    }
+
+    public void setBtnNextOnClickListener(View v){
+        if (pageID<totalPage) {
+            pageID++;
+            getPage(pageID);}
+        else {
+            Toast.makeText(this,"شما در صفحه آخر هستید.",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void setBtnPrevOnClickListener(View v){
+        if (pageID>1) {
+            pageID--;
+            getPage(pageID);
+        }
+        else {
+            Toast.makeText(this,"شما در صفحه اول هستید.",Toast.LENGTH_LONG).show();
+        }
     }
 
 

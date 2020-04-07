@@ -22,8 +22,6 @@ public class AboutUsActivity extends Activity {
         btnDevWeb = findViewById(R.id.btnDevWeb);
         btnDevInsta = findViewById(R.id.btnDevInsta);
         btnDevEmail = findViewById(R.id.btnDevEmail);
-        btnEtWeb = findViewById(R.id.btnEtWeb);
-        btnEtSor = findViewById(R.id.btnEtISor);
 
         btnDevInsta.setOnClickListener(
                 new View.OnClickListener() {
@@ -44,24 +42,6 @@ public class AboutUsActivity extends Activity {
                 }
         );
 
-        btnEtSor.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Uri uri = Uri.parse("https://sapp.ir/Anjomanyaran");
-                        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
-
-                        likeIng.setPackage("mobi.mmdt.ott");
-
-                        try {
-                            startActivity(likeIng);
-                        } catch (ActivityNotFoundException e) {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://sapp.ir/Anjomanyaran")));
-                        }
-                    }
-                }
-        );
 
         btnDevBale.setOnClickListener(
                 new View.OnClickListener() {
@@ -86,17 +66,8 @@ public class AboutUsActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Uri uri = Uri.parse("hhttps://sapp.ir/moeinkarimi76");
-                        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
-
-                        likeIng.setPackage("mobi.mmdt.ott");
-
-                        try {
-                            startActivity(likeIng);
-                        } catch (ActivityNotFoundException e) {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://sapp.ir/moeinkarimi76")));
-                        }
+                        Intent telegram = new Intent(Intent.ACTION_VIEW , Uri.parse("https://telegram.me/moeinkarimi76"));
+                        startActivity(telegram);
                     }
                 }
         );
@@ -124,20 +95,6 @@ public class AboutUsActivity extends Activity {
                     public void onClick(View view) {
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse("https://mytechcorp.ir/"));
-                        try {
-                            startActivity(Intent.createChooser(i, "انتخاب مرورگر ..."));
-                        } catch (android.content.ActivityNotFoundException ex) {
-                        }
-                    }
-                }
-        );
-
-        btnEtWeb.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse("http://anjomanyaran.ir"));
                         try {
                             startActivity(Intent.createChooser(i, "انتخاب مرورگر ..."));
                         } catch (android.content.ActivityNotFoundException ex) {

@@ -60,6 +60,7 @@ public class FirstRun {
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s17),1,17,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s18),1,18,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s19),1,19,false));
+
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s20),1,20,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s21),1,21,false));
         dbHandler.AddQuestion(new Questions(a.getString(R.string.s22),1,22,false));*/

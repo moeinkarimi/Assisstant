@@ -61,7 +61,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/dataitems"
-            android:src="@drawable/etimg"
+            android:src="@mipmap/ic_logoj"
             app:layout_constraintBottom_toTopOf="@+id/tvpabout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.977"
@@ -75,6 +75,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/bgofitem"
             android:fadeScrollbars="true"
+            android:foregroundGravity="center"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,9 +83,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tvpabout">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:fadeScrollbars="true"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="5dp">
 
@@ -110,8 +113,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
                         android:padding="2dp"
                         android:text="توسعه دهنده در بله"
@@ -141,18 +144,18 @@
                         android:id="@+id/imageViewSor16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_soroush" />
+                        android:src="@mipmap/ic_teleg" />
 
                     <mytechcorp.ir.assisstant.TextViewPlus
                         android:id="@+id/tvpfDescSor3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
                         android:padding="2dp"
-                        android:text="توسعه دهنده در سروش"
+                        android:text="توسعه دهنده در تلگرام"
                         android:textColor="@color/text_color_primary"
                         android:textSize="12sp"
                         app:customFont="@string/Font"
@@ -186,8 +189,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
                         android:padding="2dp"
                         android:text="توسعه دهنده در اینستاگرام"
@@ -224,8 +227,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
                         android:padding="2dp"
                         android:text="ایمیل توسعه دهنده"
@@ -262,8 +265,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:gravity="center"
                         android:padding="2dp"
                         android:text="وبگاه\nتوسعه دهنده"
@@ -279,81 +282,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/btnEtWeb"
-                    android:layout_width="85dp"
-                    android:layout_height="115dp"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/btnselector2"
-                    android:clickable="true"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:id="@+id/imageViewEtWeb"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_web" />
-
-                    <mytechcorp.ir.assisstant.TextViewPlus
-                        android:id="@+id/tvpfDescEtWeb"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="وبگاه اتحادیه شهر تهران"
-                        android:textColor="@color/text_color_primary"
-                        android:textSize="12sp"
-                        app:customFont="@string/Font"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="320dp">
-
-                    </mytechcorp.ir.assisstant.TextViewPlus>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/btnEtISor"
-                    android:layout_width="85dp"
-                    android:layout_height="115dp"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/btnselector2"
-                    android:clickable="true"
-                    android:orientation="vertical"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:id="@+id/imagesoret"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_soroush" />
-
-                    <mytechcorp.ir.assisstant.TextViewPlus
-                        android:id="@+id/tvpfDescInstaet"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="اتحادیه در سروش"
-                        android:textColor="@color/text_color_primary"
-                        android:textSize="12sp"
-                        app:customFont="@string/Font"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="320dp">
-
-                    </mytechcorp.ir.assisstant.TextViewPlus>
-
-                </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
 

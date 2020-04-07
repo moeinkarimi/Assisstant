@@ -85,10 +85,10 @@ public class MysteryActivity extends Activity {
     private void Answer(){
         // ! => ghalat
         if (ans.isChecked()
-                && !ans1.isChecked()
+                && ans1.isChecked()
                 && !ans2.isChecked()
                 && ans3.isChecked()
-                && !ans4.isChecked()){
+                && ans4.isChecked()){
             if(!dbHandler.GetScoreState(3)) {
                 dbHandler.AddScore(
                         new Scores(

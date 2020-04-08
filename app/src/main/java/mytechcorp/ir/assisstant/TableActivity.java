@@ -147,8 +147,9 @@ public class TableActivity extends Activity {
         try{
             Field resourceField = R.string.class.getDeclaredField("sj"+String.valueOf(qID));
             int resourceId = resourceField.getInt(resourceField);
-            String Question = this.getString(resourceId).replace(" ", "");
-            if (txtAnswer.getText().toString().replace(" ", "").equals(Question)){
+            String Question = this.getString(resourceId).replace(" ", ""), txtGet = txtAnswer.getText().toString().replace(" ", "");
+            Log.e("Get Text", txtGet);
+            if (txtGet.equals(Question)){
                 if(!dbHandler.GetQuestionState(qID,1)) {
                     dbHandler.AddAnswer(
                             new Answers(
@@ -181,7 +182,7 @@ public class TableActivity extends Activity {
             e.printStackTrace();
         }
 
-
+        tvQuestion.setText("");
         /*if ((qID==1 && txtAnswer.getText().toString().equals("ابن سبیل"))){
 
             if(!dbHandler.GetQuestionState(qID,1)){

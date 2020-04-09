@@ -141,7 +141,6 @@ public class EnterActivity extends Activity {
         cursor.moveToFirst();
         checkGCode();
         if (cursor.getCount() > 0) {
-            //dbHandler.UpdateStates();
             if(dbHandler.GetPersonCount()>0 && dbHandler.getCodeState(1)){
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
@@ -150,7 +149,7 @@ public class EnterActivity extends Activity {
 
         }
         else {
-            for (int i=1;i<13;i++){
+            for (int i=1;i<14;i++){
                 dbHandler.AddState();
             }
         }

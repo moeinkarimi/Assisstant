@@ -3,10 +3,11 @@
     <color name="colorPrimary">#1e7e80</color>
     <color name="colorPrimaryDark">#1d706a</color>
     <color name="colorAccent">#1eafa7</color>
-    <color name="squarecolor">#abffffff</color>
+    <color name="squarecolor">#ABFFFFFF</color>
     <color name="white">#ffffff</color>
     <color name="normalButton">#018a97</color>
     <color name="selectedButton">#1d697c</color>
     <color name="text">#212121</color>
     <color name="text_color_primary">#000000</color>
+    <color name="light">#F3F3F3</color>
 </resources>

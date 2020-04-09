@@ -33,9 +33,6 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/dataitems"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingTop="25dp"
-        android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btnEnter1"
@@ -43,25 +40,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <mytechcorp.ir.assisstant.TextViewPlus
-            android:id="@+id/tvHeader"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:textSize="22sp"
-            app:customFont="@string/Font"
-            app:textAllCaps="false"
-            tools:layout_editor_absoluteY="49dp" />
+            android:background="@drawable/headerbg"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/tvHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:textColor="@color/light"
+                android:textSize="24sp"
+                app:customFont="@string/Font"
+                app:textAllCaps="false"
+                tools:layout_editor_absoluteY="49dp" />
+        </LinearLayout>
 
 
         <ScrollView
             android:id="@+id/scroll1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="7dp"
             android:scrollbars="none">
 
             <LinearLayout

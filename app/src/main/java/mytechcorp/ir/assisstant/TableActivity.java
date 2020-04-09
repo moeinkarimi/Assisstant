@@ -550,6 +550,11 @@ public class TableActivity extends Activity {
         }*/
         txtAnswer.setText("");
         txtQues.setText("");
+        tvQuestion.setText("");
+
+        if(dbHandler.GetAnswerCount(1) == Count) {
+            btnEnter.setEnabled(true);
+        }
     }
 
     public void setBtnShowAnswersOnClickListener(View v){

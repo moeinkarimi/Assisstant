@@ -9,7 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
         android:layout_weight="1"
         android:background="@drawable/dataitems"
         android:orientation="vertical"
@@ -19,7 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/headerbg"
+            android:orientation="horizontal"
+            android:padding="7dp">
 
             <ImageButton
                 android:id="@+id/btnHelpMys2"
@@ -45,13 +46,14 @@
                 android:layout_marginBottom="15dp"
                 android:gravity="center"
                 android:text="@string/InMystery"
-                android:textColor="@color/text"
-                android:textSize="22sp"
+                android:textColor="@color/light"
+                android:textSize="24sp"
                 app:customFont="@string/Font"
                 app:textAllCaps="false"
                 tools:layout_editor_absoluteY="49dp" />
 
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -86,7 +88,7 @@
             <EditText
                 android:id="@+id/txtMAnswer2"
                 android:layout_width="305dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"

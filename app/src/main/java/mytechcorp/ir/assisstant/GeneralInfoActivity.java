@@ -84,7 +84,9 @@ public class GeneralInfoActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 GetQuestionsAndOptions(position);
                 qID = position+1;
-                radio_group.clearCheck();
+                if (!dbHandler.GetQuestionState(qID,9)) {
+                    radio_group.clearCheck();
+                }
             }
 
             @Override

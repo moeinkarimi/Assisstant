@@ -74,6 +74,7 @@ public class IntelligenceMysteryActivity extends AppCompatActivity {
     }
 
     private void Answer(){
+
         if (!dbHandler.GetScoreState(10)) {
             dbHandler.AddAnswer(
                     new Answers(
@@ -82,7 +83,8 @@ public class IntelligenceMysteryActivity extends AppCompatActivity {
                             1
                     )
             );
-            if (txtMAnswer2.getText().toString().replace(" ", "").equals(this.getString(R.string.IntelligenceMysteryAnswer))) {
+            String trueAns = this.getString(R.string.IntelligenceMysteryAnswer).replace(" ", ""), txtAns = txtMAnswer2.getText().toString().replace(" ", "");
+            if (txtAns.equals(trueAns)) {
                 dbHandler.AddScore(
                         new Scores(
                                 10,

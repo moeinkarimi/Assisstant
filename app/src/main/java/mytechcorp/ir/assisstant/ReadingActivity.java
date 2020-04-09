@@ -16,6 +16,7 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
@@ -27,10 +28,11 @@ public class ReadingActivity extends Activity {
     Button btnEnter,btnNext,btnPrev;
     ImageButton btnHelp;
     private DBHandler dbHandler;
+    ScrollView scrlView;
 
     public static Activity ca;
     String Game, page;
-    int pageID = 1,totalPage =0;
+    int pageID = 1,totalPage =0, currentPage =1;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -47,8 +49,8 @@ public class ReadingActivity extends Activity {
         mTextField = findViewById(R.id.mTextField);
         tvReading = findViewById(R.id.tvReading);
         tvHeader = findViewById(R.id.tvHeader);
+        scrlView = findViewById(R.id.scrlView);
         mTextPage = findViewById(R.id.mTextPage);
-
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
         {
@@ -61,6 +63,14 @@ public class ReadingActivity extends Activity {
         btnNext.setTypeface(tf);
         btnEnter.setEnabled(true);
         mTextField.setText("تعداد کل صفحات: " + this.getString(R.string.pageCount));
+        currentPage = Integer.parseInt(dbHandler.GetStateData(13));
+        if (currentPage != 0){
+            Log.d("currentPage", String.valueOf(currentPage));
+            pageID = currentPage;
+        }
+        else {
+            pageID = 1;
+        }
         getPage(pageID);
         //startReading();
     }
@@ -89,7 +99,10 @@ public class ReadingActivity extends Activity {
     public void setBtnNextOnClickListener(View v){
         if (pageID<totalPage) {
             pageID++;
-            getPage(pageID);}
+            getPage(pageID);
+            scrlView.scrollTo(0,0);
+            dbHandler.UpdateState(13,String.valueOf(pageID));
+        }
         else {
             Toast.makeText(this,"شما در صفحه آخر هستید.",Toast.LENGTH_LONG).show();
         }
@@ -99,6 +112,8 @@ public class ReadingActivity extends Activity {
         if (pageID>1) {
             pageID--;
             getPage(pageID);
+            scrlView.scrollTo(0,0);
+            dbHandler.UpdateState(13,String.valueOf(pageID));
         }
         else {
             Toast.makeText(this,"شما در صفحه اول هستید.",Toast.LENGTH_LONG).show();

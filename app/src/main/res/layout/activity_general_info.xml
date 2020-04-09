@@ -42,56 +42,60 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/dataitems"
         android:orientation="vertical"
-        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btnHelpGI"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/circlebuttonselector"
-            android:onClick="setBtnGIHelpOnClickListener"
-            android:padding="5dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_help"
-            android:textSize="21sp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="5dp" />
-        <mytechcorp.ir.assisstant.TextViewPlus
-            android:id="@+id/tvHeader2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:text="اطلاعات عمومی"
-            android:textColor="@color/text"
-            android:textSize="22sp"
-            app:customFont="@string/Font"
-            app:textAllCaps="false"
-            tools:layout_editor_absoluteY="49dp" />
-    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:background="@drawable/headerbg"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/btnHelpGI"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/circlebuttonselector"
+                android:onClick="setBtnGIHelpOnClickListener"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_help"
+                android:textSize="21sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="5dp" />
+
+            <mytechcorp.ir.assisstant.TextViewPlus
+                android:id="@+id/tvHeader2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                android:text="اطلاعات عمومی"
+                android:textColor="@color/light"
+                android:textSize="24sp"
+                app:customFont="@string/Font"
+                app:textAllCaps="false"
+                tools:layout_editor_absoluteY="49dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
             android:orientation="horizontal"
             android:padding="5dp">
 
@@ -107,7 +111,7 @@
             android:id="@+id/tvQDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="8dp"
             android:singleLine="false"
             android:textColor="@color/text"
             android:textSize="16sp"
@@ -118,7 +122,8 @@
         <RadioGroup
             android:id="@+id/radio_group"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
 
             <RadioButton
                 android:id="@+id/rbJ1"

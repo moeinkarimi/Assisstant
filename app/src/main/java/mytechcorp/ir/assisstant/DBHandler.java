@@ -205,6 +205,13 @@ public class DBHandler extends SQLiteOpenHelper {
         db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(id)});
         db.close();
     }
+    public void UpdateState(int id, String crntpg){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(State, crntpg);
+        db.update(TABLE_States,values,"ID =?",new String[] {String.valueOf(id)});
+        db.close();
+    }
 
     public String GetStateData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();

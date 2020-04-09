@@ -40,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
             android:layoutDirection="rtl"
             android:paddingBottom="5dp"
             android:scrollbars="vertical"
@@ -53,7 +52,8 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/btnselector2"
                 android:gravity="center"
                 android:layoutDirection="rtl"
@@ -70,7 +70,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnEnter3"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayouttable"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -78,7 +78,9 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/btnselector2"
+                android:enabled="false"
                 android:gravity="center"
                 android:layoutDirection="rtl"
                 android:onClick="setBtnEnterOnClickListener"
@@ -88,11 +90,12 @@
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
                 android:paddingBottom="10dp"
-                android:text="ورود به صفحه بعد"
+                android:text="ورود به صفحه رمز جدول"
                 android:textDirection="rtl"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayouttable" />
+                app:layout_constraintTop_toBottomOf="@+id/btnBackToMain" />
 
             <LinearLayout
                 android:id="@+id/linearLayouttable"
@@ -100,100 +103,110 @@
                 android:layout_height="wrap_content"
                 android:layoutDirection="rtl"
                 android:orientation="vertical"
-                android:padding="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/headerbg"
+                    android:orientation="vertical">
 
-                    <mytechcorp.ir.assisstant.TextViewPlus
-                        android:id="@+id/questionCount"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="7dp"
+                        android:orientation="horizontal">
+
+                        <mytechcorp.ir.assisstant.TextViewPlus
+                            android:id="@+id/questionCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="14dp"
+                            android:nextFocusLeft="@id/questionCount"
+                            android:nextFocusUp="@id/questionCount"
+                            android:text="تعداد سوالات : "
+                            android:textColor="@color/light"
+                            android:textSize="18sp"
+                            app:customFont="@string/Font" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <ImageButton
+                            android:id="@+id/btnHelp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/circlebuttonselector"
+                            android:onClick="setBtnHelpOnClickListener"
+                            android:padding="5dp"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_help"
+                            android:textSize="21sp"
+                            tools:layout_editor_absoluteX="16dp"
+                            tools:layout_editor_absoluteY="5dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="14dp"
-                        android:nextFocusLeft="@id/questionCount"
-                        android:nextFocusUp="@id/questionCount"
-                        android:text="تعداد سوالات : "
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        app:customFont="@string/Font" />
+                        android:layout_margin="7dp"
+                        android:orientation="horizontal">
 
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        <mytechcorp.ir.assisstant.TextViewPlus
+                            android:id="@+id/textViewPlus8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="شماره سوال : "
+                            android:textColor="@color/light"
+                            android:textSize="16sp"
+                            app:customFont="@string/Font" />
 
-                    <ImageButton
-                        android:id="@+id/btnHelp"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/circlebuttonselector"
-                        android:onClick="setBtnHelpOnClickListener"
-                        android:padding="5dp"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/ic_help"
-                        android:textSize="21sp"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="5dp" />
+                        <EditText
+                            android:id="@+id/txtQues"
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5dp"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/squaretheme"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:layoutDirection="rtl"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="5dp"
+                            android:singleLine="true"
+                            android:textDirection="rtl" />
 
-                </LinearLayout>
+                        <Button
+                            android:id="@+id/btnSelect"
+                            android:layout_width="8dp"
+                            android:layout_height="43dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/btnselector2"
+                            android:onClick="setBtnSelectOnClickListener"
+                            android:text="انتخاب"
+                            android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".9" />
 
-                    <mytechcorp.ir.assisstant.TextViewPlus
-                        android:id="@+id/textViewPlus8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="شماره سوال : "
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        app:customFont="@string/Font" />
-
-                    <EditText
-                        android:id="@+id/txtQues"
-                        android:layout_width="80dp"
-                        android:layout_height="45dp"
-                        android:layout_margin="5dp"
-                        android:layout_marginTop="7dp"
-                        android:background="@drawable/squaretheme"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:layoutDirection="rtl"
-                        android:paddingBottom="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingStart="15dp"
-                        android:paddingTop="5dp"
-                        android:singleLine="true"
-                        android:textDirection="rtl" />
-
-                    <Button
-                        android:id="@+id/btnSelect"
-                        android:layout_width="8dp"
-                        android:layout_height="43dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btnselector2"
-                        android:onClick="setBtnSelectOnClickListener"
-                        android:text="انتخاب"
-                        android:textSize="16sp" />
-
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".9" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -201,6 +214,7 @@
                     android:id="@+id/tvQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
                     android:layout_marginTop="10dp"
                     android:text="شماره سوال را وارد نمایید"
                     android:textColor="@android:color/black"
@@ -211,32 +225,34 @@
                     android:id="@+id/txtAnswer"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_margin="7dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/squaretheme"
                     android:ems="10"
                     android:hint="پاسخ"
                     android:layoutDirection="rtl"
-                    android:paddingBottom="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
                     android:paddingStart="15dp"
+                    android:paddingLeft="5dp"
                     android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
                     android:singleLine="true"
                     android:textDirection="rtl" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnSave"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/btnselector2"
                         android:onClick="setBtnSaveOnClickLisetener"
@@ -253,9 +269,9 @@
                         android:id="@+id/btnShowAnswers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/btnselector2"
                         android:onClick="setBtnShowAnswersOnClickListener"

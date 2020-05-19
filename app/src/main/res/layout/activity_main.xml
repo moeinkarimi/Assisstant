@@ -43,7 +43,7 @@
             android:text="@string/app_name"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:customFont="@string/Font" />
+            app:fontFamily="serif" />
 
         <ImageButton
             android:id="@+id/btnAppDesc"

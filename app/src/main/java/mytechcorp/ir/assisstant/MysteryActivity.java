@@ -53,8 +53,9 @@ public class MysteryActivity extends Activity {
             //Namayesh Javab haye doroste Moama QorAni
             ans.toggle();
             ans1.toggle();
-            ans3.toggle();
-            ans4.toggle();
+            ans2.toggle();
+//            ans3.toggle();
+//            ans4.toggle();
         }
     }
 
@@ -91,9 +92,9 @@ public class MysteryActivity extends Activity {
         // ! => ghalat
         if (ans.isChecked()
                 && ans1.isChecked()
-                && !ans2.isChecked()
-                && ans3.isChecked()
-                && ans4.isChecked()){
+                && ans2.isChecked()
+                && !ans3.isChecked()
+                && !ans4.isChecked()){
             if(!dbHandler.GetScoreState(3)) {
                 dbHandler.AddScore(
                         new Scores(
